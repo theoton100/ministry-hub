@@ -6,6 +6,41 @@ import { z } from "zod";
 import * as db from "./db";
 import { storagePut } from "./storage";
 import { nanoid } from "nanoid";
+import { SignJWT, jwtVerify } from "jose";
+import { ENV } from "./_core/env";
+import { TRPCError } from "@trpc/server";
+
+const ADMIN_COOKIE = "admin_session";
+const jwtSecret = new TextEncoder().encode(ENV.cookieSecret || "fallback-secret-key");
+
+async function createAdminToken(email: string) {
+  return new SignJWT({ email, role: "admin" })
+    .setProtectedHeader({ alg: "HS256" })
+    .setExpirationTime("7d")
+    .sign(jwtSecret);
+}
+
+async function verifyAdminToken(token: string) {
+  try {
+    const { payload } = await jwtVerify(token, jwtSecret);
+    return payload as { email: string; role: string };
+  } catch {
+    return null;
+  }
+}
+
+// Middleware to check admin session via cookie
+const adminAuthProcedure = publicProcedure.use(async ({ ctx, next }) => {
+  const token = ctx.req.cookies?.[ADMIN_COOKIE];
+  if (!token) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Not authenticated" });
+  }
+  const payload = await verifyAdminToken(token);
+  if (!payload || payload.role !== "admin") {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid session" });
+  }
+  return next({ ctx: { ...ctx, adminEmail: payload.email } });
+});
 
 export const appRouter = router({
   system: systemRouter,
@@ -16,6 +51,39 @@ export const appRouter = router({
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
+    }),
+  }),
+
+  // ─── Admin Auth ──────────────────────────────────────────
+  adminAuth: router({
+    login: publicProcedure
+      .input(z.object({ email: z.string().email(), password: z.string().min(1) }))
+      .mutation(async ({ input, ctx }) => {
+        const valid = await db.verifyAdminPassword(input.email, input.password);
+        if (!valid) {
+          throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid email or password" });
+        }
+        const token = await createAdminToken(input.email);
+        const cookieOptions = getSessionCookieOptions(ctx.req);
+        ctx.res.cookie(ADMIN_COOKIE, token, {
+          ...cookieOptions,
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        });
+        return { success: true };
+      }),
+
+    check: publicProcedure.query(async ({ ctx }) => {
+      const token = ctx.req.cookies?.[ADMIN_COOKIE];
+      if (!token) return { authenticated: false };
+      const payload = await verifyAdminToken(token);
+      if (!payload) return { authenticated: false };
+      return { authenticated: true, email: payload.email };
+    }),
+
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(ADMIN_COOKIE, { ...cookieOptions, maxAge: -1 });
+      return { success: true };
     }),
   }),
 
@@ -39,17 +107,17 @@ export const appRouter = router({
       }),
 
     // Admin routes
-    listAll: adminProcedure.query(async () => {
+    listAll: adminAuthProcedure.query(async () => {
       return db.getAllBlogPosts();
     }),
 
-    getById: adminProcedure
+    getById: adminAuthProcedure
       .input(z.object({ id: z.number() }))
       .query(async ({ input }) => {
         return db.getBlogPostById(input.id);
       }),
 
-    create: adminProcedure
+    create: adminAuthProcedure
       .input(z.object({
         title: z.string().min(1),
         slug: z.string().min(1),
@@ -59,10 +127,10 @@ export const appRouter = router({
         published: z.boolean().default(false),
         driveFileId: z.string().optional(),
       }))
-      .mutation(async ({ input, ctx }) => {
+      .mutation(async ({ input }) => {
         const id = await db.createBlogPost({
           ...input,
-          authorId: ctx.user.id,
+          authorId: 1,
           publishedAt: input.published ? new Date() : undefined,
           excerpt: input.excerpt ?? null,
           content: input.content ?? null,
@@ -72,7 +140,7 @@ export const appRouter = router({
         return { id };
       }),
 
-    update: adminProcedure
+    update: adminAuthProcedure
       .input(z.object({
         id: z.number(),
         title: z.string().min(1).optional(),
@@ -95,14 +163,14 @@ export const appRouter = router({
         return { success: true };
       }),
 
-    delete: adminProcedure
+    delete: adminAuthProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         await db.deleteBlogPost(input.id);
         return { success: true };
       }),
 
-    uploadImage: adminProcedure
+    uploadImage: adminAuthProcedure
       .input(z.object({ base64: z.string(), filename: z.string(), contentType: z.string() }))
       .mutation(async ({ input }) => {
         const buffer = Buffer.from(input.base64, "base64");
@@ -126,11 +194,11 @@ export const appRouter = router({
       return sermon ?? null;
     }),
 
-    listAll: adminProcedure.query(async () => {
+    listAll: adminAuthProcedure.query(async () => {
       return db.getAllSermons();
     }),
 
-    create: adminProcedure
+    create: adminAuthProcedure
       .input(z.object({
         title: z.string().min(1),
         description: z.string().optional(),
@@ -149,7 +217,7 @@ export const appRouter = router({
         return { id };
       }),
 
-    update: adminProcedure
+    update: adminAuthProcedure
       .input(z.object({
         id: z.number(),
         title: z.string().min(1).optional(),
@@ -164,7 +232,7 @@ export const appRouter = router({
         return { success: true };
       }),
 
-    delete: adminProcedure
+    delete: adminAuthProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         await db.deleteSermon(input.id);
@@ -181,11 +249,11 @@ export const appRouter = router({
         return db.getPodcastEpisodes(limit, offset);
       }),
 
-    listAll: adminProcedure.query(async () => {
+    listAll: adminAuthProcedure.query(async () => {
       return db.getAllPodcastEpisodes();
     }),
 
-    create: adminProcedure
+    create: adminAuthProcedure
       .input(z.object({
         title: z.string().min(1),
         description: z.string().optional(),
@@ -202,7 +270,7 @@ export const appRouter = router({
         return { id };
       }),
 
-    update: adminProcedure
+    update: adminAuthProcedure
       .input(z.object({
         id: z.number(),
         title: z.string().min(1).optional(),
@@ -216,7 +284,7 @@ export const appRouter = router({
         return { success: true };
       }),
 
-    delete: adminProcedure
+    delete: adminAuthProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         await db.deletePodcastEpisode(input.id);
@@ -233,7 +301,35 @@ export const appRouter = router({
         lastName: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
+        // Save to local database
         await db.addNewsletterSubscriber(input.email, input.firstName, input.lastName);
+
+        // Sync to Mailchimp
+        const mcApiKey = process.env.MAILCHIMP_API_KEY;
+        const mcAudienceId = process.env.MAILCHIMP_AUDIENCE_ID;
+        if (mcApiKey && mcAudienceId) {
+          try {
+            const dc = mcApiKey.split("-").pop();
+            await fetch(`https://${dc}.api.mailchimp.com/3.0/lists/${mcAudienceId}/members`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${mcApiKey}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email_address: input.email,
+                status: "subscribed",
+                merge_fields: {
+                  FNAME: input.firstName || "",
+                  LNAME: input.lastName || "",
+                },
+              }),
+            });
+          } catch (err) {
+            console.error("[Mailchimp] Failed to sync subscriber:", err);
+          }
+        }
+
         return { success: true };
       }),
   }),
@@ -246,7 +342,7 @@ export const appRouter = router({
         return db.getSetting(input.key);
       }),
 
-    set: adminProcedure
+    set: adminAuthProcedure
       .input(z.object({ key: z.string(), value: z.string() }))
       .mutation(async ({ input }) => {
         await db.setSetting(input.key, input.value);

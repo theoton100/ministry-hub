@@ -4,7 +4,6 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { MINISTRY_NAME, LOGO_LIGHT } from "@/lib/constants";
-import { useAuth } from "@/_core/hooks/useAuth";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -18,7 +17,6 @@ const navLinks = [
 export default function Navbar() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
-  const { user, isAuthenticated } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
@@ -48,16 +46,8 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop Right */}
-        <div className="hidden lg:flex items-center gap-2 shrink-0">
-          {isAuthenticated && user?.role === "admin" && (
-            <Link href="/admin">
-              <Button variant="ghost" size="sm" className="text-[13px] text-white/70 hover:text-white hover:bg-white/10 h-8 px-3">
-                Admin
-              </Button>
-            </Link>
-          )}
-        </div>
+        {/* Spacer for right side */}
+        <div className="hidden lg:block w-24 shrink-0" />
 
         {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
@@ -90,15 +80,6 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                {isAuthenticated && user?.role === "admin" && (
-                  <Link
-                    href="/admin"
-                    onClick={() => setOpen(false)}
-                    className="block px-5 py-3 text-sm font-semibold text-white/60 hover:text-white hover:bg-white/5"
-                  >
-                    Admin
-                  </Link>
-                )}
               </div>
             </div>
           </SheetContent>

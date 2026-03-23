@@ -1,52 +1,38 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
+import { SignJWT } from "jose";
 
-type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
+const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET || "fallback-secret-key");
 
-function createAdminContext(): TrpcContext {
-  const user: AuthenticatedUser = {
-    id: 1,
-    openId: "admin-user",
-    email: "admin@example.com",
-    name: "Admin User",
-    loginMethod: "manus",
-    role: "admin",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    lastSignedIn: new Date(),
-  };
+async function createTestAdminToken() {
+  return new SignJWT({ email: "theoton100@gmail.com", role: "admin" })
+    .setProtectedHeader({ alg: "HS256" })
+    .setExpirationTime("1h")
+    .sign(jwtSecret);
+}
+
+async function createAdminContext(): Promise<TrpcContext> {
+  const token = await createTestAdminToken();
   return {
-    user,
-    req: { protocol: "https", headers: {} } as TrpcContext["req"],
-    res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
+    user: null,
+    req: {
+      protocol: "https",
+      headers: {},
+      cookies: { admin_session: token },
+    } as unknown as TrpcContext["req"],
+    res: {
+      clearCookie: vi.fn(),
+      cookie: vi.fn(),
+    } as unknown as TrpcContext["res"],
   };
 }
 
 function createPublicContext(): TrpcContext {
   return {
     user: null,
-    req: { protocol: "https", headers: {} } as TrpcContext["req"],
-    res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
-  };
-}
-
-function createRegularUserContext(): TrpcContext {
-  const user: AuthenticatedUser = {
-    id: 2,
-    openId: "regular-user",
-    email: "user@example.com",
-    name: "Regular User",
-    loginMethod: "manus",
-    role: "user",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    lastSignedIn: new Date(),
-  };
-  return {
-    user,
-    req: { protocol: "https", headers: {} } as TrpcContext["req"],
-    res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
+    req: { protocol: "https", headers: {}, cookies: {} } as unknown as TrpcContext["req"],
+    res: { clearCookie: vi.fn(), cookie: vi.fn() } as unknown as TrpcContext["res"],
   };
 }
 
@@ -66,26 +52,28 @@ describe("Blog Router", () => {
     expect(result).toBeNull();
   });
 
-  it("listAll requires admin role", async () => {
-    const caller = appRouter.createCaller(createRegularUserContext());
+  it("listAll requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
     await expect(caller.blog.listAll()).rejects.toThrow();
   });
 
   it("admin can list all blog posts", async () => {
-    const caller = appRouter.createCaller(createAdminContext());
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
     const result = await caller.blog.listAll();
     expect(Array.isArray(result)).toBe(true);
   });
 
-  it("create requires admin role", async () => {
-    const caller = appRouter.createCaller(createRegularUserContext());
+  it("create requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
     await expect(
       caller.blog.create({ title: "Test", slug: "test", content: "Content" })
     ).rejects.toThrow();
   });
 
   it("admin can create and delete a blog post", async () => {
-    const caller = appRouter.createCaller(createAdminContext());
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
     const slug = `test-post-${Date.now()}`;
     const { id } = await caller.blog.create({
       title: "Test Post",
@@ -96,19 +84,16 @@ describe("Blog Router", () => {
     });
     expect(typeof id).toBe("number");
 
-    // Verify it exists
     const post = await caller.blog.getById({ id });
     expect(post).toBeTruthy();
     expect(post!.title).toBe("Test Post");
     expect(post!.slug).toBe(slug);
 
-    // Update it
     await caller.blog.update({ id, title: "Updated Title", published: true });
     const updated = await caller.blog.getById({ id });
     expect(updated!.title).toBe("Updated Title");
     expect(updated!.published).toBe(true);
 
-    // Delete it
     const deleteResult = await caller.blog.delete({ id });
     expect(deleteResult.success).toBe(true);
   });
@@ -121,22 +106,22 @@ describe("Sermon Router", () => {
     expect(Array.isArray(result)).toBe(true);
   });
 
-  it("featured returns sermon or undefined", async () => {
+  it("featured returns sermon or null", async () => {
     const caller = appRouter.createCaller(createPublicContext());
     const result = await caller.sermon.featured();
-    // Can be undefined if no sermons exist
-    expect(result === undefined || typeof result === "object").toBe(true);
+    expect(result === null || typeof result === "object").toBe(true);
   });
 
-  it("create requires admin role", async () => {
-    const caller = appRouter.createCaller(createRegularUserContext());
+  it("create requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
     await expect(
       caller.sermon.create({ title: "Test Sermon", youtubeVideoId: "abc123" })
     ).rejects.toThrow();
   });
 
   it("admin can create and delete a sermon", async () => {
-    const caller = appRouter.createCaller(createAdminContext());
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
     const { id } = await caller.sermon.create({
       title: "Test Sermon",
       youtubeVideoId: "dQw4w9WgXcQ",
@@ -145,10 +130,8 @@ describe("Sermon Router", () => {
     });
     expect(typeof id).toBe("number");
 
-    // Update
     await caller.sermon.update({ id, title: "Updated Sermon", featured: true });
 
-    // Delete
     const deleteResult = await caller.sermon.delete({ id });
     expect(deleteResult.success).toBe(true);
   });
@@ -161,15 +144,16 @@ describe("Podcast Router", () => {
     expect(Array.isArray(result)).toBe(true);
   });
 
-  it("create requires admin role", async () => {
-    const caller = appRouter.createCaller(createRegularUserContext());
+  it("create requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
     await expect(
       caller.podcast.create({ title: "Test Episode" })
     ).rejects.toThrow();
   });
 
   it("admin can create and delete a podcast episode", async () => {
-    const caller = appRouter.createCaller(createAdminContext());
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
     const { id } = await caller.podcast.create({
       title: "Test Episode",
       description: "A test episode",
@@ -177,10 +161,8 @@ describe("Podcast Router", () => {
     });
     expect(typeof id).toBe("number");
 
-    // Update
     await caller.podcast.update({ id, title: "Updated Episode" });
 
-    // Delete
     const deleteResult = await caller.podcast.delete({ id });
     expect(deleteResult.success).toBe(true);
   });
@@ -213,15 +195,16 @@ describe("Settings Router", () => {
     expect(result).toBeUndefined();
   });
 
-  it("set requires admin role", async () => {
-    const caller = appRouter.createCaller(createRegularUserContext());
+  it("set requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
     await expect(
       caller.settings.set({ key: "test", value: "value" })
     ).rejects.toThrow();
   });
 
   it("admin can set and get a setting", async () => {
-    const caller = appRouter.createCaller(createAdminContext());
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
     const key = `test_setting_${Date.now()}`;
     await caller.settings.set({ key, value: "hello world" });
     const result = await caller.settings.get({ key });

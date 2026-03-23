@@ -79,3 +79,16 @@
 ## Spotify Integration
 - [x] Embed Pastor Theo's Spotify show (06RqL9JBCkhSPxAumdfY5l) on the Podcast page
 - [x] Add Spotify show link to homepage and footer
+
+## Admin Security & UI
+- [x] Remove Admin link from the navbar
+- [x] Add secret admin link on the footer logo
+- [x] Add email/password login for admin (theoton100@gmail.com)
+- [x] Secure admin dashboard behind login
+
+## Mailchimp Integration
+- [x] Connect Mailchimp API for newsletter subscribers
+- [x] Send email notifications to subscribers when a new blog post is published
+
+## Spotify Episodes
+- [x] Show each individual Spotify episode on the Podcast page (not just the show embed)

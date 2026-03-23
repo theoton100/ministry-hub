@@ -7,7 +7,9 @@ import {
   podcastEpisodes, InsertPodcastEpisode,
   newsletterSubscribers,
   siteSettings,
+  adminCredentials,
 } from "../drizzle/schema";
+import bcrypt from "bcryptjs";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -235,4 +237,35 @@ export async function setSetting(key: string, value: string) {
   if (!db) throw new Error("Database not available");
   await db.insert(siteSettings).values({ settingKey: key, settingValue: value })
     .onDuplicateKeyUpdate({ set: { settingValue: value } });
+}
+
+// ─── Admin Credentials ───────────────────────────────────────
+
+export async function getAdminByEmail(email: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(adminCredentials).where(eq(adminCredentials.email, email)).limit(1);
+  return result[0];
+}
+
+export async function createAdminCredential(email: string, password: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const passwordHash = await bcrypt.hash(password, 12);
+  await db.insert(adminCredentials).values({ email, passwordHash })
+    .onDuplicateKeyUpdate({ set: { passwordHash } });
+}
+
+export async function verifyAdminPassword(email: string, password: string): Promise<boolean> {
+  const admin = await getAdminByEmail(email);
+  if (!admin) return false;
+  return bcrypt.compare(password, admin.passwordHash);
+}
+
+// ─── Newsletter Subscribers (all) ────────────────────────────
+
+export async function getAllNewsletterSubscribers() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(newsletterSubscribers).orderBy(desc(newsletterSubscribers.subscribedAt));
 }

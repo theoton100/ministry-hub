@@ -80,3 +80,13 @@ export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
 });
 
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+
+export const adminCredentials = mysqlTable("admin_credentials", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  passwordHash: varchar("passwordHash", { length: 256 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AdminCredential = typeof adminCredentials.$inferSelect;

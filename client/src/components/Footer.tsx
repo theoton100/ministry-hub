@@ -27,10 +27,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
+            <Link href="/admin" className="flex items-center gap-2 w-fit">
               <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-5 h-8 object-contain" />
               <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
-            </div>
+            </Link>
             <p className="text-white/40 text-xs leading-relaxed max-w-xs">
               Bringing the Word of God to every heart through preaching, teaching, and community.
             </p>

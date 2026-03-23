@@ -11,7 +11,8 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Newsletter from "./pages/Newsletter";
-import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
+import AdminGuard from "./components/AdminGuard";
 
 function Router() {
   return (
@@ -23,8 +24,9 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/about" component={About} />
       <Route path="/newsletter" component={Newsletter} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/admin/:rest*" component={Admin} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin">{() => <AdminGuard />}</Route>
+      <Route path="/admin/:rest*">{() => <AdminGuard />}</Route>
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
