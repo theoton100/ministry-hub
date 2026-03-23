@@ -57,6 +57,8 @@ export default function Footer() {
                 { href: "/listen", label: "Podcast" },
                 { href: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`, label: "Spotify", external: true },
                 { href: "/blog", label: "Blog" },
+                { href: "/store", label: "Books" },
+                { href: "/give", label: "Give" },
                 { href: "/newsletter", label: "Newsletter" },
                 { href: "/about", label: "About" },
               ] as FooterLink[]).map((link) => (

@@ -92,3 +92,33 @@
 
 ## Spotify Episodes
 - [x] Show each individual Spotify episode on the Podcast page (not just the show embed)
+
+## Bug Fixes - Round 2
+- [x] Fix admin login not redirecting to dashboard after successful sign-in (cookie parsing fix)
+- [x] Remove hardcoded podcast episodes from Listen page (let admin add them)
+
+## Paystack Payment Integration (replacing Stripe — not available in Ghana)
+- [x] Configure Paystack secret and public keys
+- [x] Add Paystack payment initialization API routes
+- [x] Create public-facing donation/give page with Paystack checkout
+- [x] Create public-facing books/store page with Paystack checkout
+
+## Podcast Page Cleanup
+- [x] Remove all hardcoded Spotify links and embeds from Listen page
+- [x] Only show episodes added by admin from the dashboard
+
+## Books & Donations Feature
+- [x] Add books and orders tables to database schema
+- [x] Create admin book management page (add/edit/delete books with price in USD)
+- [x] Create public Books/Store page displaying books with prices
+- [x] Create Donations/Give page with preset and custom donation amounts
+- [x] Integrate Paystack checkout for book purchases
+- [x] Integrate Paystack checkout for donations
+- [x] Add Paystack callback handler for payment verification
+- [x] Add Books and Give to navigation menu
+- [x] Clean up Listen page (already database-driven only)
+- [x] Fix AdminGuard import error
+- [x] Add Books and Orders to admin dashboard sidebar
+- [x] Add Orders page with revenue summary
+- [x] Add Books/Orders stats to admin overview
+- [x] Write vitest tests for books and payments (12 tests)

@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { int, decimal, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
 
 export const users = mysqlTable("users", {
   id: int("id").autoincrement().primaryKey(),
@@ -90,3 +90,36 @@ export const adminCredentials = mysqlTable("admin_credentials", {
 });
 
 export type AdminCredential = typeof adminCredentials.$inferSelect;
+
+export const books = mysqlTable("books", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 500 }).notNull(),
+  description: text("description"),
+  priceInCents: int("priceInCents").notNull(),
+  coverImageUrl: text("coverImageUrl"),
+  stripePriceId: varchar("stripePriceId", { length: 128 }),
+  stripeProductId: varchar("stripeProductId", { length: 128 }),
+  published: boolean("published").default(false).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Book = typeof books.$inferSelect;
+export type InsertBook = typeof books.$inferInsert;
+
+export const orders = mysqlTable("orders", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  customerName: varchar("customerName", { length: 256 }),
+  type: mysqlEnum("type", ["book", "donation"]).notNull(),
+  bookId: int("bookId"),
+  amountInCents: int("amountInCents").notNull(),
+  stripeSessionId: varchar("stripeSessionId", { length: 256 }),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 256 }),
+  status: mysqlEnum("status", ["pending", "completed", "failed"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Order = typeof orders.$inferSelect;
+export type InsertOrder = typeof orders.$inferInsert;

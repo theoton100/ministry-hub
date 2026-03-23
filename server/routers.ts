@@ -9,8 +9,20 @@ import { nanoid } from "nanoid";
 import { SignJWT, jwtVerify } from "jose";
 import { ENV } from "./_core/env";
 import { TRPCError } from "@trpc/server";
+import { parse as parseCookieHeader } from "cookie";
 
 const ADMIN_COOKIE = "admin_session";
+
+function getAdminCookie(req: { headers: { cookie?: string }; cookies?: Record<string, string> }): string | undefined {
+  // Try req.cookies first (if cookie-parser is installed)
+  if (req.cookies?.[ADMIN_COOKIE]) return req.cookies[ADMIN_COOKIE];
+  // Fallback: parse from raw cookie header
+  if (req.headers.cookie) {
+    const parsed = parseCookieHeader(req.headers.cookie);
+    return parsed[ADMIN_COOKIE];
+  }
+  return undefined;
+}
 const jwtSecret = new TextEncoder().encode(ENV.cookieSecret || "fallback-secret-key");
 
 async function createAdminToken(email: string) {
@@ -31,7 +43,7 @@ async function verifyAdminToken(token: string) {
 
 // Middleware to check admin session via cookie
 const adminAuthProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const token = ctx.req.cookies?.[ADMIN_COOKIE];
+  const token = getAdminCookie(ctx.req);
   if (!token) {
     throw new TRPCError({ code: "UNAUTHORIZED", message: "Not authenticated" });
   }
@@ -73,7 +85,7 @@ export const appRouter = router({
       }),
 
     check: publicProcedure.query(async ({ ctx }) => {
-      const token = ctx.req.cookies?.[ADMIN_COOKIE];
+      const token = getAdminCookie(ctx.req);
       if (!token) return { authenticated: false };
       const payload = await verifyAdminToken(token);
       if (!payload) return { authenticated: false };
@@ -332,6 +344,207 @@ export const appRouter = router({
 
         return { success: true };
       }),
+  }),
+
+  // ─── Books ────────────────────────────────────────────────
+  book: router({
+    listPublished: publicProcedure.query(async () => {
+      return db.getPublishedBooks();
+    }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        const book = await db.getBookById(input.id);
+        if (!book || !book.published) return null;
+        return book;
+      }),
+
+    listAll: adminAuthProcedure.query(async () => {
+      return db.getAllBooks();
+    }),
+
+    create: adminAuthProcedure
+      .input(z.object({
+        title: z.string().min(1),
+        description: z.string().optional(),
+        priceInCents: z.number().min(0),
+        coverImageUrl: z.string().optional(),
+        published: z.boolean().default(false),
+      }))
+      .mutation(async ({ input }) => {
+        const id = await db.createBook({
+          ...input,
+          description: input.description ?? null,
+          coverImageUrl: input.coverImageUrl ?? null,
+        });
+        return { id };
+      }),
+
+    update: adminAuthProcedure
+      .input(z.object({
+        id: z.number(),
+        title: z.string().min(1).optional(),
+        description: z.string().optional(),
+        priceInCents: z.number().min(0).optional(),
+        coverImageUrl: z.string().optional(),
+        published: z.boolean().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        await db.updateBook(id, data as any);
+        return { success: true };
+      }),
+
+    delete: adminAuthProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await db.deleteBook(input.id);
+        return { success: true };
+      }),
+
+    uploadCover: adminAuthProcedure
+      .input(z.object({ base64: z.string(), filename: z.string(), contentType: z.string() }))
+      .mutation(async ({ input }) => {
+        const buffer = Buffer.from(input.base64, "base64");
+        const key = `book-covers/${nanoid()}-${input.filename}`;
+        const { url } = await storagePut(key, buffer, input.contentType);
+        return { url };
+      }),
+  }),
+
+  // ─── Paystack Payments ────────────────────────────────────
+  payment: router({
+    initializeDonation: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        amountInCents: z.number().min(100),
+        customerName: z.string().optional(),
+        callbackUrl: z.string(),
+      }))
+      .mutation(async ({ input }) => {
+        const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+        if (!paystackSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Payment not configured" });
+
+        const res = await fetch("https://api.paystack.co/transaction/initialize", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${paystackSecret}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: input.email,
+            amount: input.amountInCents,
+            currency: "USD",
+            callback_url: input.callbackUrl,
+            metadata: {
+              type: "donation",
+              customer_name: input.customerName || "",
+            },
+          }),
+        });
+
+        const body = await res.json();
+        if (!body.status) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: body.message || "Payment initialization failed" });
+        }
+
+        await db.createOrder({
+          email: input.email,
+          customerName: input.customerName ?? null,
+          type: "donation",
+          amountInCents: input.amountInCents,
+          stripeSessionId: body.data.reference,
+          status: "pending",
+        });
+
+        return { authorizationUrl: body.data.authorization_url, reference: body.data.reference };
+      }),
+
+    initializeBookPurchase: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        bookId: z.number(),
+        customerName: z.string().optional(),
+        callbackUrl: z.string(),
+      }))
+      .mutation(async ({ input }) => {
+        const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+        if (!paystackSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Payment not configured" });
+
+        const book = await db.getBookById(input.bookId);
+        if (!book || !book.published) {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Book not found" });
+        }
+
+        const res = await fetch("https://api.paystack.co/transaction/initialize", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${paystackSecret}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: input.email,
+            amount: book.priceInCents,
+            currency: "USD",
+            callback_url: input.callbackUrl,
+            metadata: {
+              type: "book",
+              book_id: book.id,
+              book_title: book.title,
+              customer_name: input.customerName || "",
+            },
+          }),
+        });
+
+        const body = await res.json();
+        if (!body.status) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: body.message || "Payment initialization failed" });
+        }
+
+        await db.createOrder({
+          email: input.email,
+          customerName: input.customerName ?? null,
+          type: "book",
+          bookId: book.id,
+          amountInCents: book.priceInCents,
+          stripeSessionId: body.data.reference,
+          status: "pending",
+        });
+
+        return { authorizationUrl: body.data.authorization_url, reference: body.data.reference };
+      }),
+
+    verifyPayment: publicProcedure
+      .input(z.object({ reference: z.string() }))
+      .query(async ({ input }) => {
+        const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+        if (!paystackSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Payment not configured" });
+
+        const res = await fetch(`https://api.paystack.co/transaction/verify/${encodeURIComponent(input.reference)}`, {
+          headers: { Authorization: `Bearer ${paystackSecret}` },
+        });
+
+        const body = await res.json();
+        if (!body.status) {
+          return { verified: false, message: body.message };
+        }
+
+        const txn = body.data;
+        if (txn.status === "success") {
+          await db.updateOrderBySessionId(input.reference, {
+            status: "completed",
+            stripePaymentIntentId: txn.id?.toString(),
+          });
+          return { verified: true, status: "success", amount: txn.amount, currency: txn.currency };
+        }
+
+        return { verified: false, status: txn.status, message: "Payment not completed" };
+      }),
+
+    listOrders: adminAuthProcedure.query(async () => {
+      return db.getOrders(100);
+    }),
   }),
 
   // ─── Settings ─────────────────────────────────────────────

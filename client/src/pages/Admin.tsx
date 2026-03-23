@@ -4,6 +4,8 @@ import AdminBlogList from "./admin/AdminBlogList";
 import AdminBlogEditor from "./admin/AdminBlogEditor";
 import AdminSermons from "./admin/AdminSermons";
 import AdminPodcasts from "./admin/AdminPodcasts";
+import AdminBooks from "./admin/AdminBooks";
+import AdminOrders from "./admin/AdminOrders";
 import AdminOverview from "./admin/AdminOverview";
 
 export default function Admin() {
@@ -16,6 +18,8 @@ export default function Admin() {
         <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
         <Route path="/admin/sermons" component={AdminSermons} />
         <Route path="/admin/podcasts" component={AdminPodcasts} />
+        <Route path="/admin/books" component={AdminBooks} />
+        <Route path="/admin/orders" component={AdminOrders} />
         <Route component={AdminOverview} />
       </Switch>
     </DashboardLayout>

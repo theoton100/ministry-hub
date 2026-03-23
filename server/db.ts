@@ -8,6 +8,8 @@ import {
   newsletterSubscribers,
   siteSettings,
   adminCredentials,
+  books, InsertBook,
+  orders, InsertOrder,
 } from "../drizzle/schema";
 import bcrypt from "bcryptjs";
 import { ENV } from './_core/env';
@@ -268,4 +270,65 @@ export async function getAllNewsletterSubscribers() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(newsletterSubscribers).orderBy(desc(newsletterSubscribers.subscribedAt));
+}
+
+// ─── Books ───────────────────────────────────────────────────
+
+export async function getPublishedBooks() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(books).where(eq(books.published, true)).orderBy(desc(books.createdAt));
+}
+
+export async function getAllBooks() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(books).orderBy(desc(books.createdAt));
+}
+
+export async function getBookById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(books).where(eq(books.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createBook(book: InsertBook) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(books).values(book);
+  return result[0].insertId;
+}
+
+export async function updateBook(id: number, data: Partial<InsertBook>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(books).set(data).where(eq(books.id, id));
+}
+
+export async function deleteBook(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(books).where(eq(books.id, id));
+}
+
+// ─── Orders ──────────────────────────────────────────────────
+
+export async function createOrder(order: InsertOrder) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(orders).values(order);
+  return result[0].insertId;
+}
+
+export async function updateOrderBySessionId(sessionId: string, data: Partial<InsertOrder>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(orders).set(data).where(eq(orders.stripeSessionId, sessionId));
+}
+
+export async function getOrders(limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(orders).orderBy(desc(orders.createdAt)).limit(limit);
 }

@@ -1,0 +1,95 @@
+import PublicLayout from "@/components/PublicLayout";
+import { trpc } from "@/lib/trpc";
+import { useSearch } from "wouter";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+
+export default function PaymentVerify() {
+  const search = useSearch();
+  const params = new URLSearchParams(search);
+  const reference = params.get("reference") || params.get("trxref") || "";
+
+  const { data, isLoading, isError } = trpc.payment.verifyPayment.useQuery(
+    { reference },
+    { enabled: !!reference, retry: false }
+  );
+
+  return (
+    <PublicLayout>
+      <section className="py-20">
+        <div className="container max-w-lg text-center">
+          {!reference ? (
+            <div>
+              <h1 className="text-3xl font-extrabold text-white mb-4">No Payment Reference</h1>
+              <p className="text-white/40 text-sm mb-8">
+                It looks like you arrived here without a valid payment reference.
+              </p>
+              <Link href="/">
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  Return Home
+                </Button>
+              </Link>
+            </div>
+          ) : isLoading ? (
+            <div>
+              <div className="w-12 h-12 border-4 border-brand border-t-transparent rounded-full animate-spin mx-auto mb-6" />
+              <h1 className="text-2xl font-extrabold text-white mb-2">Verifying Payment</h1>
+              <p className="text-white/40 text-sm">Please wait while we confirm your transaction...</p>
+            </div>
+          ) : data?.verified ? (
+            <div>
+              <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-extrabold text-white mb-3">Thank You!</h1>
+              <p className="text-white/50 text-sm mb-2">
+                Your payment was successful. God bless you for your generosity.
+              </p>
+              <p className="text-white/30 text-xs mb-8">
+                Reference: {reference}
+              </p>
+              <div className="flex gap-3 justify-center">
+                <Link href="/">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                    Return Home
+                  </Button>
+                </Link>
+                <Link href="/give">
+                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                    Give Again
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <h1 className="text-3xl font-extrabold text-white mb-3">Payment Not Completed</h1>
+              <p className="text-white/50 text-sm mb-8">
+                {data?.message || "The payment could not be verified. If you were charged, please contact us."}
+              </p>
+              <div className="flex gap-3 justify-center">
+                <Link href="/">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                    Return Home
+                  </Button>
+                </Link>
+                <Link href="/give">
+                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                    Try Again
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </PublicLayout>
+  );
+}

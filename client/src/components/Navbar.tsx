@@ -10,6 +10,8 @@ const navLinks = [
   { href: "/watch", label: "Watch" },
   { href: "/listen", label: "Podcast" },
   { href: "/blog", label: "Blog" },
+  { href: "/store", label: "Books" },
+  { href: "/give", label: "Give" },
   { href: "/about", label: "About" },
   { href: "/newsletter", label: "Subscribe" },
 ];

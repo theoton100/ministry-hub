@@ -19,7 +19,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, FileText, Video, Headphones } from "lucide-react";
+import { LayoutDashboard, LogOut, PanelLeft, FileText, Video, Headphones, BookOpen, DollarSign } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -31,6 +31,8 @@ const menuItems = [
   { icon: FileText, label: "Blog Posts", path: "/admin/blog" },
   { icon: Video, label: "Sermons", path: "/admin/sermons" },
   { icon: Headphones, label: "Podcasts", path: "/admin/podcasts" },
+  { icon: BookOpen, label: "Books", path: "/admin/books" },
+  { icon: DollarSign, label: "Orders", path: "/admin/orders" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

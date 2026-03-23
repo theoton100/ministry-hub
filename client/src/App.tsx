@@ -11,6 +11,9 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Newsletter from "./pages/Newsletter";
+import Store from "./pages/Store";
+import Give from "./pages/Give";
+import PaymentVerify from "./pages/PaymentVerify";
 import AdminLogin from "./pages/AdminLogin";
 import AdminGuard from "./components/AdminGuard";
 
@@ -24,6 +27,9 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/about" component={About} />
       <Route path="/newsletter" component={Newsletter} />
+      <Route path="/store" component={Store} />
+      <Route path="/give" component={Give} />
+      <Route path="/payment/verify" component={PaymentVerify} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin">{() => <AdminGuard />}</Route>
       <Route path="/admin/:rest*">{() => <AdminGuard />}</Route>

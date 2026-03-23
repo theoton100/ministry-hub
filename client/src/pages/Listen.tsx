@@ -1,15 +1,11 @@
 import PublicLayout from "@/components/PublicLayout";
-import { SPOTIFY_SHOW_ID } from "@/lib/constants";
 import { fadeUp } from "@/lib/animations";
 import { motion } from "framer-motion";
-
-// Known episode IDs from the show — these can be managed from admin
-const EPISODE_IDS = [
-  "4mYqPRBBJFCmhIFNPVNKpB",
-  "0JcMlYlJSbFBROFgDCPn5G",
-];
+import { trpc } from "@/lib/trpc";
 
 export default function Listen() {
+  const { data: episodes = [], isLoading } = trpc.podcast.list.useQuery({ limit: 50, offset: 0 });
+
   return (
     <PublicLayout>
       <section className="pt-10 pb-6 border-b border-white/10">
@@ -21,83 +17,62 @@ export default function Listen() {
         </div>
       </section>
 
-      {/* Full Show Player */}
-      <section className="py-10 border-b border-white/10">
-        <div className="container max-w-3xl">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h2 className="text-xl font-extrabold text-white mb-4">Listen Now</h2>
-            <div className="rounded overflow-hidden">
-              <iframe
-                src={`https://open.spotify.com/embed/show/${SPOTIFY_SHOW_ID}?utm_source=generator&theme=0`}
-                width="100%"
-                height="352"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                className="rounded"
-              />
-            </div>
-            <div className="mt-4">
-              <a
-                href={`https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-bold text-brand hover:text-brand-hover transition-colors"
-              >
-                Open in Spotify
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Individual Episodes */}
+      {/* Episodes from Database */}
       <section className="py-10">
         <div className="container max-w-3xl">
-          <h2 className="text-xl font-extrabold text-white mb-6">Episodes</h2>
-          <div className="space-y-6">
-            {EPISODE_IDS.map((episodeId, i) => (
-              <motion.div
-                key={episodeId}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.5, delay: i * 0.1 },
-                  },
-                }}
-              >
-                <div className="rounded overflow-hidden">
-                  <iframe
-                    src={`https://open.spotify.com/embed/episode/${episodeId}?utm_source=generator&theme=0`}
-                    width="100%"
-                    height="152"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    className="rounded"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-10 border border-white/10 rounded p-6 text-center">
-            <h3 className="text-lg font-bold text-white mb-2">Want More Episodes?</h3>
-            <p className="text-white/40 text-sm mb-4">
-              Subscribe on Spotify to get notified when new episodes are released.
-            </p>
-            <a
-              href={`https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-brand hover:bg-red-700 text-white font-bold text-sm px-6 py-2.5 rounded transition-colors"
-            >
-              Follow on Spotify
-            </a>
-          </div>
+          {isLoading ? (
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-40 bg-white/5 rounded animate-pulse" />
+              ))}
+            </div>
+          ) : episodes.length > 0 ? (
+            <div className="space-y-6">
+              {episodes.map((episode, i) => (
+                <motion.div
+                  key={episode.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, delay: i * 0.1 },
+                    },
+                  }}
+                >
+                  {episode.spotifyEpisodeId ? (
+                    <div className="rounded overflow-hidden">
+                      <iframe
+                        src={`https://open.spotify.com/embed/episode/${episode.spotifyEpisodeId}?utm_source=generator&theme=0`}
+                        width="100%"
+                        height="152"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        className="rounded"
+                      />
+                    </div>
+                  ) : (
+                    <div className="border border-white/10 rounded p-5">
+                      <h3 className="text-white font-bold text-lg">{episode.title}</h3>
+                      {episode.description && (
+                        <p className="text-white/40 text-sm mt-2">{episode.description}</p>
+                      )}
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <h2 className="text-xl font-bold text-white mb-3">Episodes Coming Soon</h2>
+              <p className="text-white/40 text-sm">
+                New episodes will be added here. Check back soon for the latest teachings.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </PublicLayout>

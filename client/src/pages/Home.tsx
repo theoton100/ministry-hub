@@ -61,11 +61,13 @@ export default function Home() {
       {/* Quick Nav Grid — NASA "topics" style */}
       <section className="py-12 md:py-16 border-b border-white/10">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded overflow-hidden">
             {[
               { title: "Watch", desc: "Sermons & Messages", href: "/watch" },
               { title: "Listen", desc: "Podcast Episodes", href: "/listen" },
               { title: "Blog", desc: "Articles & Devotionals", href: "/blog" },
+              { title: "Books", desc: "Resources & Store", href: "/store" },
+              { title: "Give", desc: "Support the Ministry", href: "/give" },
               { title: "About", desc: "Our Ministry", href: "/about" },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
