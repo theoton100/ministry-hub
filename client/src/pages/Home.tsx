@@ -1,55 +1,17 @@
 import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
-import { MINISTRY_NAME, MINISTRY_TAGLINE, MINISTRY_DESCRIPTION, HERO_IMAGE } from "@/lib/constants";
+import { MINISTRY_TAGLINE, MINISTRY_DESCRIPTION, HERO_IMAGE } from "@/lib/constants";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
 import { Link } from "wouter";
-import { Video, Headphones, BookOpen, User, Mail, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const navCards = [
-  {
-    icon: Video,
-    title: "Watch",
-    desc: "Stream our latest sermons and messages on YouTube.",
-    href: "/watch",
-    color: "bg-teal-500/10 text-teal-500",
-  },
-  {
-    icon: Headphones,
-    title: "Listen",
-    desc: "Catch our podcast episodes on Spotify wherever you go.",
-    href: "/listen",
-    color: "bg-blue-500/10 text-blue-400",
-  },
-  {
-    icon: BookOpen,
-    title: "Blog",
-    desc: "Read articles and devotionals to strengthen your faith.",
-    href: "/blog",
-    color: "bg-amber-500/10 text-amber-500",
-  },
-  {
-    icon: User,
-    title: "About",
-    desc: "Learn about Pastor T.I. Solomon and the ministry vision.",
-    href: "/about",
-    color: "bg-purple-500/10 text-purple-400",
-  },
-  {
-    icon: Mail,
-    title: "Subscribe",
-    desc: "Get weekly devotionals and encouragement in your inbox.",
-    href: "/newsletter",
-    color: "bg-red-500/10 text-red-400",
-  },
-];
-
 export default function Home() {
   const [email, setEmail] = useState("");
+  const latestPosts = trpc.blog.listPublished.useQuery({ limit: 3, offset: 0 });
   const subscribe = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => {
       setEmail("");
@@ -66,30 +28,29 @@ export default function Home() {
 
   return (
     <PublicLayout>
-      {/* Hero Section */}
-      <section className="relative text-white py-24 md:py-36 overflow-hidden">
-        {/* Background Image */}
+      {/* Hero — full bleed with image */}
+      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-navy-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
         </div>
-        <div className="container text-center relative z-10">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <div className="container relative z-10 pb-14 pt-40">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-5">
               {MINISTRY_TAGLINE}
             </h1>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
               {MINISTRY_DESCRIPTION}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap gap-3">
               <Link href="/watch">
-                <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white font-semibold tracking-wider text-xs uppercase gap-2 px-8">
-                  Watch Now <Video className="h-4 w-4" />
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  Watch Now
                 </Button>
               </Link>
               <Link href="/about">
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-semibold tracking-wider text-xs uppercase gap-2 px-8">
-                  Learn More <ArrowRight className="h-4 w-4" />
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                  Learn More
                 </Button>
               </Link>
             </div>
@@ -97,49 +58,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Inline Newsletter Bar */}
-      <section className="bg-navy-800 py-5">
+      {/* Quick Nav Grid — NASA "topics" style */}
+      <section className="py-12 md:py-16 border-b border-white/10">
         <div className="container">
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-3 justify-center max-w-2xl mx-auto">
-            <p className="text-white/80 text-sm font-semibold whitespace-nowrap">Sign up to receive life-changing hope and encouragement!</p>
-            <div className="flex gap-2 w-full sm:w-auto">
-              <Input
-                type="email"
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-9 text-sm"
-                required
-              />
-              <Button type="submit" size="sm" className="bg-teal-500 hover:bg-teal-600 text-white font-semibold text-xs uppercase tracking-wider whitespace-nowrap px-6" disabled={subscribe.isPending}>
-                {subscribe.isPending ? "..." : "Sign Up"}
-              </Button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      {/* Navigation Cards */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-            <p className="text-teal-500 font-semibold tracking-widest uppercase text-xs mb-3">Explore</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Ways to Connect</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {navCards.map((card, i) => (
-              <motion.div key={card.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
-                <Link href={card.href}>
-                  <div className="group p-6 rounded-xl border border-border hover:border-teal-500/30 hover:shadow-lg transition-all cursor-pointer h-full">
-                    <div className={`w-12 h-12 rounded-xl ${card.color} flex items-center justify-center mb-4`}>
-                      <card.icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-teal-500 transition-colors">{card.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{card.desc}</p>
-                    <div className="flex items-center gap-1 text-teal-500 text-xs font-semibold tracking-wider uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Explore <ArrowRight className="h-3 w-3" />
-                    </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded overflow-hidden">
+            {[
+              { title: "Watch", desc: "Sermons & Messages", href: "/watch" },
+              { title: "Listen", desc: "Podcast Episodes", href: "/listen" },
+              { title: "Blog", desc: "Articles & Devotionals", href: "/blog" },
+              { title: "About", desc: "Our Ministry", href: "/about" },
+            ].map((item, i) => (
+              <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
+                <Link href={item.href}>
+                  <div className="bg-card hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
+                    <h3 className="text-lg md:text-xl font-extrabold text-white mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
+                    <p className="text-white/40 text-sm">{item.desc}</p>
                   </div>
                 </Link>
               </motion.div>
@@ -148,40 +81,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scripture Banner */}
-      <section className="bg-navy-900 text-white py-16 md:py-20">
-        <div className="container text-center max-w-3xl mx-auto">
+      {/* Featured Content — editorial style */}
+      <section className="py-12 md:py-16 border-b border-white/10">
+        <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-6">Scripture of the Day</p>
-            <blockquote className="text-2xl md:text-3xl font-light leading-relaxed italic text-white/90 mb-6">
+            <div className="flex items-baseline justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Latest from the Blog</h2>
+              <Link href="/blog" className="text-brand text-sm font-bold hover:underline hidden sm:block">
+                View All
+              </Link>
+            </div>
+          </motion.div>
+
+          {latestPosts.data?.posts && latestPosts.data.posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {latestPosts.data.posts.map((post: any, i: number) => (
+                <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
+                  <Link href={`/blog/${post.slug}`}>
+                    <article className="group cursor-pointer">
+                      {post.featuredImage && (
+                        <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5">
+                          <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      )}
+                      <p className="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">
+                        {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                      </p>
+                      <h3 className="text-lg font-bold text-white group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-white/50 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
+                    </article>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-card rounded p-8 text-center">
+              <p className="text-white/40 text-sm">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
+            </div>
+          )}
+
+          <Link href="/blog" className="text-brand text-sm font-bold hover:underline mt-6 block sm:hidden">
+            View All
+          </Link>
+        </div>
+      </section>
+
+      {/* Scripture Banner */}
+      <section className="py-14 md:py-20 border-b border-white/10">
+        <div className="container max-w-3xl mx-auto text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-snug text-white mb-6">
               "For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future."
             </blockquote>
-            <p className="text-teal-400 font-semibold text-sm tracking-wider">Jeremiah 29:11 (NIV)</p>
+            <p className="text-brand font-bold text-sm">Jeremiah 29:11</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container text-center max-w-2xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Join Our Community</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Whether you are seeking encouragement, growing in faith, or looking for a church family — you are welcome here.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/newsletter">
-                <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white font-semibold tracking-wider text-xs uppercase gap-2 px-8">
-                  Subscribe <Mail className="h-4 w-4" />
+      {/* Newsletter — NASA "Explore the Universe" style */}
+      <section className="py-14 md:py-20">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
+                Get Inspired<br />Every Week
+              </h2>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Subscribe to our newsletter for weekly sermons, devotionals, and encouragement delivered straight to your inbox.
+              </p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
+              <form onSubmit={handleSubscribe} className="space-y-3">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm"
+                  required
+                />
+                <Button
+                  type="submit"
+                  className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm"
+                  disabled={subscribe.isPending}
+                >
+                  {subscribe.isPending ? "Subscribing..." : "Sign Up"}
                 </Button>
-              </Link>
-              <Link href="/watch">
-                <Button size="lg" variant="outline" className="font-semibold tracking-wider text-xs uppercase gap-2 px-8">
-                  Watch a Sermon <Video className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </section>
     </PublicLayout>

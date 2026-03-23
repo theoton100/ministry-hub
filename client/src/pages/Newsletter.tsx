@@ -2,10 +2,8 @@ import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
 import { fadeUp } from "@/lib/animations";
-import { Mail, CheckCircle, Heart, BookOpen, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -34,93 +32,81 @@ export default function Newsletter() {
 
   return (
     <PublicLayout>
-      <section className="bg-navy-900 text-white py-20 md:py-28">
-        <div className="container text-center">
+      <section className="pt-10 pb-6 border-b border-white/10">
+        <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Newsletter</p>
-            <h1 className="font-sans text-4xl md:text-5xl font-bold mb-4">Stay Inspired</h1>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Receive weekly devotionals, sermon highlights, and words of encouragement delivered straight to your inbox.
-            </p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Subscribe</h1>
+            <p className="text-white/40 text-sm">Weekly devotionals, sermon highlights, and encouragement in your inbox.</p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container max-w-xl mx-auto">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            {submitted ? (
-              <Card className="border-0 shadow-xl">
-                <CardContent className="p-10 text-center space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-10 w-10 text-green-600" />
+      <section className="py-12 md:py-16">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
+            {/* Left: Info */}
+            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
+                Get Inspired<br />Every Week
+              </h2>
+              <div className="space-y-5 text-white/50 text-sm leading-relaxed">
+                <p>Join our growing community of believers who receive weekly encouragement straight to their inbox.</p>
+                <div className="space-y-3">
+                  <div className="border-l-2 border-brand pl-4">
+                    <h4 className="text-white font-bold text-sm mb-1">Weekly Devotionals</h4>
+                    <p>Short, powerful devotionals to start your week with faith.</p>
                   </div>
-                  <h2 className="font-sans text-2xl font-bold">Welcome to the Family!</h2>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <div className="border-l-2 border-brand pl-4">
+                    <h4 className="text-white font-bold text-sm mb-1">Blog Highlights</h4>
+                    <p>The best articles and teachings, curated just for you.</p>
+                  </div>
+                  <div className="border-l-2 border-brand pl-4">
+                    <h4 className="text-white font-bold text-sm mb-1">Sermon Updates</h4>
+                    <p>Be the first to know when new sermons and episodes drop.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: Form */}
+            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+              {submitted ? (
+                <div className="border border-white/10 rounded p-8 text-center">
+                  <h2 className="text-2xl font-extrabold text-white mb-3">Welcome to the Family!</h2>
+                  <p className="text-white/50 text-sm leading-relaxed">
                     Thank you for subscribing. You will receive our next newsletter with inspiring content to strengthen your faith. God bless you abundantly!
                   </p>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="shadow-xl border-0">
-                <CardContent className="p-8 md:p-10">
-                  <div className="text-center mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
-                      <Mail className="h-8 w-8 text-teal-500" />
-                    </div>
-                    <h2 className="font-sans text-2xl font-bold">Sign Up for Inspiration</h2>
-                    <p className="text-muted-foreground text-sm mt-2">Join our community and never miss a word of encouragement.</p>
-                  </div>
+                </div>
+              ) : (
+                <div className="border border-white/10 rounded p-7">
+                  <h3 className="text-xl font-extrabold text-white mb-1">Sign Up</h3>
+                  <p className="text-white/40 text-xs mb-6">Join our community and never miss a word of encouragement.</p>
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="firstName" className="text-white/60 text-xs">First Name</Label>
+                        <Input id="firstName" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                      <div className="space-y-1.5">
+                        <Label htmlFor="lastName" className="text-white/60 text-xs">Last Name</Label>
+                        <Input id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <div className="space-y-1.5">
+                      <Label htmlFor="email" className="text-white/60 text-xs">Email Address *</Label>
+                      <Input id="email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                     </div>
-                    <Button type="submit" className="w-full bg-teal-500 hover:bg-teal-600 text-white shadow-lg font-semibold tracking-wider uppercase" size="lg" disabled={subscribe.isPending}>
+                    <Button type="submit" className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm" disabled={subscribe.isPending}>
                       {subscribe.isPending ? "Subscribing..." : "Subscribe Now"}
                     </Button>
-                    <p className="text-xs text-muted-foreground/60 text-center">
+                    <p className="text-white/25 text-[11px] text-center">
                       We respect your privacy. Unsubscribe at any time.
                     </p>
                   </form>
-                </CardContent>
-              </Card>
-            )}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What You'll Receive */}
-      <section className="py-16 md:py-20 bg-navy-900 text-white">
-        <div className="container max-w-4xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <h2 className="font-sans text-2xl md:text-3xl font-bold">What You'll Receive</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: Heart, title: "Weekly Devotionals", desc: "Short, powerful devotionals to start your week with faith and encouragement.", color: "bg-red-500/10 text-red-400" },
-              { icon: BookOpen, title: "Blog Highlights", desc: "The best articles and teachings from our blog, curated just for you.", color: "bg-teal-500/10 text-teal-400" },
-              { icon: Headphones, title: "Sermon Updates", desc: "Be the first to know when new sermons and podcast episodes are available.", color: "bg-blue-500/10 text-blue-400" },
-            ].map((item) => (
-              <div key={item.title} className="text-center space-y-3">
-                <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center mx-auto`}>
-                  <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-sans text-lg font-semibold">{item.title}</h3>
-                <p className="text-white/60 text-sm">{item.desc}</p>
-              </div>
-            ))}
+              )}
+            </motion.div>
           </div>
         </div>
       </section>

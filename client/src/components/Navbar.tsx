@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, ChevronRight } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { MINISTRY_NAME, LOGO_LIGHT } from "@/lib/constants";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 const navLinks = [
-  { href: "/watch", label: "WATCH" },
-  { href: "/blog", label: "BLOG" },
-  { href: "/listen", label: "PODCAST" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/newsletter", label: "SUBSCRIBE" },
+  { href: "/", label: "Home" },
+  { href: "/watch", label: "Watch" },
+  { href: "/listen", label: "Podcast" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+  { href: "/newsletter", label: "Subscribe" },
 ];
 
 export default function Navbar() {
@@ -20,26 +21,26 @@ export default function Navbar() {
   const { user, isAuthenticated } = useAuth();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-navy-900 text-white shadow-lg">
-      <nav className="container flex items-center justify-between h-14 md:h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
+      <nav className="container flex items-center justify-between h-14">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
-          <span className="font-bold text-base md:text-lg tracking-wide text-white">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain" />
+          <span className="font-extrabold text-sm tracking-tight text-white uppercase">
             {MINISTRY_NAME}
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-0.5">
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-4 py-2 text-xs font-semibold tracking-widest transition-colors ${
+              className={`px-3 py-1.5 text-[13px] font-semibold transition-colors rounded-sm ${
                 location === link.href
-                  ? "text-teal-400 border-b-2 border-teal-400"
-                  : "text-white/80 hover:text-teal-400"
+                  ? "text-white bg-white/10"
+                  : "text-white/70 hover:text-white"
               }`}
             >
               {link.label}
@@ -47,83 +48,57 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA + Admin */}
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
+        {/* Desktop Right */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
           {isAuthenticated && user?.role === "admin" && (
             <Link href="/admin">
-              <Button variant="outline" size="sm" className="text-xs border-white/30 text-white hover:bg-white/10 hover:text-white">
+              <Button variant="ghost" size="sm" className="text-[13px] text-white/70 hover:text-white hover:bg-white/10 h-8 px-3">
                 Admin
               </Button>
             </Link>
           )}
-          <Link href="/newsletter">
-            <Button size="sm" className="bg-teal-500 hover:bg-teal-600 text-white text-xs font-semibold tracking-wider px-5">
-              DONATE
-            </Button>
-          </Link>
         </div>
 
         {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" className="h-10 w-10 text-white hover:bg-white/10">
+            <Button variant="ghost" size="icon" className="h-9 w-9 text-white hover:bg-white/10">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-80 p-0 bg-navy-900 border-navy-800">
+          <SheetContent side="right" className="w-72 p-0 bg-black border-white/10">
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="flex flex-col h-full">
-              <div className="p-6 border-b border-navy-800">
-                <div className="flex items-center gap-2.5">
-                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
-                  <span className="font-bold text-lg text-white">{MINISTRY_NAME}</span>
+              <div className="p-5 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain" />
+                  <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
                 </div>
               </div>
-              <div className="flex-1 py-4">
-                <Link
-                  href="/"
-                  onClick={() => setOpen(false)}
-                  className={`flex items-center gap-3 px-6 py-3.5 text-sm font-semibold tracking-wider transition-colors ${
-                    location === "/"
-                      ? "bg-teal-500/10 text-teal-400 border-r-2 border-teal-400"
-                      : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}
-                >
-                  <span className="flex-1">HOME</span>
-                  <ChevronRight className="h-4 w-4 opacity-40" />
-                </Link>
+              <div className="flex-1 py-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-3 px-6 py-3.5 text-sm font-semibold tracking-wider transition-colors ${
+                    className={`block px-5 py-3 text-sm font-semibold transition-colors ${
                       location === link.href
-                        ? "bg-teal-500/10 text-teal-400 border-r-2 border-teal-400"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
+                        ? "text-white bg-white/5 border-l-2 border-brand"
+                        : "text-white/60 hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    <span className="flex-1">{link.label}</span>
-                    <ChevronRight className="h-4 w-4 opacity-40" />
+                    {link.label}
                   </Link>
                 ))}
                 {isAuthenticated && user?.role === "admin" && (
                   <Link
                     href="/admin"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 px-6 py-3.5 text-sm font-semibold tracking-wider text-white/70 hover:text-white hover:bg-white/5"
+                    className="block px-5 py-3 text-sm font-semibold text-white/60 hover:text-white hover:bg-white/5"
                   >
-                    <span className="flex-1">ADMIN</span>
-                    <ChevronRight className="h-4 w-4 opacity-40" />
+                    Admin
                   </Link>
                 )}
-              </div>
-              <div className="p-6 border-t border-navy-800">
-                <Link href="/newsletter" onClick={() => setOpen(false)}>
-                  <Button className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold tracking-wider">
-                    SUBSCRIBE
-                  </Button>
-                </Link>
               </div>
             </div>
           </SheetContent>

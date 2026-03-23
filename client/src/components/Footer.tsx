@@ -5,34 +5,29 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-950 text-white/70">
-      {/* Main Footer */}
-      <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-black border-t border-white/10">
+      <div className="container py-10 md:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
-              <span className="font-bold text-lg text-white">{MINISTRY_NAME}</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-5 h-8 object-contain" />
+              <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
             </div>
-            <p className="text-sm leading-relaxed max-w-xs">
-              Bringing the Word of God to every heart through preaching, teaching, and community. You are loved, you are valued, and God has a plan for your life.
+            <p className="text-white/40 text-xs leading-relaxed max-w-xs">
+              Bringing the Word of God to every heart through preaching, teaching, and community.
             </p>
           </div>
 
           {/* Watch */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs tracking-widest uppercase text-white">Watch</h4>
-            <div className="flex flex-col gap-2.5">
+          <div className="space-y-3">
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/60">Watch</h4>
+            <div className="flex flex-col gap-2">
               {[
                 { href: "/watch", label: "Latest Sermons" },
                 { href: "/watch", label: "Sermon Archive" },
               ].map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm hover:text-teal-400 transition-colors w-fit"
-                >
+                <Link key={link.label} href={link.href} className="text-white/40 text-xs hover:text-white transition-colors w-fit">
                   {link.label}
                 </Link>
               ))}
@@ -40,49 +35,42 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs tracking-widest uppercase text-white">Connect</h4>
-            <div className="flex flex-col gap-2.5">
+          <div className="space-y-3">
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/60">Connect</h4>
+            <div className="flex flex-col gap-2">
               {[
                 { href: "/listen", label: "Podcast" },
                 { href: "/blog", label: "Blog" },
                 { href: "/newsletter", label: "Newsletter" },
-                { href: "/about", label: "About Pastor Theo" },
+                { href: "/about", label: "About" },
               ].map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm hover:text-teal-400 transition-colors w-fit"
-                >
+                <Link key={link.label} href={link.href} className="text-white/40 text-xs hover:text-white transition-colors w-fit">
                   {link.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Stay Updated */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs tracking-widest uppercase text-white">Stay Updated</h4>
-            <p className="text-sm">
-              Subscribe to our newsletter for weekly inspiration, devotionals, and ministry updates.
+          {/* Subscribe */}
+          <div className="space-y-3">
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/60">Stay Updated</h4>
+            <p className="text-white/40 text-xs">
+              Weekly inspiration and devotionals.
             </p>
-            <Link
-              href="/newsletter"
-              className="inline-block px-5 py-2.5 bg-teal-500 text-white rounded-lg text-xs font-semibold tracking-wider uppercase hover:bg-teal-600 transition-colors"
-            >
-              Subscribe
+            <Link href="/newsletter" className="inline-block text-brand text-xs font-bold hover:underline">
+              Sign Up
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-white/40">
+      {/* Bottom */}
+      <div className="border-t border-white/5">
+        <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-white/25 text-[11px]">
             &copy; {currentYear} {MINISTRY_NAME} Ministries. All rights reserved.
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-white/25 text-[11px]">
             Built with faith for the Kingdom of God
           </p>
         </div>

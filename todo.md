@@ -65,3 +65,13 @@
 
 ## Hero Image Update
 - [x] Add Pastor Theo's preaching photo as hero section background image
+
+## NASA.gov-Inspired Redesign
+- [x] Update color scheme: dark black/charcoal bg, red brand accent (like NASA red), white text
+- [x] Update typography: bold, spacious, editorial style with Open Sans
+- [x] Remove all icons from buttons — text-only buttons
+- [x] Redesign homepage with NASA-style editorial grid layout
+- [x] Redesign navbar: minimal, clean, NASA-style
+- [x] Redesign footer: clean multi-column like NASA
+- [x] Update all pages (Watch, Listen, Blog, About, Newsletter) with new design
+- [x] Update admin dashboard sidebar to match new brand colors
