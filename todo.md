@@ -122,3 +122,8 @@
 - [x] Add Orders page with revenue summary
 - [x] Add Books/Orders stats to admin overview
 - [x] Write vitest tests for books and payments (12 tests)
+
+## SEO Fixes - Homepage
+- [x] Add meta description (50-160 characters)
+- [x] Add meta keywords
+- [x] Fix missing alt text on images

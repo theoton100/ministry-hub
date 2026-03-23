@@ -31,7 +31,7 @@ export default function Home() {
       {/* Hero — full bleed with image */}
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover object-top" />
+          <img src={HERO_IMAGE} alt="Pastor T.I. Solomon preaching" className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
         </div>
         <div className="container relative z-10 pb-14 pt-40">
