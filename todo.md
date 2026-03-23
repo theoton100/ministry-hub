@@ -141,4 +141,4 @@
 - [x] All 38 tests passing
 
 ## Bug Fixes - Round 4
-- [x] Fix blog post creation returning 404 when clicking "Add Blog Post" button (route ordering fix)
+- [x] Fix blog post creation returning 404 (switched Admin.tsx to relative paths for nested routing)
