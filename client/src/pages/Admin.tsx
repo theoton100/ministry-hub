@@ -13,9 +13,9 @@ export default function Admin() {
     <DashboardLayout>
       <Switch>
         <Route path="/admin" component={AdminOverview} />
-        <Route path="/admin/blog" component={AdminBlogList} />
         <Route path="/admin/blog/new" component={AdminBlogEditor} />
         <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
+        <Route path="/admin/blog" component={AdminBlogList} />
         <Route path="/admin/sermons" component={AdminSermons} />
         <Route path="/admin/podcasts" component={AdminPodcasts} />
         <Route path="/admin/books" component={AdminBooks} />
