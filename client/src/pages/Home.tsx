@@ -2,7 +2,7 @@ import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { HERO_BG, MINISTRY_TAGLINE, MINISTRY_DESCRIPTION } from "@/lib/constants";
+import { HERO_BG, MINISTRY_TAGLINE, MINISTRY_DESCRIPTION, PASTOR_CUTOUT, MINISTRY_SCENES, MINISTRY_EXTRAS } from "@/lib/constants";
 import { fadeUp, fadeUpDelay, staggerContainer } from "@/lib/animations";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
@@ -12,6 +12,12 @@ import { motion } from "framer-motion";
 export default function Home() {
   const { data: featuredSermon, isLoading: sermonLoading } = trpc.sermon.featured.useQuery();
   const { data: blogData, isLoading: blogLoading } = trpc.blog.listPublished.useQuery({ limit: 3, offset: 0 });
+
+  // Select gallery images from ministry scenes and extras
+  const galleryImages = [
+    MINISTRY_SCENES[0], MINISTRY_SCENES[2], MINISTRY_SCENES[3],
+    MINISTRY_EXTRAS[0], MINISTRY_SCENES[4], MINISTRY_EXTRAS[1],
+  ];
 
   return (
     <PublicLayout>
@@ -141,8 +147,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Blog Posts */}
+      {/* Ministry Gallery */}
       <section className="py-16 md:py-24 bg-warm-50">
+        <div className="container">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Our Ministry</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Moments of Grace</h2>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {galleryImages.map((img, i) => (
+              <motion.div
+                key={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUpDelay(i * 0.05)}
+                className={`rounded-2xl overflow-hidden shadow-lg ${i === 0 ? "md:row-span-2" : ""}`}
+              >
+                <img
+                  src={img}
+                  alt={`Ministry moment ${i + 1}`}
+                  className={`w-full object-cover hover:scale-105 transition-transform duration-500 ${i === 0 ? "h-full min-h-[300px]" : "aspect-square"}`}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts */}
+      <section className="py-16 md:py-24 bg-background">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">From the Blog</p>

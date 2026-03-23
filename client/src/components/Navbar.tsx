@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, Play, Headphones, BookOpen, Mail, User, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { MINISTRY_NAME } from "@/lib/constants";
+import { MINISTRY_NAME, LOGO } from "@/lib/constants";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 const navLinks = [
@@ -25,9 +25,7 @@ export default function Navbar() {
       <nav className="container flex items-center justify-between h-16 md:h-18">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-bold text-lg shadow-md group-hover:shadow-lg transition-shadow">
-            T
-          </div>
+          <img src={LOGO} alt={MINISTRY_NAME} className="w-9 h-9 rounded-full object-cover shadow-md group-hover:shadow-lg transition-shadow" />
           <span className="font-serif font-semibold text-lg tracking-tight text-foreground hidden sm:block">
             {MINISTRY_NAME}
           </span>
@@ -78,9 +76,7 @@ export default function Navbar() {
             <div className="flex flex-col h-full">
               <div className="p-6 border-b">
                 <div className="flex items-center gap-2">
-                  <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-bold text-lg">
-                    T
-                  </div>
+                  <img src={LOGO} alt={MINISTRY_NAME} className="w-9 h-9 rounded-full object-cover" />
                   <span className="font-serif font-semibold text-lg">{MINISTRY_NAME}</span>
                 </div>
               </div>

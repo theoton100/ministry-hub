@@ -33,3 +33,10 @@
 - [x] Fully responsive design (mobile, tablet, desktop)
 - [x] Vitest unit tests
 - [ ] Polish and final review
+
+## Image Updates
+- [x] Upload Pastor Theo's real photos and logo to CDN
+- [x] Generate enhanced hero image using nano banana with real photos
+- [x] Update website with real pastor photo on About page
+- [x] Update website logo/branding with real logo
+- [x] Add real photos throughout the site (homepage, about, etc.)

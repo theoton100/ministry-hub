@@ -1,0 +1,35 @@
+CDN URLs for Website Images:
+
+HERO BANNER (generated with Pastor Theo in church):
+hero-banner-new: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/hero-banner-new-SPLmuaUeuoD73ZQL7zjnYb.webp
+
+ABOUT HERO (Bible on podium):
+about-hero-new: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/about-hero-new-SjWPJTDquxaeTpUZxwu4bX.webp
+
+PASTOR PHOTOS:
+pastor-formal: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-formal_f0c1379b.jpg
+pastor-cutout: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-cutout_56200e56.png
+pastor-cutout2: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-cutout2_f32d4fb2.png
+pastor-recent: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-recent_776e5aa1.jpg
+pastor-photo1: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-photo1_68a852d6.png
+
+LOGOS:
+logo1: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/logo1_1db94cf2.webp
+logo2: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/logo2_4758fc55.webp
+ministry-design: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-design_0afd8992.png
+
+MINISTRY SCENES:
+scene1: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene1_08d2d239.png
+scene2: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene2_84603b79.png
+scene3: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene3_6c2e6c9a.png
+scene4: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene4_670e869a.png
+scene5: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene5_81dd7814.png
+scene6: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene6_855ae924.png
+scene7: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene7_578f2263.png
+scene8: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-scene8_581d5e54.png
+
+EXTRAS:
+extra1: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-extra1_bc25d801.webp
+extra2: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-extra2_8d558741.webp
+extra3: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-extra3_5b878b2f.webp
+extra4: https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/ministry-extra4_e201cc71.webp

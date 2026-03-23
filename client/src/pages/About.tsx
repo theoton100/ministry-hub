@@ -1,6 +1,6 @@
 import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
-import { PASTOR_PHOTO, ABOUT_BG } from "@/lib/constants";
+import { PASTOR_PHOTO, ABOUT_BG, PASTOR_FORMAL, MINISTRY_SCENES, MINISTRY_EXTRAS, PASTOR_CUTOUT } from "@/lib/constants";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
 import { Link } from "wouter";
 import { Heart, BookOpen, Users, Globe, ArrowRight } from "lucide-react";

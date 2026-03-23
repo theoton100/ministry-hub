@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MINISTRY_NAME } from "@/lib/constants";
+import { MINISTRY_NAME, LOGO } from "@/lib/constants";
 import { Heart } from "lucide-react";
 
 export default function Footer() {
@@ -12,9 +12,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-bold text-lg">
-                T
-              </div>
+              <img src={LOGO} alt={MINISTRY_NAME} className="w-9 h-9 rounded-full object-cover" />
               <span className="font-serif font-semibold text-lg text-background">
                 {MINISTRY_NAME}
               </span>

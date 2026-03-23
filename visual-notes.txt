@@ -1,0 +1,10 @@
+Visual State Notes (after image update):
+- Homepage hero: Shows Pastor Theo in a warm church with stained glass windows - beautiful!
+- Logo: Real ministry logo showing in navbar (round image)
+- Navigation: All links visible - Home, Watch, Listen, Blog, About, Newsletter + Admin + Subscribe
+- The hero text is overlapping slightly with Pastor Theo's image in the background - this is fine as it's a background image
+- Colors: Warm amber/gold primary color theme working well
+- Typography: Playfair Display serif for headings, Inter for body text
+- All images are now using real CDN URLs
+
+Next: Run tests, update todo, save checkpoint
