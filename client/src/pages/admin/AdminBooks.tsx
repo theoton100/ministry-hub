@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { trpc } from "@/lib/trpc";
-import { Plus, Edit, Trash2, BookOpen, Loader2 } from "lucide-react";
+import { Plus, Edit, Trash2, BookOpen, Loader2, FileText, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { useState, useRef } from "react";
 import {
@@ -25,9 +25,13 @@ export default function AdminBooks() {
   const [description, setDescription] = useState("");
   const [priceStr, setPriceStr] = useState("");
   const [coverImageUrl, setCoverImageUrl] = useState("");
+  const [pdfFileKey, setPdfFileKey] = useState("");
+  const [pdfFileName, setPdfFileName] = useState("");
   const [published, setPublished] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadingPdf, setUploadingPdf] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const pdfInputRef = useRef<HTMLInputElement>(null);
 
   const createMutation = trpc.book.create.useMutation({
     onSuccess: () => { toast.success("Book added!"); resetForm(); refetch(); },
@@ -56,6 +60,19 @@ export default function AdminBooks() {
     },
   });
 
+  const uploadPdf = trpc.book.uploadPdf.useMutation({
+    onSuccess: (data) => {
+      setPdfFileKey(data.key);
+      setPdfFileName(data.filename);
+      setUploadingPdf(false);
+      toast.success("PDF uploaded!");
+    },
+    onError: (err) => {
+      setUploadingPdf(false);
+      toast.error(err.message || "PDF upload failed");
+    },
+  });
+
   const resetForm = () => {
     setDialogOpen(false);
     setEditingId(null);
@@ -63,6 +80,8 @@ export default function AdminBooks() {
     setDescription("");
     setPriceStr("");
     setCoverImageUrl("");
+    setPdfFileKey("");
+    setPdfFileName("");
     setPublished(false);
   };
 
@@ -72,6 +91,8 @@ export default function AdminBooks() {
     setDescription(book.description || "");
     setPriceStr((book.priceInCents / 100).toFixed(2));
     setCoverImageUrl(book.coverImageUrl || "");
+    setPdfFileKey(book.pdfFileKey || "");
+    setPdfFileName(book.pdfFileName || "");
     setPublished(book.published);
     setDialogOpen(true);
   };
@@ -84,6 +105,26 @@ export default function AdminBooks() {
     reader.onload = () => {
       const base64 = (reader.result as string).split(",")[1];
       uploadCover.mutate({ base64, filename: file.name, contentType: file.type });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handlePdfChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 50 * 1024 * 1024) {
+      toast.error("PDF must be under 50MB");
+      return;
+    }
+    if (file.type !== "application/pdf") {
+      toast.error("Please select a PDF file");
+      return;
+    }
+    setUploadingPdf(true);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(",")[1];
+      uploadPdf.mutate({ base64, filename: file.name });
     };
     reader.readAsDataURL(file);
   };
@@ -101,6 +142,8 @@ export default function AdminBooks() {
         description: description || undefined,
         priceInCents,
         coverImageUrl: coverImageUrl || undefined,
+        pdfFileKey: pdfFileKey || undefined,
+        pdfFileName: pdfFileName || undefined,
         published,
       });
     } else {
@@ -109,6 +152,8 @@ export default function AdminBooks() {
         description: description || undefined,
         priceInCents,
         coverImageUrl: coverImageUrl || undefined,
+        pdfFileKey: pdfFileKey || undefined,
+        pdfFileName: pdfFileName || undefined,
         published,
       });
     }
@@ -121,7 +166,7 @@ export default function AdminBooks() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-sans text-2xl font-bold">Books</h1>
-          <p className="text-muted-foreground text-sm mt-1">Manage your books and set prices in USD.</p>
+          <p className="text-muted-foreground text-sm mt-1">Manage your digital books. Upload a PDF for customers to download after payment.</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={(open) => { if (!open) resetForm(); else setDialogOpen(true); }}>
           <DialogTrigger asChild>
@@ -176,10 +221,40 @@ export default function AdminBooks() {
                   disabled={uploading}
                   className="gap-2"
                 >
-                  {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                  {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
                   {uploading ? "Uploading..." : coverImageUrl ? "Change Cover" : "Upload Cover"}
                 </Button>
               </div>
+
+              {/* PDF Upload */}
+              <div className="space-y-2">
+                <Label>Digital File (PDF)</Label>
+                <p className="text-xs text-muted-foreground">Upload the PDF that customers will download after payment.</p>
+                {pdfFileName && (
+                  <div className="flex items-center gap-2 p-2 bg-muted rounded text-sm">
+                    <FileText className="h-4 w-4 text-red-500 shrink-0" />
+                    <span className="truncate">{pdfFileName}</span>
+                  </div>
+                )}
+                <input
+                  ref={pdfInputRef}
+                  type="file"
+                  accept=".pdf,application/pdf"
+                  onChange={handlePdfChange}
+                  className="hidden"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => pdfInputRef.current?.click()}
+                  disabled={uploadingPdf}
+                  className="gap-2"
+                >
+                  {uploadingPdf ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileText className="h-4 w-4" />}
+                  {uploadingPdf ? "Uploading PDF..." : pdfFileName ? "Replace PDF" : "Upload PDF"}
+                </Button>
+              </div>
+
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -219,6 +294,11 @@ export default function AdminBooks() {
                   <h3 className="font-semibold truncate">{book.title}</h3>
                   <p className="text-sm text-muted-foreground mt-0.5">
                     {formatPrice(book.priceInCents)}
+                    {book.pdfFileKey && (
+                      <span className="ml-2 text-xs px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">
+                        PDF attached
+                      </span>
+                    )}
                     <span className={`ml-2 text-xs px-1.5 py-0.5 rounded ${book.published ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>
                       {book.published ? "Published" : "Draft"}
                     </span>
@@ -250,7 +330,7 @@ export default function AdminBooks() {
         <div className="text-center py-16">
           <BookOpen className="h-16 w-16 text-muted-foreground/20 mx-auto mb-4" />
           <h3 className="font-sans text-xl font-semibold mb-2">No Books Yet</h3>
-          <p className="text-muted-foreground mb-6">Add your first book to start selling on the store page.</p>
+          <p className="text-muted-foreground mb-6">Add your first digital book. Upload a PDF and set a price — customers pay to download.</p>
         </div>
       )}
     </div>

@@ -109,6 +109,43 @@ describe("Book Router", () => {
     const caller = appRouter.createCaller(createPublicContext());
     await expect(caller.book.delete({ id: 1 })).rejects.toThrow();
   });
+
+  it("admin can create a book with pdfFileKey and pdfFileName", async () => {
+    const ctx = await createAdminContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const { id } = await caller.book.create({
+      title: "Digital Book Test",
+      priceInCents: 500,
+      pdfFileKey: "book-pdfs/test-file.pdf",
+      pdfFileName: "my-ebook.pdf",
+      published: true,
+    });
+    expect(typeof id).toBe("number");
+
+    const allBooks = await caller.book.listAll();
+    const found = allBooks.find((b: any) => b.id === id);
+    expect(found).toBeTruthy();
+    expect(found!.pdfFileKey).toBe("book-pdfs/test-file.pdf");
+    expect(found!.pdfFileName).toBe("my-ebook.pdf");
+
+    // Clean up
+    await caller.book.delete({ id });
+  });
+
+  it("getDownloadUrl rejects invalid payment reference", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
+    await expect(
+      caller.book.getDownloadUrl({ bookId: 1, reference: "fake_ref_123" })
+    ).rejects.toThrow();
+  });
+
+  it("uploadPdf requires admin auth", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
+    await expect(
+      caller.book.uploadPdf({ base64: "dGVzdA==", filename: "test.pdf" })
+    ).rejects.toThrow();
+  });
 });
 
 describe("Payment Router", () => {

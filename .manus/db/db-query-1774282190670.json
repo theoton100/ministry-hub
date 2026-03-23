@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `books` ADD COLUMN `pdfFileKey` varchar(512) DEFAULT NULL; ALTER TABLE `books` ADD COLUMN `pdfFileName` varchar(256) DEFAULT NULL; ALTER TABLE `books` DROP COLUMN IF EXISTS `stripePriceId`; ALTER TABLE `books` DROP COLUMN IF EXISTS `stripeProductId`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 38BqB1RYsyJpQAj.root --database gZ92zyhVJEHyGACHaMfmui --execute ALTER TABLE `books` ADD COLUMN `pdfFileKey` varchar(512) DEFAULT NULL; ALTER TABLE `books` ADD COLUMN `pdfFileName` varchar(256) DEFAULT NULL; ALTER TABLE `books` DROP COLUMN IF EXISTS `stripePriceId`; ALTER TABLE `books` DROP COLUMN IF EXISTS `stripeProductId`;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1092
+}

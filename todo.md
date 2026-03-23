@@ -127,3 +127,15 @@
 - [x] Add meta description (50-160 characters)
 - [x] Add meta keywords
 - [x] Fix missing alt text on images
+
+## Bug Fixes - Round 3
+- [x] Fix admin login not redirecting to dashboard on published site (trust proxy + cookie sameSite fix)
+- [x] Add PDF file upload for digital books (admin can upload PDF per book)
+- [x] Add download-after-payment flow (customers download PDF only after successful payment)
+- [x] Make it clear on Store page that customers are paying to download digital products
+- [x] Update AdminBooks with PDF upload UI and file preview
+- [x] Update Store page with "Digital Download" badges and "Buy & Download" buttons
+- [x] Update PaymentVerify page with download section for book purchases
+- [x] Add getDownloadUrl procedure that verifies payment before allowing download
+- [x] Write vitest tests for PDF upload and download features (4 new tests)
+- [x] All 38 tests passing

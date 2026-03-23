@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, adminProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import * as db from "./db";
-import { storagePut } from "./storage";
+import { storagePut, storageGet } from "./storage";
 import { nanoid } from "nanoid";
 import { SignJWT, jwtVerify } from "jose";
 import { ENV } from "./_core/env";
@@ -370,6 +370,8 @@ export const appRouter = router({
         description: z.string().optional(),
         priceInCents: z.number().min(0),
         coverImageUrl: z.string().optional(),
+        pdfFileKey: z.string().optional(),
+        pdfFileName: z.string().optional(),
         published: z.boolean().default(false),
       }))
       .mutation(async ({ input }) => {
@@ -377,6 +379,8 @@ export const appRouter = router({
           ...input,
           description: input.description ?? null,
           coverImageUrl: input.coverImageUrl ?? null,
+          pdfFileKey: input.pdfFileKey ?? null,
+          pdfFileName: input.pdfFileName ?? null,
         });
         return { id };
       }),
@@ -388,6 +392,8 @@ export const appRouter = router({
         description: z.string().optional(),
         priceInCents: z.number().min(0).optional(),
         coverImageUrl: z.string().optional(),
+        pdfFileKey: z.string().optional(),
+        pdfFileName: z.string().optional(),
         published: z.boolean().optional(),
       }))
       .mutation(async ({ input }) => {
@@ -410,6 +416,46 @@ export const appRouter = router({
         const key = `book-covers/${nanoid()}-${input.filename}`;
         const { url } = await storagePut(key, buffer, input.contentType);
         return { url };
+      }),
+
+    uploadPdf: adminAuthProcedure
+      .input(z.object({ base64: z.string(), filename: z.string() }))
+      .mutation(async ({ input }) => {
+        const buffer = Buffer.from(input.base64, "base64");
+        const key = `book-pdfs/${nanoid()}-${input.filename}`;
+        const { url } = await storagePut(key, buffer, "application/pdf");
+        return { key, url, filename: input.filename };
+      }),
+
+    getDownloadUrl: publicProcedure
+      .input(z.object({ bookId: z.number(), reference: z.string() }))
+      .query(async ({ input }) => {
+        // Verify payment first
+        const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+        if (!paystackSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Payment not configured" });
+
+        const res = await fetch(`https://api.paystack.co/transaction/verify/${encodeURIComponent(input.reference)}`, {
+          headers: { Authorization: `Bearer ${paystackSecret}` },
+        });
+        const body = await res.json();
+        if (!body.status || body.data?.status !== "success") {
+          throw new TRPCError({ code: "FORBIDDEN", message: "Payment not verified. Please complete payment first." });
+        }
+
+        // Check that the payment metadata matches this book
+        const metadata = body.data?.metadata;
+        if (metadata?.book_id !== input.bookId && String(metadata?.book_id) !== String(input.bookId)) {
+          throw new TRPCError({ code: "FORBIDDEN", message: "This payment is not for this book." });
+        }
+
+        // Get the book's PDF
+        const book = await db.getBookById(input.bookId);
+        if (!book || !book.pdfFileKey) {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Digital file not available for this book." });
+        }
+
+        const { url } = await storageGet(book.pdfFileKey);
+        return { downloadUrl: url, fileName: book.pdfFileName || `${book.title}.pdf` };
       }),
   }),
 
@@ -527,7 +573,7 @@ export const appRouter = router({
 
         const body = await res.json();
         if (!body.status) {
-          return { verified: false, message: body.message };
+          return { verified: false, message: body.message, bookId: null };
         }
 
         const txn = body.data;
@@ -536,10 +582,11 @@ export const appRouter = router({
             status: "completed",
             stripePaymentIntentId: txn.id?.toString(),
           });
-          return { verified: true, status: "success", amount: txn.amount, currency: txn.currency };
+          const bookId = txn.metadata?.book_id ? Number(txn.metadata.book_id) : null;
+          return { verified: true, status: "success", amount: txn.amount, currency: txn.currency, bookId };
         }
 
-        return { verified: false, status: txn.status, message: "Payment not completed" };
+        return { verified: false, status: txn.status, message: "Payment not completed", bookId: null };
       }),
 
     listOrders: adminAuthProcedure.query(async () => {

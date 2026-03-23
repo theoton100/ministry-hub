@@ -3,13 +3,16 @@ import { trpc } from "@/lib/trpc";
 import { useSearch } from "wouter";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { Download, Loader2 } from "lucide-react";
+import { useState, useMemo } from "react";
+import { toast } from "sonner";
 
 export default function PaymentVerify() {
   const search = useSearch();
-  const params = new URLSearchParams(search);
+  const params = useMemo(() => new URLSearchParams(search), [search]);
   const reference = params.get("reference") || params.get("trxref") || "";
 
-  const { data, isLoading, isError } = trpc.payment.verifyPayment.useQuery(
+  const { data, isLoading } = trpc.payment.verifyPayment.useQuery(
     { reference },
     { enabled: !!reference, retry: false }
   );
@@ -47,18 +50,24 @@ export default function PaymentVerify() {
               <p className="text-white/50 text-sm mb-2">
                 Your payment was successful. God bless you for your generosity.
               </p>
-              <p className="text-white/30 text-xs mb-8">
+              <p className="text-white/30 text-xs mb-6">
                 Reference: {reference}
               </p>
-              <div className="flex gap-3 justify-center">
+
+              {/* Download section for book purchases */}
+              {data.bookId && (
+                <DownloadSection bookId={data.bookId} reference={reference} />
+              )}
+
+              <div className="flex gap-3 justify-center mt-6">
                 <Link href="/">
                   <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                     Return Home
                   </Button>
                 </Link>
-                <Link href="/give">
+                <Link href="/store">
                   <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
-                    Give Again
+                    Browse More Books
                   </Button>
                 </Link>
               </div>
@@ -91,5 +100,60 @@ export default function PaymentVerify() {
         </div>
       </section>
     </PublicLayout>
+  );
+}
+
+function DownloadSection({ bookId, reference }: { bookId: number; reference: string }) {
+  const [downloading, setDownloading] = useState(false);
+
+  const { data: downloadData, isLoading: loadingUrl } = trpc.book.getDownloadUrl.useQuery(
+    { bookId, reference },
+    { retry: false }
+  );
+
+  const handleDownload = () => {
+    if (!downloadData?.downloadUrl) return;
+    setDownloading(true);
+    // Open the download URL
+    const a = document.createElement("a");
+    a.href = downloadData.downloadUrl;
+    a.download = downloadData.fileName || "book.pdf";
+    a.target = "_blank";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    toast.success("Download started!");
+    setTimeout(() => setDownloading(false), 2000);
+  };
+
+  if (loadingUrl) {
+    return (
+      <div className="bg-white/5 border border-white/10 rounded p-5 mb-2">
+        <Loader2 className="h-5 w-5 animate-spin text-brand mx-auto mb-2" />
+        <p className="text-white/40 text-sm">Preparing your download...</p>
+      </div>
+    );
+  }
+
+  if (!downloadData?.downloadUrl) {
+    return null;
+  }
+
+  return (
+    <div className="bg-white/5 border border-brand/30 rounded p-5 mb-2">
+      <Download className="h-8 w-8 text-brand mx-auto mb-3" />
+      <h3 className="text-white font-bold text-lg mb-1">Your Book is Ready</h3>
+      <p className="text-white/40 text-sm mb-4">
+        Click the button below to download your PDF.
+      </p>
+      <Button
+        onClick={handleDownload}
+        disabled={downloading}
+        className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-11 px-8 rounded-sm gap-2"
+      >
+        {downloading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+        {downloading ? "Downloading..." : `Download ${downloadData.fileName || "PDF"}`}
+      </Button>
+    </div>
   );
 }

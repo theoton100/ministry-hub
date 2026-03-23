@@ -7,6 +7,7 @@ import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Download } from "lucide-react";
 
 function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -47,7 +48,7 @@ export default function Store() {
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Books</h1>
-            <p className="text-white/40 text-sm">Resources to strengthen your faith and deepen your walk with God.</p>
+            <p className="text-white/40 text-sm">Digital resources to strengthen your faith. Pay once, download instantly.</p>
           </motion.div>
         </div>
       </section>
@@ -72,16 +73,28 @@ export default function Store() {
                 >
                   <div className="bg-card border border-white/10 rounded overflow-hidden group">
                     {book.coverImageUrl ? (
-                      <div className="aspect-[3/4] bg-white/5 overflow-hidden">
+                      <div className="aspect-[3/4] bg-white/5 overflow-hidden relative">
                         <img
                           src={book.coverImageUrl}
                           alt={book.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
+                        {book.pdfFileKey && (
+                          <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                            <Download className="h-3 w-3" />
+                            Digital Download
+                          </div>
+                        )}
                       </div>
                     ) : (
-                      <div className="aspect-[3/4] bg-white/5 flex items-center justify-center">
+                      <div className="aspect-[3/4] bg-white/5 flex items-center justify-center relative">
                         <span className="text-white/20 text-6xl font-extrabold">{book.title[0]}</span>
+                        {book.pdfFileKey && (
+                          <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                            <Download className="h-3 w-3" />
+                            Digital Download
+                          </div>
+                        )}
                       </div>
                     )}
                     <div className="p-5">
@@ -93,9 +106,10 @@ export default function Store() {
                         <span className="text-brand font-extrabold text-xl">{formatPrice(book.priceInCents)}</span>
                         <Button
                           onClick={() => setSelectedBook(book)}
-                          className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-9 px-5 rounded-sm"
+                          className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-9 px-5 rounded-sm gap-1.5"
                         >
-                          Buy Now
+                          <Download className="h-3.5 w-3.5" />
+                          Buy & Download
                         </Button>
                       </div>
                     </div>
@@ -118,11 +132,22 @@ export default function Store() {
       <Dialog open={!!selectedBook} onOpenChange={(open) => { if (!open) { setSelectedBook(null); setBuying(false); } }}>
         <DialogContent className="bg-card border-white/10 text-white max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-white text-lg font-bold">Purchase Book</DialogTitle>
+            <DialogTitle className="text-white text-lg font-bold">Purchase & Download</DialogTitle>
             <DialogDescription className="text-white/40 text-sm">
               {selectedBook?.title} — {selectedBook ? formatPrice(selectedBook.priceInCents) : ""}
             </DialogDescription>
           </DialogHeader>
+
+          <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-3 mt-1">
+            <Download className="h-5 w-5 text-brand shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white/80 text-sm font-medium">Digital Download</p>
+              <p className="text-white/40 text-xs mt-0.5">
+                After payment, you will be redirected to a page where you can download the PDF instantly.
+              </p>
+            </div>
+          </div>
+
           <form onSubmit={handlePurchase} className="space-y-4 mt-2">
             <div>
               <label className="text-white/60 text-xs font-semibold block mb-1.5">Your Name (optional)</label>
@@ -149,10 +174,10 @@ export default function Store() {
               disabled={buying || !email}
               className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm"
             >
-              {buying ? "Redirecting to payment..." : `Pay ${selectedBook ? formatPrice(selectedBook.priceInCents) : ""}`}
+              {buying ? "Redirecting to payment..." : `Pay ${selectedBook ? formatPrice(selectedBook.priceInCents) : ""} & Download`}
             </Button>
             <p className="text-white/30 text-xs text-center">
-              Secure payment powered by Paystack
+              Secure payment powered by Paystack. You will receive the download link immediately after payment.
             </p>
           </form>
         </DialogContent>
