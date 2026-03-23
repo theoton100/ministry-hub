@@ -1,0 +1,14 @@
+Progress Notes:
+- Homepage hero looks great with warm church interior background, Playfair Display serif font
+- Navbar has all sections: Home, Watch, Listen, Blog, About, Newsletter + Admin button
+- All TypeScript errors are resolved (0 errors)
+- Dev server running on port 3000
+- Database tables created: blog_posts, sermons, podcast_episodes, newsletter_subscribers, site_settings
+- All public pages created: Home, Watch, Listen, Blog, BlogPost, About, Newsletter
+- All admin pages created: AdminOverview, AdminBlogList, AdminBlogEditor, AdminSermons, AdminPodcasts
+- DashboardLayout configured with Ministry Admin sidebar
+
+Still TODO:
+- Write vitest tests
+- Update todo.md with completed items
+- Save checkpoint and deliver

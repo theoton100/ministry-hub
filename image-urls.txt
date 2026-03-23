@@ -1,0 +1,3 @@
+HERO_BG=https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/hero-bg-YqrL46Jwi2NjcafNMaDwTa.webp
+ABOUT_BG=https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/about-bg-n4UyBoDwHMnPKNtZZUy2ia.webp
+PASTOR_PHOTO=https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/pastor-placeholder-7pbS46Dx7b8ghyp9c4hZYJ.webp
