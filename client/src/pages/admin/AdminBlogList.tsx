@@ -21,7 +21,7 @@ export default function AdminBlogList() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-serif text-2xl font-bold">Blog Posts</h1>
+          <h1 className="font-sans text-2xl font-bold">Blog Posts</h1>
           <p className="text-muted-foreground text-sm mt-1">Create, edit, and manage your blog articles.</p>
         </div>
         <Link href="/admin/blog/new">
@@ -84,7 +84,7 @@ export default function AdminBlogList() {
       ) : (
         <div className="text-center py-16">
           <FileText className="h-16 w-16 text-muted-foreground/20 mx-auto mb-4" />
-          <h3 className="font-serif text-xl font-semibold mb-2">No Blog Posts Yet</h3>
+          <h3 className="font-sans text-xl font-semibold mb-2">No Blog Posts Yet</h3>
           <p className="text-muted-foreground mb-6">Start writing your first article to inspire your community.</p>
           <Link href="/admin/blog/new"><Button className="gap-2"><Plus className="h-4 w-4" /> Write Your First Post</Button></Link>
         </div>

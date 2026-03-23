@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MINISTRY_NAME, LOGO } from "@/lib/constants";
+import { MINISTRY_NAME, LOGO_LIGHT } from "@/lib/constants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,8 +12,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <img src={LOGO} alt={MINISTRY_NAME} className="w-8 h-8 rounded-full object-cover" />
-              <span className="font-serif font-bold text-lg text-white">{MINISTRY_NAME}</span>
+              <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
+              <span className="font-bold text-lg text-white">{MINISTRY_NAME}</span>
             </div>
             <p className="text-sm leading-relaxed max-w-xs">
               Bringing the Word of God to every heart through preaching, teaching, and community. You are loved, you are valued, and God has a plan for your life.

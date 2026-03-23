@@ -24,7 +24,7 @@ export default function Blog() {
         <div className="container text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Blog</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Words of Encouragement</h1>
+            <h1 className="font-sans text-4xl md:text-5xl font-bold mb-4">Words of Encouragement</h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Devotional articles, reflections, and teachings to strengthen your faith and inspire your walk with God.
             </p>
@@ -60,7 +60,7 @@ export default function Blog() {
                           <p className="text-xs text-muted-foreground tracking-wider uppercase">
                             {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : ""}
                           </p>
-                          <h3 className="font-serif text-lg font-bold group-hover:text-teal-500 transition-colors line-clamp-2">{post.title}</h3>
+                          <h3 className="font-sans text-lg font-bold group-hover:text-teal-500 transition-colors line-clamp-2">{post.title}</h3>
                           {post.excerpt && <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>}
                           <span className="inline-flex items-center gap-1 text-teal-500 text-xs font-semibold tracking-wider uppercase pt-1">
                             Read More <ArrowRight className="h-3.5 w-3.5" />
@@ -84,7 +84,7 @@ export default function Blog() {
               <div className="w-20 h-20 rounded-full bg-navy-100 flex items-center justify-center mx-auto mb-6">
                 <BookOpen className="h-8 w-8 text-navy-400" />
               </div>
-              <h2 className="font-serif text-2xl font-bold text-foreground mb-3">Blog Coming Soon</h2>
+              <h2 className="font-sans text-2xl font-bold text-foreground mb-3">Blog Coming Soon</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
                 Inspiring articles and devotionals are being prepared. Check back soon for words of encouragement.
               </p>

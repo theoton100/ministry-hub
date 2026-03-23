@@ -1,6 +1,6 @@
 import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
-import { PASTOR_PHOTO, ABOUT_BG, MINISTRY_NAME } from "@/lib/constants";
+import { MINISTRY_NAME } from "@/lib/constants";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
 import { Link } from "wouter";
 import { Heart, BookOpen, Users, Globe, ArrowRight } from "lucide-react";
@@ -10,16 +10,14 @@ export default function About() {
   return (
     <PublicLayout>
       {/* Hero */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${ABOUT_BG})` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/70 to-navy-900/50" />
-        <div className="container relative z-10">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
+      <section className="bg-navy-900 text-white py-20 md:py-28">
+        <div className="container text-center max-w-3xl mx-auto">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">About</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Meet Pastor {MINISTRY_NAME}
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-white/60 text-lg leading-relaxed">
               A servant of God, called to bring hope, faith, and transformation to every heart through the power of the Gospel.
             </p>
           </motion.div>
@@ -28,41 +26,29 @@ export default function About() {
 
       {/* Bio Section */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <div className="relative">
-                <div className="rounded-xl overflow-hidden shadow-2xl">
-                  <img src={PASTOR_PHOTO} alt={`Pastor ${MINISTRY_NAME}`} className="w-full aspect-[3/4] object-cover" />
-                </div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-teal-500/10 rounded-xl -z-10" />
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-navy-200/30 rounded-xl -z-10" />
-              </div>
-            </motion.div>
-
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.2)} className="space-y-6">
-              <div>
-                <p className="text-teal-500 font-semibold tracking-widest uppercase text-xs mb-3">Our Pastor</p>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Theophilus Solomon</h2>
-              </div>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Pastor Theophilus Solomon is a devoted Christian leader originally from Kogi State, Nigeria, now serving faithfully in Ghana. With a heart ablaze for God and a deep love for His people, Pastor Theo leads a growing church community dedicated to worship, the Word, and service.
-                </p>
-                <p>
-                  Beyond the pulpit, Pastor Theo brings a unique blend of technology and ministry together. As a skilled technologist and educator, he builds digital platforms that extend the reach of the Gospel, making the Word of God accessible to believers wherever they are.
-                </p>
-                <p>
-                  His preaching style blends the warmth and encouragement of uplifting storytelling with the bold, scripturally grounded authority of sound doctrine. Every message is designed to inspire faith, ignite hope, and equip believers for victorious living.
-                </p>
-              </div>
-              <Link href="/watch">
-                <Button className="gap-2 mt-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold tracking-wider text-xs uppercase">
-                  Watch a Sermon <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
+        <div className="container max-w-3xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="space-y-6">
+            <div>
+              <p className="text-teal-500 font-semibold tracking-widest uppercase text-xs mb-3">Our Pastor</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Theophilus Solomon</h2>
+            </div>
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
+              <p>
+                Pastor Theophilus Solomon is a devoted Christian leader originally from Kogi State, Nigeria, now serving faithfully in Ghana. With a heart ablaze for God and a deep love for His people, Pastor Theo leads a growing church community dedicated to worship, the Word, and service.
+              </p>
+              <p>
+                Beyond the pulpit, Pastor Theo brings a unique blend of technology and ministry together. As a skilled technologist and educator, he builds digital platforms that extend the reach of the Gospel, making the Word of God accessible to believers wherever they are.
+              </p>
+              <p>
+                His preaching style blends the warmth and encouragement of uplifting storytelling with the bold, scripturally grounded authority of sound doctrine. Every message is designed to inspire faith, ignite hope, and equip believers for victorious living.
+              </p>
+            </div>
+            <Link href="/watch">
+              <Button className="gap-2 mt-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold tracking-wider text-xs uppercase">
+                Watch a Sermon <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -71,7 +57,7 @@ export default function About() {
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
             <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Our Vision</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold">What We Believe</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">What We Believe</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -88,7 +74,7 @@ export default function About() {
                   <item.icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-semibold mb-2">{item.title}</h3>
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>

@@ -18,7 +18,7 @@ export default function AdminOverview() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-serif text-2xl md:text-3xl font-bold">Ministry Dashboard</h1>
+        <h1 className="font-sans text-2xl md:text-3xl font-bold">Ministry Dashboard</h1>
         <p className="text-muted-foreground mt-1">Manage your blog, sermons, and podcast episodes.</p>
       </div>
 
@@ -43,7 +43,7 @@ export default function AdminOverview() {
 
       {/* Quick Actions */}
       <div>
-        <h2 className="font-serif text-xl font-semibold mb-4">Quick Actions</h2>
+        <h2 className="font-sans text-xl font-semibold mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Link href="/admin/blog/new">
             <Button variant="outline" className="w-full justify-start gap-3 h-14 text-left">

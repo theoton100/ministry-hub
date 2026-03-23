@@ -38,7 +38,7 @@ export default function Newsletter() {
         <div className="container text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Newsletter</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Stay Inspired</h1>
+            <h1 className="font-sans text-4xl md:text-5xl font-bold mb-4">Stay Inspired</h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Receive weekly devotionals, sermon highlights, and words of encouragement delivered straight to your inbox.
             </p>
@@ -55,7 +55,7 @@ export default function Newsletter() {
                   <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto">
                     <CheckCircle className="h-10 w-10 text-green-600" />
                   </div>
-                  <h2 className="font-serif text-2xl font-bold">Welcome to the Family!</h2>
+                  <h2 className="font-sans text-2xl font-bold">Welcome to the Family!</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     Thank you for subscribing. You will receive our next newsletter with inspiring content to strengthen your faith. God bless you abundantly!
                   </p>
@@ -68,7 +68,7 @@ export default function Newsletter() {
                     <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
                       <Mail className="h-8 w-8 text-teal-500" />
                     </div>
-                    <h2 className="font-serif text-2xl font-bold">Sign Up for Inspiration</h2>
+                    <h2 className="font-sans text-2xl font-bold">Sign Up for Inspiration</h2>
                     <p className="text-muted-foreground text-sm mt-2">Join our community and never miss a word of encouragement.</p>
                   </div>
 
@@ -105,7 +105,7 @@ export default function Newsletter() {
       <section className="py-16 md:py-20 bg-navy-900 text-white">
         <div className="container max-w-4xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <h2 className="font-serif text-2xl md:text-3xl font-bold">What You'll Receive</h2>
+            <h2 className="font-sans text-2xl md:text-3xl font-bold">What You'll Receive</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -117,7 +117,7 @@ export default function Newsletter() {
                 <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center mx-auto`}>
                   <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-serif text-lg font-semibold">{item.title}</h3>
+                <h3 className="font-sans text-lg font-semibold">{item.title}</h3>
                 <p className="text-white/60 text-sm">{item.desc}</p>
               </div>
             ))}

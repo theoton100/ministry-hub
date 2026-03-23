@@ -80,7 +80,7 @@ export default function AdminPodcasts() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-serif text-2xl font-bold">Podcast Episodes</h1>
+          <h1 className="font-sans text-2xl font-bold">Podcast Episodes</h1>
           <p className="text-muted-foreground text-sm mt-1">Add and manage your Spotify podcast episodes.</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={(open) => { if (!open) resetForm(); else setDialogOpen(true); }}>
@@ -89,7 +89,7 @@ export default function AdminPodcasts() {
           </DialogTrigger>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>
-              <DialogTitle className="font-serif">{editingId ? "Edit Episode" : "Add New Episode"}</DialogTitle>
+              <DialogTitle className="font-sans">{editingId ? "Edit Episode" : "Add New Episode"}</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 mt-2">
               <div className="space-y-2">
@@ -167,7 +167,7 @@ export default function AdminPodcasts() {
       ) : (
         <div className="text-center py-16">
           <Headphones className="h-16 w-16 text-muted-foreground/20 mx-auto mb-4" />
-          <h3 className="font-serif text-xl font-semibold mb-2">No Episodes Yet</h3>
+          <h3 className="font-sans text-xl font-semibold mb-2">No Episodes Yet</h3>
           <p className="text-muted-foreground mb-6">Add your first Spotify podcast episode to share with your listeners.</p>
         </div>
       )}

@@ -53,3 +53,12 @@
 - [x] Update all pages (Watch, Listen, Blog, About, Newsletter) with new dark theme
 - [x] Add Instagram/social media embed section on homepage
 - [x] Update admin dashboard to match new branding
+
+## Full Rebuild - Pastor Theo Feedback
+- [x] Change font to Open Sans only (remove Playfair Display / all serif fonts)
+- [x] Upload torch logos (light + dark) to CDN
+- [x] Use torch logos in navbar and footer (light for dark bg, dark for light bg)
+- [x] Remove ALL pastor photos and generated images from the site
+- [x] Rebuild homepage: clean layout with buttons linking to each page (Watch, Listen, Blog, About, Newsletter)
+- [x] Ensure every menu item has its own dedicated page
+- [x] Update all pages to use Open Sans only

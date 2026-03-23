@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { MINISTRY_NAME, LOGO } from "@/lib/constants";
+import { MINISTRY_NAME, LOGO_LIGHT } from "@/lib/constants";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 const navLinks = [
@@ -24,8 +24,8 @@ export default function Navbar() {
       <nav className="container flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <img src={LOGO} alt={MINISTRY_NAME} className="w-8 h-8 rounded-full object-cover" />
-          <span className="font-serif font-bold text-base md:text-lg tracking-wide text-white">
+          <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
+          <span className="font-bold text-base md:text-lg tracking-wide text-white">
             {MINISTRY_NAME}
           </span>
         </Link>
@@ -75,8 +75,8 @@ export default function Navbar() {
             <div className="flex flex-col h-full">
               <div className="p-6 border-b border-navy-800">
                 <div className="flex items-center gap-2.5">
-                  <img src={LOGO} alt={MINISTRY_NAME} className="w-8 h-8 rounded-full object-cover" />
-                  <span className="font-serif font-bold text-lg text-white">{MINISTRY_NAME}</span>
+                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-7 h-10 object-contain" />
+                  <span className="font-bold text-lg text-white">{MINISTRY_NAME}</span>
                 </div>
               </div>
               <div className="flex-1 py-4">

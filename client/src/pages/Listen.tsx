@@ -15,7 +15,7 @@ export default function Listen() {
         <div className="container text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Listen</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Podcast Episodes</h1>
+            <h1 className="font-sans text-4xl md:text-5xl font-bold mb-4">Podcast Episodes</h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Take the ministry with you wherever you go. Listen to powerful messages, devotionals, and teachings on Spotify.
             </p>
@@ -42,7 +42,7 @@ export default function Listen() {
                           <Music className="h-6 w-6 text-green-600" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-serif text-lg font-semibold">{ep.title}</h3>
+                          <h3 className="font-sans text-lg font-semibold">{ep.title}</h3>
                           {ep.description && <p className="text-muted-foreground text-sm mt-1 line-clamp-2">{ep.description}</p>}
                           <p className="text-xs text-muted-foreground/60 mt-2 tracking-wider uppercase">
                             {new Date(ep.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
@@ -76,7 +76,7 @@ export default function Listen() {
               <div className="w-20 h-20 rounded-full bg-navy-100 flex items-center justify-center mx-auto mb-6">
                 <Headphones className="h-8 w-8 text-navy-400" />
               </div>
-              <h2 className="font-serif text-2xl font-bold text-foreground mb-3">Podcast Coming Soon</h2>
+              <h2 className="font-sans text-2xl font-bold text-foreground mb-3">Podcast Coming Soon</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
                 We are preparing inspiring podcast episodes for you. Stay tuned for powerful messages you can listen to on the go.
               </p>

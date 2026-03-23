@@ -129,7 +129,7 @@ export default function AdminBlogEditor() {
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <div>
-            <h1 className="font-serif text-2xl font-bold">{isEditing ? "Edit Post" : "New Blog Post"}</h1>
+            <h1 className="font-sans text-2xl font-bold">{isEditing ? "Edit Post" : "New Blog Post"}</h1>
             <p className="text-muted-foreground text-sm mt-0.5">
               {isEditing ? "Update your blog article." : "Write a new article for your ministry blog."}
             </p>
@@ -156,7 +156,7 @@ export default function AdminBlogEditor() {
             placeholder="Enter your blog post title..."
             value={title}
             onChange={(e) => handleTitleChange(e.target.value)}
-            className="text-lg font-serif"
+            className="text-lg font-sans"
           />
         </div>
 
