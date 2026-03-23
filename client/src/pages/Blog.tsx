@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
-import { BookOpen, ArrowRight, Calendar } from "lucide-react";
+import { BookOpen, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -20,12 +20,12 @@ export default function Blog() {
 
   return (
     <PublicLayout>
-      <section className="bg-gradient-to-b from-foreground to-foreground/90 text-background py-20 md:py-28">
+      <section className="bg-navy-900 text-white py-20 md:py-28">
         <div className="container text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Blog</p>
+            <p className="text-teal-400 font-semibold tracking-widest uppercase text-xs mb-3">Blog</p>
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Words of Encouragement</h1>
-            <p className="text-background/60 text-lg max-w-2xl mx-auto">
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Devotional articles, reflections, and teachings to strengthen your faith and inspire your walk with God.
             </p>
           </motion.div>
@@ -46,24 +46,25 @@ export default function Blog() {
                 {data.posts.map((post, i) => (
                   <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.06)}>
                     <Link href={`/blog/${post.slug}`}>
-                      <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-border/50 cursor-pointer h-full">
+                      <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md cursor-pointer h-full bg-card">
                         {post.featuredImageUrl ? (
                           <div className="aspect-[16/10] overflow-hidden">
                             <img src={post.featuredImageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                           </div>
                         ) : (
-                          <div className="aspect-[16/10] bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                            <BookOpen className="h-12 w-12 text-primary/30" />
+                          <div className="aspect-[16/10] bg-navy-100 flex items-center justify-center">
+                            <BookOpen className="h-12 w-12 text-navy-300" />
                           </div>
                         )}
-                        <CardContent className="p-6 space-y-3">
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <Calendar className="h-3.5 w-3.5" />
+                        <CardContent className="p-5 space-y-2">
+                          <p className="text-xs text-muted-foreground tracking-wider uppercase">
                             {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : ""}
-                          </div>
-                          <h3 className="font-serif text-lg font-semibold group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                          </p>
+                          <h3 className="font-serif text-lg font-bold group-hover:text-teal-500 transition-colors line-clamp-2">{post.title}</h3>
                           {post.excerpt && <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>}
-                          <span className="inline-flex items-center gap-1 text-primary text-sm font-medium">Read More <ArrowRight className="h-3.5 w-3.5" /></span>
+                          <span className="inline-flex items-center gap-1 text-teal-500 text-xs font-semibold tracking-wider uppercase pt-1">
+                            Read More <ArrowRight className="h-3.5 w-3.5" />
+                          </span>
                         </CardContent>
                       </Card>
                     </Link>
@@ -72,15 +73,17 @@ export default function Blog() {
               </div>
               {totalPages > 1 && (
                 <div className="flex items-center justify-center gap-2 mt-12">
-                  <Button variant="outline" size="sm" disabled={page === 0} onClick={() => setPage(p => p - 1)}>Previous</Button>
+                  <Button variant="outline" size="sm" disabled={page === 0} onClick={() => setPage(p => p - 1)} className="text-xs font-semibold tracking-wider uppercase">Previous</Button>
                   <span className="text-sm text-muted-foreground px-4">Page {page + 1} of {totalPages}</span>
-                  <Button variant="outline" size="sm" disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)}>Next</Button>
+                  <Button variant="outline" size="sm" disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)} className="text-xs font-semibold tracking-wider uppercase">Next</Button>
                 </div>
               )}
             </>
           ) : (
             <div className="text-center py-20">
-              <BookOpen className="h-20 w-20 text-muted-foreground/20 mx-auto mb-6" />
+              <div className="w-20 h-20 rounded-full bg-navy-100 flex items-center justify-center mx-auto mb-6">
+                <BookOpen className="h-8 w-8 text-navy-400" />
+              </div>
               <h2 className="font-serif text-2xl font-bold text-foreground mb-3">Blog Coming Soon</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
                 Inspiring articles and devotionals are being prepared. Check back soon for words of encouragement.
