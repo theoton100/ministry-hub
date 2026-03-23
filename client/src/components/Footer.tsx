@@ -1,5 +1,22 @@
 import { Link } from "wouter";
-import { MINISTRY_NAME, LOGO_LIGHT } from "@/lib/constants";
+import { MINISTRY_NAME, LOGO_LIGHT, SPOTIFY_SHOW_ID } from "@/lib/constants";
+
+type FooterLink = { href: string; label: string; external?: boolean };
+
+function FooterLink({ link }: { link: FooterLink }) {
+  if (link.external) {
+    return (
+      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/40 text-xs hover:text-white transition-colors w-fit">
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} className="text-white/40 text-xs hover:text-white transition-colors w-fit">
+      {link.label}
+    </Link>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,13 +40,11 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="font-bold text-xs tracking-wider uppercase text-white/60">Watch</h4>
             <div className="flex flex-col gap-2">
-              {[
+              {([
                 { href: "/watch", label: "Latest Sermons" },
                 { href: "/watch", label: "Sermon Archive" },
-              ].map((link) => (
-                <Link key={link.label} href={link.href} className="text-white/40 text-xs hover:text-white transition-colors w-fit">
-                  {link.label}
-                </Link>
+              ] as FooterLink[]).map((link) => (
+                <FooterLink key={link.label} link={link} />
               ))}
             </div>
           </div>
@@ -38,15 +53,14 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="font-bold text-xs tracking-wider uppercase text-white/60">Connect</h4>
             <div className="flex flex-col gap-2">
-              {[
+              {([
                 { href: "/listen", label: "Podcast" },
+                { href: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`, label: "Spotify", external: true },
                 { href: "/blog", label: "Blog" },
                 { href: "/newsletter", label: "Newsletter" },
                 { href: "/about", label: "About" },
-              ].map((link) => (
-                <Link key={link.label} href={link.href} className="text-white/40 text-xs hover:text-white transition-colors w-fit">
-                  {link.label}
-                </Link>
+              ] as FooterLink[]).map((link) => (
+                <FooterLink key={link.label} link={link} />
               ))}
             </div>
           </div>

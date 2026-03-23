@@ -75,3 +75,7 @@
 - [x] Redesign footer: clean multi-column like NASA
 - [x] Update all pages (Watch, Listen, Blog, About, Newsletter) with new design
 - [x] Update admin dashboard sidebar to match new brand colors
+
+## Spotify Integration
+- [x] Embed Pastor Theo's Spotify show (06RqL9JBCkhSPxAumdfY5l) on the Podcast page
+- [x] Add Spotify show link to homepage and footer
