@@ -1,6 +1,6 @@
 import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
-import { MINISTRY_NAME, MINISTRY_TAGLINE, MINISTRY_DESCRIPTION } from "@/lib/constants";
+import { MINISTRY_NAME, MINISTRY_TAGLINE, MINISTRY_DESCRIPTION, HERO_IMAGE } from "@/lib/constants";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
 import { Link } from "wouter";
 import { Video, Headphones, BookOpen, User, Mail, ArrowRight } from "lucide-react";
@@ -67,8 +67,13 @@ export default function Home() {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="bg-navy-900 text-white py-24 md:py-36">
-        <div className="container text-center">
+      <section className="relative text-white py-24 md:py-36 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-navy-950/70" />
+        </div>
+        <div className="container text-center relative z-10">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               {MINISTRY_TAGLINE}

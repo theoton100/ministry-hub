@@ -62,3 +62,6 @@
 - [x] Rebuild homepage: clean layout with buttons linking to each page (Watch, Listen, Blog, About, Newsletter)
 - [x] Ensure every menu item has its own dedicated page
 - [x] Update all pages to use Open Sans only
+
+## Hero Image Update
+- [x] Add Pastor Theo's preaching photo as hero section background image
