@@ -122,7 +122,8 @@ export const appRouter = router({
       }),
 
     featured: publicProcedure.query(async () => {
-      return db.getFeaturedSermon();
+      const sermon = await db.getFeaturedSermon();
+      return sermon ?? null;
     }),
 
     listAll: adminProcedure.query(async () => {

@@ -40,3 +40,6 @@
 - [x] Update website with real pastor photo on About page
 - [x] Update website logo/branding with real logo
 - [x] Add real photos throughout the site (homepage, about, etc.)
+
+## Bug Fixes
+- [x] Fix sermon.featured query returning undefined when no sermons exist (causes TanStack Query error)
