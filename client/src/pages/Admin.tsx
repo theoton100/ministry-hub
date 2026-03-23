@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, Router } from "wouter";
 import AdminBlogList from "./admin/AdminBlogList";
 import AdminBlogEditor from "./admin/AdminBlogEditor";
 import AdminSermons from "./admin/AdminSermons";
@@ -10,8 +10,9 @@ import AdminOverview from "./admin/AdminOverview";
 
 export default function Admin() {
   return (
-    <DashboardLayout>
-      <Switch>
+    <Router base="/admin">
+      <DashboardLayout>
+        <Switch>
         <Route path="/" component={AdminOverview} />
         <Route path="/blog/new" component={AdminBlogEditor} />
         <Route path="/blog/edit/:id" component={AdminBlogEditor} />
@@ -22,6 +23,7 @@ export default function Admin() {
         <Route path="/orders" component={AdminOrders} />
         <Route component={AdminOverview} />
       </Switch>
-    </DashboardLayout>
+      </DashboardLayout>
+    </Router>
   );
 }
