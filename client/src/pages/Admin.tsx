@@ -1,5 +1,5 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import { Route, Switch, useLocation, Router } from "wouter";
+import { Route, Switch } from "wouter";
 import AdminBlogList from "./admin/AdminBlogList";
 import AdminBlogEditor from "./admin/AdminBlogEditor";
 import AdminSermons from "./admin/AdminSermons";
@@ -10,20 +10,18 @@ import AdminOverview from "./admin/AdminOverview";
 
 export default function Admin() {
   return (
-    <Router base="/admin">
-      <DashboardLayout>
-        <Switch>
-        <Route path="/" component={AdminOverview} />
-        <Route path="/blog/new" component={AdminBlogEditor} />
-        <Route path="/blog/edit/:id" component={AdminBlogEditor} />
-        <Route path="/blog" component={AdminBlogList} />
-        <Route path="/sermons" component={AdminSermons} />
-        <Route path="/podcasts" component={AdminPodcasts} />
-        <Route path="/books" component={AdminBooks} />
-        <Route path="/orders" component={AdminOrders} />
+    <DashboardLayout>
+      <Switch>
+        <Route path="/admin" component={AdminOverview} />
+        <Route path="/admin/blog/new" component={AdminBlogEditor} />
+        <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
+        <Route path="/admin/blog" component={AdminBlogList} />
+        <Route path="/admin/sermons" component={AdminSermons} />
+        <Route path="/admin/podcasts" component={AdminPodcasts} />
+        <Route path="/admin/books" component={AdminBooks} />
+        <Route path="/admin/orders" component={AdminOrders} />
         <Route component={AdminOverview} />
       </Switch>
-      </DashboardLayout>
-    </Router>
+    </DashboardLayout>
   );
 }
