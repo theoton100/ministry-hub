@@ -11,9 +11,9 @@ export default function AdminGuard() {
 
   useEffect(() => {
     if (!isLoading && data && !data.authenticated) {
-      navigate("/admin/login", { replace: true });
+      window.location.href = "/admin/login";
     }
-  }, [data, isLoading, navigate]);
+  }, [data, isLoading]);
 
   if (isLoading) {
     return (
@@ -24,7 +24,11 @@ export default function AdminGuard() {
   }
 
   if (!data?.authenticated) {
-    return null;
+    return (
+      <div className="min-h-screen bg-[#0b0b0b] flex items-center justify-center">
+        <div className="text-white/40 text-sm">Redirecting to login...</div>
+      </div>
+    );
   }
 
   return (
