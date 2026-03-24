@@ -14,8 +14,6 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    // Load env variables from .env / .env.test for integration-style tests.
-    setupFiles: "dotenv/config",
     include: ["server/**/*.test.ts", "server/**/*.spec.ts"],
   },
 });
