@@ -150,3 +150,10 @@
 
 ## Apple Pay Integration (Paystack)
 - [x] Add Apple merchant ID domain association file to .well-known directory
+
+## Theme Update - Dark to Light Mode
+- [x] Extract color palette from Corporate Excellence Awards reference image
+- [x] Update CSS variables in index.css to use light mode colors (teal, orange, white, light gray)
+- [x] Change theme provider default from dark to light in App.tsx
+- [x] Add Apple merchant ID domain association file for Paystack Apple Pay
+- [x] All 38 tests passing
