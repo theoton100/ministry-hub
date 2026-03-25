@@ -66,7 +66,7 @@ export default function PaymentVerify() {
                   </Button>
                 </Link>
                 <Link href="/store">
-                  <Button variant="outline" className="border-black/20 text-black hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                     Browse More Books
                   </Button>
                 </Link>
@@ -90,7 +90,7 @@ export default function PaymentVerify() {
                   </Button>
                 </Link>
                 <Link href="/give">
-                  <Button variant="outline" className="border-black/20 text-black hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                     Try Again
                   </Button>
                 </Link>

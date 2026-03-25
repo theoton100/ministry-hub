@@ -57,11 +57,10 @@ export default function Blog() {
               {totalPages > 1 && (
                 <div className="flex items-center justify-center gap-3 mt-10">
                   <Button
-                    variant="outline"
                     size="sm"
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
                     disabled={page === 0}
-                    className="text-xs font-bold border-black/20 text-black hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold rounded-sm"
                   >
                     Previous
                   </Button>
@@ -69,11 +68,10 @@ export default function Blog() {
                     Page {page + 1} of {totalPages}
                   </span>
                   <Button
-                    variant="outline"
                     size="sm"
                     onClick={() => setPage((p) => p + 1)}
                     disabled={page >= totalPages - 1}
-                    className="text-xs font-bold border-black/20 text-black hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold rounded-sm"
                   >
                     Next
                   </Button>

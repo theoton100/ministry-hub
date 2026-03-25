@@ -49,7 +49,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                   Learn More
                 </Button>
               </Link>
