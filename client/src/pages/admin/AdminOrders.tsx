@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { DollarSign } from "lucide-react";
 
 function formatPrice(cents: number) {
-  return `$${(cents / 100).toFixed(2)}`;
+  return `₵${(cents / 100).toFixed(2)}`;
 }
 
 export default function AdminOrders() {
@@ -62,7 +62,7 @@ export default function AdminOrders() {
                     <span className={`text-xs px-1.5 py-0.5 rounded ${
                       order.status === "completed" ? "bg-green-100 text-green-700" :
                       order.status === "pending" ? "bg-yellow-100 text-yellow-700" :
-                      "bg-red-100 text-red-700"
+                      "bg-yellow-100 text-yellow-700"
                     }`}>
                       {order.status}
                     </span>

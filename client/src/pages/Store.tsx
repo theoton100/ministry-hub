@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Download } from "lucide-react";
 
 function formatPrice(cents: number) {
-  return `$${(cents / 100).toFixed(2)}`;
+  return `₵${(cents / 100).toFixed(2)}`;
 }
 
 export default function Store() {

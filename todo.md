@@ -150,3 +150,11 @@
 
 ## Apple Pay Integration (Paystack)
 - [x] Add Apple merchant ID domain association file to .well-known directory
+
+## Color & Currency Updates
+- [ ] Change all red (#FF0000, #DC143C, #E53935, etc.) to gold (#FFD700 or similar)
+- [ ] Update currency from USD to Ghana cedis (GHS) in Store page
+- [ ] Update currency from USD to Ghana cedis (GHS) in Give page
+- [ ] Update Paystack initialization to use GHS currency code
+- [ ] Update price displays to show GHS symbol (₵) instead of $ or USD
+- [ ] Test Store and Give pages with GHS prices

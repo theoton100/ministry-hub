@@ -481,7 +481,7 @@ export const appRouter = router({
           body: JSON.stringify({
             email: input.email,
             amount: input.amountInCents,
-            currency: "USD",
+            currency: "GHS",
             callback_url: input.callbackUrl,
             metadata: {
               type: "donation",
@@ -532,7 +532,7 @@ export const appRouter = router({
           body: JSON.stringify({
             email: input.email,
             amount: book.priceInCents,
-            currency: "USD",
+            currency: "GHS",
             callback_url: input.callbackUrl,
             metadata: {
               type: "book",

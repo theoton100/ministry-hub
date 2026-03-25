@@ -16,10 +16,10 @@ export default function AdminOverview() {
 
   const stats = [
     { icon: FileText, label: "Blog Posts", count: blogs?.length ?? 0, href: "/admin/blog", color: "bg-blue-50 text-blue-600" },
-    { icon: Video, label: "Sermons", count: sermons?.length ?? 0, href: "/admin/sermons", color: "bg-red-50 text-red-600" },
+    { icon: Video, label: "Sermons", count: sermons?.length ?? 0, href: "/admin/sermons", color: "bg-yellow-50 text-yellow-600" },
     { icon: Headphones, label: "Podcasts", count: podcasts?.length ?? 0, href: "/admin/podcasts", color: "bg-purple-50 text-purple-600" },
     { icon: BookOpen, label: "Books", count: books?.length ?? 0, href: "/admin/books", color: "bg-orange-50 text-orange-600" },
-    { icon: DollarSign, label: "Orders", count: completedOrders.length, href: "/admin/orders", color: "bg-green-50 text-green-600", subtitle: `$${(totalRevenue / 100).toFixed(2)} revenue` },
+    { icon: DollarSign, label: "Orders", count: completedOrders.length, href: "/admin/orders", color: "bg-green-50 text-green-600", subtitle: `₵${(totalRevenue / 100).toFixed(2)} revenue` },
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function AdminOverview() {
           </Link>
           <Link href="/admin/sermons">
             <Button variant="outline" className="w-full justify-start gap-3 h-14 text-left">
-              <Plus className="h-5 w-5 text-red-600" />
+              <Plus className="h-5 w-5 text-yellow-600" />
               <span>Add New Sermon</span>
             </Button>
           </Link>

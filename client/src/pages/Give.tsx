@@ -10,7 +10,7 @@ import { toast } from "sonner";
 const PRESET_AMOUNTS = [1000, 2500, 5000, 10000, 25000]; // in cents
 
 function formatPrice(cents: number) {
-  return `$${(cents / 100).toFixed(2)}`;
+  return `₵${(cents / 100).toFixed(2)}`;
 }
 
 export default function Give() {
@@ -41,7 +41,7 @@ export default function Give() {
     e.preventDefault();
     const amountInCents = getAmountInCents();
     if (amountInCents < 100) {
-      toast.error("Minimum donation is $1.00");
+      toast.error("Minimum donation is ₵1.00");
       return;
     }
     if (!email) return;

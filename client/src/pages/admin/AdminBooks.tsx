@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 function formatPrice(cents: number) {
-  return `$${(cents / 100).toFixed(2)}`;
+  return `₵${(cents / 100).toFixed(2)}`;
 }
 
 export default function AdminBooks() {
@@ -186,9 +186,9 @@ export default function AdminBooks() {
                 <Textarea placeholder="Brief description of the book..." value={description} onChange={(e) => setDescription(e.target.value)} rows={3} />
               </div>
               <div className="space-y-2">
-                <Label>Price (USD)</Label>
+                <Label>Price (GHS)</Label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">$</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">₵</span>
                   <Input
                     type="number"
                     min="0"
@@ -232,7 +232,7 @@ export default function AdminBooks() {
                 <p className="text-xs text-muted-foreground">Upload the PDF that customers will download after payment.</p>
                 {pdfFileName && (
                   <div className="flex items-center gap-2 p-2 bg-muted rounded text-sm">
-                    <FileText className="h-4 w-4 text-red-500 shrink-0" />
+                    <FileText className="h-4 w-4 text-yellow-600 shrink-0" />
                     <span className="truncate">{pdfFileName}</span>
                   </div>
                 )}
