@@ -113,7 +113,7 @@ export default function Give() {
 
             {/* Custom Amount */}
             <motion.div initial="hidden" animate="visible" variants={fadeUpDelay(0.15)}>
-              <label className="text-white/60 text-xs font-semibold block mb-1.5">Or Enter a Custom Amount (USD)</label>
+              <label className="text-white/60 text-xs font-semibold block mb-1.5">Or Enter a Custom Amount (₵)</label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-sm font-bold">₵</span>
                 <Input
