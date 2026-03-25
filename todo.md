@@ -139,6 +139,3 @@
 - [x] Add getDownloadUrl procedure that verifies payment before allowing download
 - [x] Write vitest tests for PDF upload and download features (4 new tests)
 - [x] All 38 tests passing
-
-## Bug Fixes - Round 4
-- [x] Fix blog post creation returning 404 (switched Admin.tsx to relative paths for nested routing)
