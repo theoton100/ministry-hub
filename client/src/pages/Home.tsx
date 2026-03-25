@@ -1,3 +1,4 @@
+import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
 import { MINISTRY_TAGLINE, MINISTRY_DESCRIPTION, HERO_IMAGE } from "@/lib/constants";
 import { fadeUp, fadeUpDelay } from "@/lib/animations";
@@ -7,8 +8,6 @@ import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
-import { BookOpen, Headphones, Heart, Users, MessageSquare, Info } from "lucide-react";
-import PublicLayout from "@/components/PublicLayout";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -27,231 +26,150 @@ export default function Home() {
     subscribe.mutate({ email });
   };
 
-  const services = [
-    { title: "Watch", desc: "Sermons & Messages", href: "/watch", icon: BookOpen },
-    { title: "Listen", desc: "Podcast Episodes", href: "/listen", icon: Headphones },
-    { title: "Give", desc: "Support Ministry", href: "/give", icon: Heart },
-    { title: "Community", desc: "Connect & Grow", href: "/about", icon: Users },
-    { title: "Blog", desc: "Articles & Devotionals", href: "/blog", icon: MessageSquare },
-    { title: "Store", desc: "Resources & Books", href: "/store", icon: BookOpen },
-  ];
-
   return (
     <PublicLayout>
-      {/* Hero Section — Professional with image overlay */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-white">
+      {/* Hero — full bleed with image */}
+      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="Pastor T.I. Solomon" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a42] via-[#1a3a42]/70 to-transparent" />
+          <img src={HERO_IMAGE} alt="Pastor T.I. Solomon preaching" className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#318f9e] via-[#318f9e]/60 to-transparent" />
         </div>
-        
-        <div className="container relative z-10">
-          <div className="max-w-2xl">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white mb-6 tracking-tight">
-                {MINISTRY_TAGLINE}
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-xl">
-                {MINISTRY_DESCRIPTION}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/watch">
-                  <Button className="bg-[#df5311] hover:bg-[#c44509] text-white font-bold text-base h-12 px-8 rounded-sm">
-                    Watch Sermons
-                  </Button>
-                </Link>
-                <Link href="/give">
-                  <Button className="bg-[#318f9e] hover:bg-[#2a7a8a] text-white font-bold text-base h-12 px-8 rounded-sm">
-                    Support Ministry
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-16 md:py-24 bg-white border-b border-gray-200">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3a42] mb-6 leading-tight">
-                About Our Ministry
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                T.I. Solomon Ministries is dedicated to bringing the Word of God to every heart through preaching, teaching, and community. We believe in faith, transformation, and serving God with all our hearts.
-              </p>
-              <div className="flex gap-6 mb-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-[#df5311] mb-2">Sermons</h3>
-                  <p className="text-gray-600">Powerful messages for spiritual growth</p>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-[#318f9e] mb-2">Community</h3>
-                  <p className="text-gray-600">Connect with believers worldwide</p>
-                </div>
-              </div>
+        <div className="container relative z-10 pb-14 pt-40">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-5">
+              {MINISTRY_TAGLINE}
+            </h1>
+            <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+              {MINISTRY_DESCRIPTION}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/watch">
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  Watch Now
+                </Button>
+              </Link>
               <Link href="/about">
-                <Button className="bg-[#df5311] hover:bg-[#c44509] text-white font-bold text-base h-12 px-8 rounded-sm">
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                   Learn More
                 </Button>
               </Link>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
-              <div className="bg-gradient-to-br from-[#318f9e]/10 to-[#df5311]/10 rounded-lg p-8 border border-[#318f9e]/20">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#df5311] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#1a3a42] mb-1">Faith-Driven</h4>
-                      <p className="text-sm text-gray-600">Grounded in biblical truth and God's love</p>
-                    </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Quick Nav Grid — NASA "topics" style */}
+      <section className="py-12 md:py-16 border-b border-black/10">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded overflow-hidden">
+            {[
+              { title: "Watch", desc: "Sermons & Messages", href: "/watch" },
+              { title: "Listen", desc: "Podcast Episodes", href: "/listen" },
+              { title: "Blog", desc: "Articles & Devotionals", href: "/blog" },
+              { title: "Books", desc: "Resources & Store", href: "/store" },
+              { title: "Give", desc: "Support the Ministry", href: "/give" },
+              { title: "About", desc: "Our Ministry", href: "/about" },
+            ].map((item, i) => (
+              <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
+                <Link href={item.href}>
+                  <div className="bg-white hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
+                    <h3 className="text-lg md:text-xl font-extrabold text-black mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
+                    <p className="text-black/40 text-sm">{item.desc}</p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#318f9e] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#1a3a42] mb-1">Community-Focused</h4>
-                      <p className="text-sm text-gray-600">Building meaningful connections</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#df5311] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#1a3a42] mb-1">Transformative</h4>
-                      <p className="text-sm text-gray-600">Empowering spiritual growth and change</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services/Features Grid */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      {/* Featured Content — editorial style */}
+      <section className="py-12 md:py-16 border-b border-black/10">
         <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3a42] mb-4">
-              Explore Our Resources
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Access sermons, podcasts, articles, and more to deepen your faith journey
-            </p>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="flex items-baseline justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-black">Latest from the Blog</h2>
+              <Link href="/blog" className="text-brand text-sm font-bold hover:underline hidden sm:block">
+                View All
+              </Link>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <motion.div key={service.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
-                  <Link href={service.href}>
-                    <div className="bg-white rounded-lg p-8 hover:shadow-lg transition-all duration-300 border border-gray-100 cursor-pointer group h-full flex flex-col">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#df5311] to-[#318f9e] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Icon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#1a3a42] mb-2 group-hover:text-[#df5311] transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm flex-grow">{service.desc}</p>
-                      <div className="mt-4 text-[#df5311] font-bold text-sm group-hover:translate-x-1 transition-transform">
-                        Explore →
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Blog Posts */}
-      {latestPosts.data?.posts && latestPosts.data.posts.length > 0 && (
-        <section className="py-16 md:py-24 bg-white border-t border-gray-200">
-          <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3a42] mb-4">
-                Latest Articles & Devotionals
-              </h2>
-              <p className="text-lg text-gray-600">
-                Stay inspired with our latest teachings and reflections
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
+          {latestPosts.data?.posts && latestPosts.data.posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {latestPosts.data.posts.map((post: any, i: number) => (
                 <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
                   <Link href={`/blog/${post.slug}`}>
-                    <article className="group cursor-pointer h-full flex flex-col">
+                    <article className="group cursor-pointer">
                       {post.featuredImage && (
-                        <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-gray-200">
+                        <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5">
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
-                      <div className="flex-grow">
-                        <p className="text-sm font-semibold text-[#318f9e] uppercase tracking-wider mb-3">
-                          {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                        </p>
-                        <h3 className="text-xl font-bold text-[#1a3a42] group-hover:text-[#df5311] transition-colors leading-snug mb-3 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
-                      </div>
-                      <div className="mt-4 text-[#df5311] font-bold text-sm group-hover:translate-x-1 transition-transform">
-                        Read More →
-                      </div>
+                      <p className="text-black/40 text-xs font-semibold uppercase tracking-wider mb-2">
+                        {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                      </p>
+                      <h3 className="text-lg font-bold text-black group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-black/50 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
                     </article>
                   </Link>
                 </motion.div>
               ))}
             </div>
-
-            <div className="text-center">
-              <Link href="/blog">
-                <Button className="bg-[#318f9e] hover:bg-[#2a7a8a] text-white font-bold text-base h-12 px-8 rounded-sm">
-                  View All Articles
-                </Button>
-              </Link>
+          ) : (
+            <div className="bg-white rounded p-8 text-center">
+              <p className="text-black/40 text-sm">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
             </div>
-          </div>
-        </section>
-      )}
+          )}
 
-      {/* Newsletter Signup */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-[#318f9e] to-[#2a7a8a]">
+          <Link href="/blog" className="text-brand text-sm font-bold hover:underline mt-6 block sm:hidden">
+            View All
+          </Link>
+        </div>
+      </section>
+
+      {/* Scripture Banner */}
+      <section className="py-14 md:py-20 border-b border-black/10">
+        <div className="container max-w-3xl mx-auto text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-snug text-black mb-6">
+              "For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future."
+            </blockquote>
+            <p className="text-brand font-bold text-sm">Jeremiah 29:11</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Newsletter — NASA "Explore the Universe" style */}
+      <section className="py-14 md:py-20">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-                Stay Connected
+              <h2 className="text-3xl md:text-4xl font-extrabold text-black leading-tight mb-4">
+                Get Inspired<br />Every Week
               </h2>
-              <p className="text-lg text-white/90 mb-8">
-                Subscribe to our newsletter for weekly sermons, devotionals, and ministry updates
+              <p className="text-black/50 text-sm leading-relaxed">
+                Subscribe to our newsletter for weekly sermons, devotionals, and encouragement delivered straight to your inbox.
               </p>
-              
-              <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md mx-auto">
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
+              <form onSubmit={handleSubscribe} className="space-y-3">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 rounded-sm bg-white text-[#1a3a42] placeholder:text-gray-400 border-0"
+                  className="bg-white/5 border-black/15 text-black placeholder:text-black/30 h-11 text-sm rounded-sm"
+                  required
                 />
                 <Button
                   type="submit"
+                  className="w-full bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 rounded-sm"
                   disabled={subscribe.isPending}
-                  className="bg-[#df5311] hover:bg-[#c44509] text-white font-bold text-base h-12 px-8 rounded-sm whitespace-nowrap"
                 >
-                  {subscribe.isPending ? "Subscribing..." : "Subscribe"}
+                  {subscribe.isPending ? "Subscribing..." : "Sign Up"}
                 </Button>
               </form>
             </motion.div>
