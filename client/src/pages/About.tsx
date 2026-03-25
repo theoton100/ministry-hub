@@ -57,7 +57,7 @@ export default function About() {
               { title: "Reaching the World", desc: "Through technology, media, and missions, we are committed to taking the Gospel beyond walls and borders — reaching every heart with the message of hope." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}
-                className="bg-white p-7 hover:bg-black/5 transition-colors"
+                className="bg-white p-7 hover:bg-white/5 transition-colors"
               >
                 <h3 className="text-lg font-extrabold text-black mb-2">{item.title}</h3>
                 <p className="text-black/40 text-sm leading-relaxed">{item.desc}</p>

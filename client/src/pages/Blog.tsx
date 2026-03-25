@@ -61,7 +61,7 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
                     disabled={page === 0}
-                    className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-black/20 text-black hover:bg-white/10 bg-transparent rounded-sm"
                   >
                     Previous
                   </Button>
@@ -73,7 +73,7 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => p + 1)}
                     disabled={page >= totalPages - 1}
-                    className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-black/20 text-black hover:bg-white/10 bg-transparent rounded-sm"
                   >
                     Next
                   </Button>

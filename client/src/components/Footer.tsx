@@ -6,13 +6,13 @@ type FooterLink = { href: string; label: string; external?: boolean };
 function FooterLink({ link }: { link: FooterLink }) {
   if (link.external) {
     return (
-      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-black/40 text-xs hover:text-black transition-colors w-fit">
+      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/60 text-xs hover:text-white transition-colors w-fit">
         {link.label}
       </a>
     );
   }
   return (
-    <Link href={link.href} className="text-black/40 text-xs hover:text-black transition-colors w-fit">
+    <Link href={link.href} className="text-white/60 text-xs hover:text-white transition-colors w-fit">
       {link.label}
     </Link>
   );
@@ -22,23 +22,23 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-black/10">
+    <footer className="bg-[#318f9e] border-t border-[#2a7a8a]">
       <div className="container py-10 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-3">
             <Link href="/admin" className="flex items-center gap-2 w-fit">
               <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-5 h-8 object-contain" />
-              <span className="font-extrabold text-sm text-black uppercase">{MINISTRY_NAME}</span>
+              <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
             </Link>
-            <p className="text-black/40 text-xs leading-relaxed max-w-xs">
+            <p className="text-white/60 text-xs leading-relaxed max-w-xs">
               Bringing the Word of God to every heart through preaching, teaching, and community.
             </p>
           </div>
 
           {/* Watch */}
           <div className="space-y-3">
-            <h4 className="font-bold text-xs tracking-wider uppercase text-black/60">Watch</h4>
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/70">Watch</h4>
             <div className="flex flex-col gap-2">
               {([
                 { href: "/watch", label: "Latest Sermons" },
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div className="space-y-3">
-            <h4 className="font-bold text-xs tracking-wider uppercase text-black/60">Connect</h4>
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/70">Connect</h4>
             <div className="flex flex-col gap-2">
               {([
                 { href: "/listen", label: "Podcast" },
@@ -69,8 +69,8 @@ export default function Footer() {
 
           {/* Subscribe */}
           <div className="space-y-3">
-            <h4 className="font-bold text-xs tracking-wider uppercase text-black/60">Stay Updated</h4>
-            <p className="text-black/40 text-xs">
+            <h4 className="font-bold text-xs tracking-wider uppercase text-white/70">Stay Updated</h4>
+            <p className="text-white/60 text-xs">
               Weekly inspiration and devotionals.
             </p>
             <Link href="/newsletter" className="inline-block text-brand text-xs font-bold hover:underline">
@@ -81,12 +81,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="border-t border-black/5">
+      <div className="border-t border-white/10">
         <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-black/25 text-[11px]">
+          <p className="text-white/40 text-[11px]">
             &copy; {currentYear} {MINISTRY_NAME} Ministries. All rights reserved.
           </p>
-          <p className="text-black/25 text-[11px]">
+          <p className="text-white/40 text-[11px]">
             Built with faith for the Kingdom of God
           </p>
         </div>

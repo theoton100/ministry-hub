@@ -102,7 +102,7 @@ export default function Give() {
                     className={`h-12 rounded-sm text-sm font-bold transition-all ${
                       selectedAmount === amount
                         ? "bg-brand text-black"
-                        : "bg-white/5 text-black/60 hover:bg-black/10 hover:text-black border border-black/10"
+                        : "bg-white/5 text-black/60 hover:bg-white/10 hover:text-black border border-black/10"
                     }`}
                   >
                     {formatPrice(amount)}

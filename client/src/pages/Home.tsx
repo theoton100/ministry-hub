@@ -32,7 +32,7 @@ export default function Home() {
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img src={HERO_IMAGE} alt="Pastor T.I. Solomon preaching" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#318f9e] via-[#318f9e]/60 to-transparent" />
         </div>
         <div className="container relative z-10 pb-14 pt-40">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
@@ -72,7 +72,7 @@ export default function Home() {
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
                 <Link href={item.href}>
-                  <div className="bg-white hover:bg-black/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
+                  <div className="bg-white hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
                     <h3 className="text-lg md:text-xl font-extrabold text-black mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
                     <p className="text-black/40 text-sm">{item.desc}</p>
                   </div>
