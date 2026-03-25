@@ -12,16 +12,14 @@ export default function Admin() {
   return (
     <DashboardLayout>
       <Switch>
-        {/* Specific routes first - these must come before catch-all patterns */}
         <Route path="/admin/blog/new" component={AdminBlogEditor} />
         <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
         <Route path="/admin/blog" component={AdminBlogList} />
+        <Route path="/admin" component={AdminOverview} />
         <Route path="/admin/sermons" component={AdminSermons} />
         <Route path="/admin/podcasts" component={AdminPodcasts} />
         <Route path="/admin/books" component={AdminBooks} />
         <Route path="/admin/orders" component={AdminOrders} />
-        <Route path="/admin" component={AdminOverview} />
-        {/* Fallback to overview */}
         <Route component={AdminOverview} />
       </Switch>
     </DashboardLayout>
