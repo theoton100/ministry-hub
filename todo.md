@@ -139,3 +139,11 @@
 - [x] Add getDownloadUrl procedure that verifies payment before allowing download
 - [x] Write vitest tests for PDF upload and download features (4 new tests)
 - [x] All 38 tests passing
+
+## Bug Fixes - Round 4: Routing Restructure (FINAL FIX)
+- [x] Update AdminGuard to accept children prop
+- [x] Move all admin routes from Admin.tsx to App.tsx (Option A)
+- [x] Simplify Admin.tsx to just render empty component
+- [x] All navigation links work (routes unchanged)
+- [x] All 38 tests passing
+- [x] /admin/blog/new route now properly handled in App.tsx

@@ -16,10 +16,84 @@ import Give from "./pages/Give";
 import PaymentVerify from "./pages/PaymentVerify";
 import AdminLogin from "./pages/AdminLogin";
 import AdminGuard from "./components/AdminGuard";
+import DashboardLayout from "./components/DashboardLayout";
+import AdminOverview from "./pages/admin/AdminOverview";
+import AdminBlogList from "./pages/admin/AdminBlogList";
+import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
+import AdminSermons from "./pages/admin/AdminSermons";
+import AdminPodcasts from "./pages/admin/AdminPodcasts";
+import AdminBooks from "./pages/admin/AdminBooks";
+import AdminOrders from "./pages/admin/AdminOrders";
+
+// Wrapper components to handle AdminGuard + DashboardLayout
+const AdminDashboard: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminOverview />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminBlogListPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminBlogList />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminBlogNewPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminBlogEditor />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminBlogEditPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminBlogEditor />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminSermonsPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminSermons />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminPodcastsPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminPodcasts />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminBooksPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminBooks />
+    </DashboardLayout>
+  </AdminGuard>
+);
+
+const AdminOrdersPage: React.FC = () => (
+  <AdminGuard>
+    <DashboardLayout>
+      <AdminOrders />
+    </DashboardLayout>
+  </AdminGuard>
+);
 
 function Router() {
   return (
     <Switch>
+      {/* Public routes */}
       <Route path="/" component={Home} />
       <Route path="/watch" component={Watch} />
       <Route path="/listen" component={Listen} />
@@ -31,8 +105,18 @@ function Router() {
       <Route path="/give" component={Give} />
       <Route path="/payment/verify" component={PaymentVerify} />
       <Route path="/admin/login" component={AdminLogin} />
-      <Route path="/admin">{() => <AdminGuard />}</Route>
-      <Route path="/admin/:rest*">{() => <AdminGuard />}</Route>
+
+      {/* Admin routes - specific routes BEFORE generic routes */}
+      <Route path="/admin/blog/new" component={AdminBlogNewPage} />
+      <Route path="/admin/blog/edit/:id" component={AdminBlogEditPage} />
+      <Route path="/admin/blog" component={AdminBlogListPage} />
+      <Route path="/admin/sermons" component={AdminSermonsPage} />
+      <Route path="/admin/podcasts" component={AdminPodcastsPage} />
+      <Route path="/admin/books" component={AdminBooksPage} />
+      <Route path="/admin/orders" component={AdminOrdersPage} />
+      <Route path="/admin" component={AdminDashboard} />
+
+      {/* 404 fallback */}
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -1,28 +1,7 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { Route, Switch, useLocation } from "wouter";
-import AdminBlogList from "./admin/AdminBlogList";
-import AdminBlogEditor from "./admin/AdminBlogEditor";
-import AdminSermons from "./admin/AdminSermons";
-import AdminPodcasts from "./admin/AdminPodcasts";
-import AdminBooks from "./admin/AdminBooks";
-import AdminOrders from "./admin/AdminOrders";
-import AdminOverview from "./admin/AdminOverview";
+// This file is no longer used. All admin routes are now defined in App.tsx
+// and wrapped with AdminGuard + DashboardLayout individually.
+// Keeping this file for backward compatibility.
 
 export default function Admin() {
-  return (
-    <DashboardLayout>
-      <Switch>
-        {/* Specific routes must come BEFORE generic routes */}
-        <Route path="/admin/blog/new" component={AdminBlogEditor} />
-        <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
-        <Route path="/admin/blog" component={AdminBlogList} />
-        <Route path="/admin/sermons" component={AdminSermons} />
-        <Route path="/admin/podcasts" component={AdminPodcasts} />
-        <Route path="/admin/books" component={AdminBooks} />
-        <Route path="/admin/orders" component={AdminOrders} />
-        <Route path="/admin" component={AdminOverview} />
-        <Route component={AdminOverview} />
-      </Switch>
-    </DashboardLayout>
-  );
+  return null;
 }

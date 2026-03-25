@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { lazy, Suspense } from "react";
 
-const Admin = lazy(() => import("@/pages/Admin"));
+interface AdminGuardProps {
+  children: ReactNode;
+}
 
-export default function AdminGuard() {
+export default function AdminGuard({ children }: AdminGuardProps) {
   const [, navigate] = useLocation();
   const { data, isLoading } = trpc.adminAuth.check.useQuery();
 
@@ -27,15 +28,5 @@ export default function AdminGuard() {
     return null;
   }
 
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-[#0b0b0b] flex items-center justify-center">
-          <div className="text-white/40 text-sm">Loading dashboard...</div>
-        </div>
-      }
-    >
-      <Admin />
-    </Suspense>
-  );
+  return <>{children}</>;
 }
