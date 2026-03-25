@@ -49,46 +49,41 @@
 
 :root {
   --radius: 0.25rem;
-  /* Light theme — Corporate Excellence Awards exact colors */
-  /* White: #FFFFFF */
-  --background: #ffffff;
-  --foreground: #1a3a3f;
-  --card: #ffffff;
-  --card-foreground: #1a3a3f;
-  --popover: #f5f7f8;
-  --popover-foreground: #1a3a3f;
-  /* Primary = Dark Teal #1B9FA8 */
-  --primary: #1b9fa8;
-  --primary-foreground: #ffffff;
-  /* Secondary = Light Gray #F5F7F8 */
-  --secondary: #f5f7f8;
-  --secondary-foreground: #1a3a3f;
-  --muted: #e8e8e8;
-  --muted-foreground: #666666;
-  /* Accent = Orange #E8651E */
-  --accent: #e8651e;
-  --accent-foreground: #ffffff;
-  --destructive: #e8651e;
-  --destructive-foreground: #ffffff;
-  /* Border = Light Gray */
-  --border: #e8e8e8;
-  --input: #f5f7f8;
-  /* Ring = Dark Teal */
-  --ring: #1b9fa8;
-  --chart-1: #e8651e;
-  --chart-2: #1b9fa8;
-  --chart-3: #1a3a3f;
-  --chart-4: #d4a574;
-  --chart-5: #666666;
-  /* Sidebar = Dark Teal */
-  --sidebar: #1a3a3f;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #e8651e;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f7f8;
-  --sidebar-accent-foreground: #1a3a3f;
-  --sidebar-border: #e8e8e8;
-  --sidebar-ring: #1b9fa8;
+  /* Dark theme by default — NASA-inspired */
+  --background: oklch(0.13 0.005 250);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.16 0.005 250);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.16 0.005 250);
+  --popover-foreground: oklch(0.97 0 0);
+  /* Primary = NASA red */
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(0.99 0 0);
+  /* Secondary = dark gray */
+  --secondary: oklch(0.22 0.005 250);
+  --secondary-foreground: oklch(0.90 0 0);
+  --muted: oklch(0.20 0.005 250);
+  --muted-foreground: oklch(0.60 0 0);
+  --accent: oklch(0.55 0.22 25);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.25 0.005 250);
+  --input: oklch(0.25 0.005 250);
+  --ring: oklch(0.55 0.22 25);
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.65 0.15 200);
+  --chart-3: oklch(0.70 0.10 140);
+  --chart-4: oklch(0.60 0.18 280);
+  --chart-5: oklch(0.75 0.12 60);
+  --sidebar: oklch(0.11 0.005 250);
+  --sidebar-foreground: oklch(0.90 0 0);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.18 0.005 250);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.22 0.005 250);
+  --sidebar-ring: oklch(0.55 0.22 25);
 }
 
 .dark {
