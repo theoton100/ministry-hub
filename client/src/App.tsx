@@ -31,8 +31,7 @@ function Router() {
       <Route path="/give" component={Give} />
       <Route path="/payment/verify" component={PaymentVerify} />
       <Route path="/admin/login" component={AdminLogin} />
-      <Route path="/admin">{() => <AdminGuard />}</Route>
-      <Route path="/admin/:rest*">{() => <AdminGuard />}</Route>
+      <Route path="/admin/:rest*" component={AdminGuard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
