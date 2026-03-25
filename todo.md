@@ -147,3 +147,6 @@
 - [x] All navigation links work (routes unchanged)
 - [x] All 38 tests passing
 - [x] /admin/blog/new route now properly handled in App.tsx
+
+## Apple Pay Integration (Paystack)
+- [x] Add Apple merchant ID domain association file to .well-known directory
