@@ -6,13 +6,13 @@ type FooterLink = { href: string; label: string; external?: boolean };
 function FooterLink({ link }: { link: FooterLink }) {
   if (link.external) {
     return (
-      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/60 text-xs hover:text-white transition-colors w-fit">
+      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/70 text-xs hover:text-white transition-colors w-fit">
         {link.label}
       </a>
     );
   }
   return (
-    <Link href={link.href} className="text-white/60 text-xs hover:text-white transition-colors w-fit">
+    <Link href={link.href} className="text-white/70 text-xs hover:text-white transition-colors w-fit">
       {link.label}
     </Link>
   );
@@ -31,7 +31,7 @@ export default function Footer() {
               <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-5 h-8 object-contain" />
               <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
             </Link>
-            <p className="text-white/60 text-xs leading-relaxed max-w-xs">
+            <p className="text-white/70 text-xs leading-relaxed max-w-xs">
               Bringing the Word of God to every heart through preaching, teaching, and community.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Footer() {
           {/* Subscribe */}
           <div className="space-y-3">
             <h4 className="font-bold text-xs tracking-wider uppercase text-white/70">Stay Updated</h4>
-            <p className="text-white/60 text-xs">
+            <p className="text-white/70 text-xs">
               Weekly inspiration and devotionals.
             </p>
             <Link href="/newsletter" className="inline-block text-brand text-xs font-bold hover:underline">
@@ -83,10 +83,10 @@ export default function Footer() {
       {/* Bottom */}
       <div className="border-t border-white/10">
         <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-white/40 text-[11px]">
+          <p className="text-white/50 text-[11px]">
             &copy; {currentYear} {MINISTRY_NAME} Ministries. All rights reserved.
           </p>
-          <p className="text-white/40 text-[11px]">
+          <p className="text-white/50 text-[11px]">
             Built with faith for the Kingdom of God
           </p>
         </div>
