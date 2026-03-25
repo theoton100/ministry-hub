@@ -8,11 +8,11 @@ export default function Listen() {
 
   return (
     <PublicLayout>
-      <section className="pt-10 pb-6 border-b border-black/10">
+      <section className="pt-10 pb-6 border-b border-white/10">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight mb-2">Podcast</h1>
-            <p className="text-black/40 text-sm">Today's Word with T.I. Solomon — be strengthened and encouraged by God's word.</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Podcast</h1>
+            <p className="text-white/40 text-sm">Today's Word with T.I. Solomon — be strengthened and encouraged by God's word.</p>
           </motion.div>
         </div>
       </section>
@@ -55,10 +55,10 @@ export default function Listen() {
                       />
                     </div>
                   ) : (
-                    <div className="border border-black/10 rounded p-5">
-                      <h3 className="text-black font-bold text-lg">{episode.title}</h3>
+                    <div className="border border-white/10 rounded p-5">
+                      <h3 className="text-white font-bold text-lg">{episode.title}</h3>
                       {episode.description && (
-                        <p className="text-black/40 text-sm mt-2">{episode.description}</p>
+                        <p className="text-white/40 text-sm mt-2">{episode.description}</p>
                       )}
                     </div>
                   )}
@@ -67,8 +67,8 @@ export default function Listen() {
             </div>
           ) : (
             <div className="text-center py-16">
-              <h2 className="text-xl font-bold text-black mb-3">Episodes Coming Soon</h2>
-              <p className="text-black/40 text-sm">
+              <h2 className="text-xl font-bold text-white mb-3">Episodes Coming Soon</h2>
+              <p className="text-white/40 text-sm">
                 New episodes will be added here. Check back soon for the latest teachings.
               </p>
             </div>

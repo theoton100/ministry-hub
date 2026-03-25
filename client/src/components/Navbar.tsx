@@ -75,8 +75,8 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`block px-5 py-3 text-sm font-semibold transition-colors ${
                       location === link.href
-                        ? "text-black bg-white/5 border-l-2 border-brand"
-                        : "text-black/60 hover:text-black hover:bg-white/5"
+                        ? "text-black bg-black/5 border-l-2 border-brand"
+                        : "text-black/60 hover:text-black hover:bg-black/5"
                     }`}
                   >
                     {link.label}

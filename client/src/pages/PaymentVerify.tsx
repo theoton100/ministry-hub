@@ -23,12 +23,12 @@ export default function PaymentVerify() {
         <div className="container max-w-lg text-center">
           {!reference ? (
             <div>
-              <h1 className="text-3xl font-extrabold text-black mb-4">No Payment Reference</h1>
-              <p className="text-black/40 text-sm mb-8">
+              <h1 className="text-3xl font-extrabold text-white mb-4">No Payment Reference</h1>
+              <p className="text-white/40 text-sm mb-8">
                 It looks like you arrived here without a valid payment reference.
               </p>
               <Link href="/">
-                <Button className="bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 px-6 rounded-sm">
+                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                   Return Home
                 </Button>
               </Link>
@@ -36,8 +36,8 @@ export default function PaymentVerify() {
           ) : isLoading ? (
             <div>
               <div className="w-12 h-12 border-4 border-brand border-t-transparent rounded-full animate-spin mx-auto mb-6" />
-              <h1 className="text-2xl font-extrabold text-black mb-2">Verifying Payment</h1>
-              <p className="text-black/40 text-sm">Please wait while we confirm your transaction...</p>
+              <h1 className="text-2xl font-extrabold text-white mb-2">Verifying Payment</h1>
+              <p className="text-white/40 text-sm">Please wait while we confirm your transaction...</p>
             </div>
           ) : data?.verified ? (
             <div>
@@ -46,11 +46,11 @@ export default function PaymentVerify() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h1 className="text-3xl font-extrabold text-black mb-3">Thank You!</h1>
-              <p className="text-black/50 text-sm mb-2">
+              <h1 className="text-3xl font-extrabold text-white mb-3">Thank You!</h1>
+              <p className="text-white/50 text-sm mb-2">
                 Your payment was successful. God bless you for your generosity.
               </p>
-              <p className="text-black/30 text-xs mb-6">
+              <p className="text-white/30 text-xs mb-6">
                 Reference: {reference}
               </p>
 
@@ -61,12 +61,12 @@ export default function PaymentVerify() {
 
               <div className="flex gap-3 justify-center mt-6">
                 <Link href="/">
-                  <Button className="bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                     Return Home
                   </Button>
                 </Link>
                 <Link href="/store">
-                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
                     Browse More Books
                   </Button>
                 </Link>
@@ -79,18 +79,18 @@ export default function PaymentVerify() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <h1 className="text-3xl font-extrabold text-black mb-3">Payment Not Completed</h1>
-              <p className="text-black/50 text-sm mb-8">
+              <h1 className="text-3xl font-extrabold text-white mb-3">Payment Not Completed</h1>
+              <p className="text-white/50 text-sm mb-8">
                 {data?.message || "The payment could not be verified. If you were charged, please contact us."}
               </p>
               <div className="flex gap-3 justify-center">
                 <Link href="/">
-                  <Button className="bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
                     Return Home
                   </Button>
                 </Link>
                 <Link href="/give">
-                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
                     Try Again
                   </Button>
                 </Link>
@@ -128,9 +128,9 @@ function DownloadSection({ bookId, reference }: { bookId: number; reference: str
 
   if (loadingUrl) {
     return (
-      <div className="bg-white/5 border border-black/10 rounded p-5 mb-2">
+      <div className="bg-white/5 border border-white/10 rounded p-5 mb-2">
         <Loader2 className="h-5 w-5 animate-spin text-brand mx-auto mb-2" />
-        <p className="text-black/40 text-sm">Preparing your download...</p>
+        <p className="text-white/40 text-sm">Preparing your download...</p>
       </div>
     );
   }
@@ -142,14 +142,14 @@ function DownloadSection({ bookId, reference }: { bookId: number; reference: str
   return (
     <div className="bg-white/5 border border-brand/30 rounded p-5 mb-2">
       <Download className="h-8 w-8 text-brand mx-auto mb-3" />
-      <h3 className="text-black font-bold text-lg mb-1">Your Book is Ready</h3>
-      <p className="text-black/40 text-sm mb-4">
+      <h3 className="text-white font-bold text-lg mb-1">Your Book is Ready</h3>
+      <p className="text-white/40 text-sm mb-4">
         Click the button below to download your PDF.
       </p>
       <Button
         onClick={handleDownload}
         disabled={downloading}
-        className="bg-brand hover:bg-brand-hover text-black font-bold text-sm h-11 px-8 rounded-sm gap-2"
+        className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-11 px-8 rounded-sm gap-2"
       >
         {downloading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
         {downloading ? "Downloading..." : `Download ${downloadData.fileName || "PDF"}`}
