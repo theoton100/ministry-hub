@@ -1,6 +1,6 @@
 // Torch logos
-export const LOGO_LIGHT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/1000031871_e37443d5eda0c1f0bf16e94f61f32c27-10_3_2025,7_39_13PM_dbccb5ec.png";
-export const LOGO_DARK = "https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/1000031871_e37443d5eda0c1f0bf16e94f61f32c27-10_3_2025,7_39_13PM_dbccb5ec.png";
+export const LOGO_LIGHT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/torch-light_48499e00.png";
+export const LOGO_DARK = "https://d2xsxph8kpxj0f.cloudfront.net/310519663463671851/gZ92zyhVJEHyGACHaMfmui/torch-dark_7167d881.png";
 
 export const MINISTRY_NAME = "T.I. Solomon";
 export const MINISTRY_TAGLINE = "Helping you become all God created you to be.";

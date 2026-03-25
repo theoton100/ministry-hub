@@ -21,12 +21,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
       <nav className="container flex items-center justify-between h-14">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain" />
-          <span className="font-extrabold text-sm tracking-tight text-black uppercase">
+          <span className="font-extrabold text-sm tracking-tight text-white uppercase">
             {MINISTRY_NAME}
           </span>
         </Link>
@@ -39,8 +39,8 @@ export default function Navbar() {
               href={link.href}
               className={`px-3 py-1.5 text-[13px] font-semibold transition-colors rounded-sm ${
                 location === link.href
-                  ? "text-black bg-black/10"
-                  : "text-black/70 hover:text-black"
+                  ? "text-white bg-white/10"
+                  : "text-white/70 hover:text-white"
               }`}
             >
               {link.label}
@@ -54,17 +54,17 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" className="h-9 w-9 text-black hover:bg-black/10">
+            <Button variant="ghost" size="icon" className="h-9 w-9 text-white hover:bg-white/10">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 p-0 bg-white border-black/10">
+          <SheetContent side="right" className="w-72 p-0 bg-black border-white/10">
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="flex flex-col h-full">
-              <div className="p-5 border-b border-black/10">
+              <div className="p-5 border-b border-white/10">
                 <div className="flex items-center gap-2">
                   <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain" />
-                  <span className="font-extrabold text-sm text-black uppercase">{MINISTRY_NAME}</span>
+                  <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
                 </div>
               </div>
               <div className="flex-1 py-2">
@@ -75,8 +75,8 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`block px-5 py-3 text-sm font-semibold transition-colors ${
                       location === link.href
-                        ? "text-black bg-black/5 border-l-2 border-brand"
-                        : "text-black/60 hover:text-black hover:bg-black/5"
+                        ? "text-white bg-white/5 border-l-2 border-brand"
+                        : "text-white/60 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {link.label}
