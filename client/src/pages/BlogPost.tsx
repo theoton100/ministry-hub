@@ -12,10 +12,10 @@ export default function BlogPost() {
 
   return (
     <PublicLayout>
-      <section className="pt-6 pb-4 border-b border-white/10">
+      <section className="pt-6 pb-4 border-b border-black/10">
         <div className="container max-w-3xl mx-auto">
           <Link href="/blog">
-            <Button variant="ghost" size="sm" className="text-white/40 hover:text-white hover:bg-white/10 text-xs font-bold rounded-sm px-3">
+            <Button variant="ghost" size="sm" className="text-black/40 hover:text-black hover:bg-black/10 text-xs font-bold rounded-sm px-3">
               Back to Blog
             </Button>
           </Link>
@@ -27,8 +27,8 @@ export default function BlogPost() {
           {post ? (
             <motion.article initial="hidden" animate="visible" variants={fadeUp}>
               <header className="mb-8">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white tracking-tight">{post.title}</h1>
-                <p className="text-white/30 text-xs font-semibold uppercase tracking-wider mt-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-black tracking-tight">{post.title}</h1>
+                <p className="text-black/30 text-xs font-semibold uppercase tracking-wider mt-4">
                   {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }) : ""}
                 </p>
               </header>
@@ -39,13 +39,13 @@ export default function BlogPost() {
                 </div>
               )}
 
-              <div className="prose prose-lg max-w-none prose-invert prose-headings:font-extrabold prose-headings:tracking-tight prose-p:text-white/70 prose-p:leading-relaxed prose-a:text-brand prose-blockquote:border-brand prose-blockquote:text-white/60 prose-strong:text-white">
+              <div className="prose prose-lg max-w-none prose-invert prose-headings:font-extrabold prose-headings:tracking-tight prose-p:text-black/70 prose-p:leading-relaxed prose-a:text-brand prose-blockquote:border-brand prose-blockquote:text-black/60 prose-strong:text-black">
                 <Streamdown>{post.content || ""}</Streamdown>
               </div>
 
-              <div className="mt-16 pt-8 border-t border-white/10">
+              <div className="mt-16 pt-8 border-t border-black/10">
                 <Link href="/blog">
-                  <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm">
+                  <Button variant="outline" className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm">
                     More Articles
                   </Button>
                 </Link>
@@ -53,10 +53,10 @@ export default function BlogPost() {
             </motion.article>
           ) : (
             <div className="text-center py-16">
-              <h2 className="text-2xl font-extrabold text-white mb-2">Post Not Found</h2>
-              <p className="text-white/40 text-sm mb-6">The blog post you are looking for does not exist or has been removed.</p>
+              <h2 className="text-2xl font-extrabold text-black mb-2">Post Not Found</h2>
+              <p className="text-black/40 text-sm mb-6">The blog post you are looking for does not exist or has been removed.</p>
               <Link href="/blog">
-                <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm">
+                <Button variant="outline" className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm">
                   Back to Blog
                 </Button>
               </Link>

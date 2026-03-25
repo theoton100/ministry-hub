@@ -16,11 +16,11 @@ export default function Blog() {
 
   return (
     <PublicLayout>
-      <section className="pt-10 pb-6 border-b border-white/10">
+      <section className="pt-10 pb-6 border-b border-black/10">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Blog</h1>
-            <p className="text-white/40 text-sm">Articles, devotionals, and teachings to strengthen your faith.</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight mb-2">Blog</h1>
+            <p className="text-black/40 text-sm">Articles, devotionals, and teachings to strengthen your faith.</p>
           </motion.div>
         </div>
       </section>
@@ -41,13 +41,13 @@ export default function Blog() {
                         ) : (
                           <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5" />
                         )}
-                        <p className="text-white/30 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <p className="text-black/30 text-xs font-semibold uppercase tracking-wider mb-2">
                           {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}
                         </p>
-                        <h3 className="text-lg font-bold text-white group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
+                        <h3 className="text-lg font-bold text-black group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
                           {post.title}
                         </h3>
-                        {post.excerpt && <p className="text-white/40 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>}
+                        {post.excerpt && <p className="text-black/40 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>}
                       </article>
                     </Link>
                   </motion.div>
@@ -61,11 +61,11 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
                     disabled={page === 0}
-                    className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm"
                   >
                     Previous
                   </Button>
-                  <span className="text-white/40 text-xs">
+                  <span className="text-black/40 text-xs">
                     Page {page + 1} of {totalPages}
                   </span>
                   <Button
@@ -73,7 +73,7 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => p + 1)}
                     disabled={page >= totalPages - 1}
-                    className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-black/20 text-black hover:bg-black/10 bg-transparent rounded-sm"
                   >
                     Next
                   </Button>
@@ -82,8 +82,8 @@ export default function Blog() {
             </>
           ) : (
             <div className="text-center py-16">
-              <h2 className="text-2xl font-extrabold text-white mb-2">Blog Coming Soon</h2>
-              <p className="text-white/40 text-sm">Articles and devotionals are on the way. Check back soon.</p>
+              <h2 className="text-2xl font-extrabold text-black mb-2">Blog Coming Soon</h2>
+              <p className="text-black/40 text-sm">Articles and devotionals are on the way. Check back soon.</p>
             </div>
           )}
         </div>

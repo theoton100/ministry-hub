@@ -8,21 +8,21 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <PublicLayout>
-      <section className="pt-10 pb-6 border-b border-white/10">
+      <section className="pt-10 pb-6 border-b border-black/10">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">About</h1>
-            <p className="text-white/40 text-sm">The heart and vision behind {MINISTRY_NAME} Ministries.</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight mb-2">About</h1>
+            <p className="text-black/40 text-sm">The heart and vision behind {MINISTRY_NAME} Ministries.</p>
           </motion.div>
         </div>
       </section>
 
       {/* Bio */}
-      <section className="py-12 md:py-16 border-b border-white/10">
+      <section className="py-12 md:py-16 border-b border-black/10">
         <div className="container max-w-3xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Theophilus Solomon</h2>
-            <div className="space-y-4 text-white/60 leading-relaxed text-base">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight">Theophilus Solomon</h2>
+            <div className="space-y-4 text-black/60 leading-relaxed text-base">
               <p>
                 Pastor Theophilus Solomon is a devoted Christian leader originally from Kogi State, Nigeria, now serving faithfully in Ghana. With a heart ablaze for God and a deep love for His people, Pastor Theo leads a growing church community dedicated to worship, the Word, and service.
               </p>
@@ -34,7 +34,7 @@ export default function About() {
               </p>
             </div>
             <Link href="/watch">
-              <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm mt-2">
+              <Button className="bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 px-6 rounded-sm mt-2">
                 Watch a Sermon
               </Button>
             </Link>
@@ -46,7 +46,7 @@ export default function About() {
       <section className="py-12 md:py-16">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">What We Believe</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight">What We Believe</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded overflow-hidden max-w-4xl">
@@ -57,10 +57,10 @@ export default function About() {
               { title: "Reaching the World", desc: "Through technology, media, and missions, we are committed to taking the Gospel beyond walls and borders — reaching every heart with the message of hope." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}
-                className="bg-card p-7 hover:bg-white/5 transition-colors"
+                className="bg-white p-7 hover:bg-black/5 transition-colors"
               >
-                <h3 className="text-lg font-extrabold text-white mb-2">{item.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-extrabold text-black mb-2">{item.title}</h3>
+                <p className="text-black/40 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>

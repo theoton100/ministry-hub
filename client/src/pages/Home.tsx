@@ -32,14 +32,14 @@ export default function Home() {
       <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img src={HERO_IMAGE} alt="Pastor T.I. Solomon preaching" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
         </div>
         <div className="container relative z-10 pb-14 pt-40">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-5">
               {MINISTRY_TAGLINE}
             </h1>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+            <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
               {MINISTRY_DESCRIPTION}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* Quick Nav Grid — NASA "topics" style */}
-      <section className="py-12 md:py-16 border-b border-white/10">
+      <section className="py-12 md:py-16 border-b border-black/10">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded overflow-hidden">
             {[
@@ -72,9 +72,9 @@ export default function Home() {
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
                 <Link href={item.href}>
-                  <div className="bg-card hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
-                    <h3 className="text-lg md:text-xl font-extrabold text-white mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
-                    <p className="text-white/40 text-sm">{item.desc}</p>
+                  <div className="bg-white hover:bg-black/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
+                    <h3 className="text-lg md:text-xl font-extrabold text-black mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
+                    <p className="text-black/40 text-sm">{item.desc}</p>
                   </div>
                 </Link>
               </motion.div>
@@ -84,11 +84,11 @@ export default function Home() {
       </section>
 
       {/* Featured Content — editorial style */}
-      <section className="py-12 md:py-16 border-b border-white/10">
+      <section className="py-12 md:py-16 border-b border-black/10">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="flex items-baseline justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Latest from the Blog</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-black">Latest from the Blog</h2>
               <Link href="/blog" className="text-brand text-sm font-bold hover:underline hidden sm:block">
                 View All
               </Link>
@@ -106,21 +106,21 @@ export default function Home() {
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
-                      <p className="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">
+                      <p className="text-black/40 text-xs font-semibold uppercase tracking-wider mb-2">
                         {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                       </p>
-                      <h3 className="text-lg font-bold text-white group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
+                      <h3 className="text-lg font-bold text-black group-hover:text-brand transition-colors leading-snug mb-2 line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-white/50 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
+                      <p className="text-black/50 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
                     </article>
                   </Link>
                 </motion.div>
               ))}
             </div>
           ) : (
-            <div className="bg-card rounded p-8 text-center">
-              <p className="text-white/40 text-sm">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
+            <div className="bg-white rounded p-8 text-center">
+              <p className="text-black/40 text-sm">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
             </div>
           )}
 
@@ -131,10 +131,10 @@ export default function Home() {
       </section>
 
       {/* Scripture Banner */}
-      <section className="py-14 md:py-20 border-b border-white/10">
+      <section className="py-14 md:py-20 border-b border-black/10">
         <div className="container max-w-3xl mx-auto text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-snug text-white mb-6">
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-snug text-black mb-6">
               "For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future."
             </blockquote>
             <p className="text-brand font-bold text-sm">Jeremiah 29:11</p>
@@ -147,10 +147,10 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-black leading-tight mb-4">
                 Get Inspired<br />Every Week
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed">
+              <p className="text-black/50 text-sm leading-relaxed">
                 Subscribe to our newsletter for weekly sermons, devotionals, and encouragement delivered straight to your inbox.
               </p>
             </motion.div>
@@ -161,12 +161,12 @@ export default function Home() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm"
+                  className="bg-white/5 border-black/15 text-black placeholder:text-black/30 h-11 text-sm rounded-sm"
                   required
                 />
                 <Button
                   type="submit"
-                  className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm"
+                  className="w-full bg-brand hover:bg-brand-hover text-black font-bold text-sm h-10 rounded-sm"
                   disabled={subscribe.isPending}
                 >
                   {subscribe.isPending ? "Subscribing..." : "Sign Up"}
