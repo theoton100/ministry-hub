@@ -44,7 +44,7 @@ export default function Store() {
 
   return (
     <PublicLayout>
-      <section className="pt-10 pb-6 border-b border-black/10">
+      <section className="pt-10 pb-6 border-b border-black/10" style={{backgroundColor: '#ffffff'}}>
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <h1 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight mb-2">Books</h1>
@@ -53,7 +53,7 @@ export default function Store() {
         </div>
       </section>
 
-      <section className="py-10">
+      <section className="py-10" style={{backgroundColor: '#ffffff'}}>
         <div className="container">
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

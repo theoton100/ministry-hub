@@ -25,7 +25,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-10">
+      <section className="py-10" style={{backgroundColor: '#ffffff'}}>
         <div className="container">
           {data && data.posts.length > 0 ? (
             <>
