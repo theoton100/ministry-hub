@@ -29,8 +29,8 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0b0b] flex items-center justify-center px-4">
-      <Card className="w-full max-w-sm bg-[#111] border-black/10">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <Card className="w-full max-w-sm bg-white border-black/10">
         <CardHeader className="text-center space-y-4 pb-2">
           <div className="flex justify-center">
             <img src={LOGO_DARK} alt={MINISTRY_NAME} className="w-10 h-16 object-contain" />
