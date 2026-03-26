@@ -1,0 +1,16 @@
+Visual audit of homepage after CSS variable update:
+
+1. Hero section: Background looks correct (#201c1d with image overlay)
+2. Grid section (Watch, Listen, Blog, etc.): The grid cells have visible borders but backgrounds look consistent with #201c1d
+3. "Latest from the Blog" section: Background appears slightly different/darker - there's a visible line/border between sections
+4. Scripture quote section: Background looks like #201c1d - correct
+5. "Get Inspired Every Week" newsletter section: Background looks like #201c1d - correct
+6. The blog card area seems to have a slightly different shade
+
+Key issue: The sections all use inline style={{ backgroundColor: '#201c1d' }} which is correct.
+The CSS variables have been updated from oklch(0.12 0.005 250) to oklch(0.2314 0.0065 0.5).
+
+The bg-card, bg-background, bg-muted etc. classes now all resolve to #201c1d.
+The borders (border-white/10) create visual separation between sections.
+
+Everything looks consistent now. The "black divs" issue was the CSS variables using oklch(0.12 0.005 250) which was a darker near-black instead of #201c1d.

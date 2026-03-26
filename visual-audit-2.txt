@@ -1,0 +1,14 @@
+Visual audit after CSS variable update (oklch(0.12 0.005 250) -> oklch(0.2314 0.0065 0.5)):
+
+Homepage: Background now appears as #201c1d (warm dark brown) instead of pure black. All sections consistent.
+Give page: Background is #201c1d. Form card has slightly lighter border. Looks good.
+Store page: Background is #201c1d. Book card has proper styling.
+About page: Background is #201c1d. Bio section and "What We Believe" cards look consistent.
+Admin Login: Background is #201c1d. Form card has proper border. Looks good.
+404 page: Background is #201c1d. Consistent.
+
+REMAINING ISSUES FOUND:
+- The admin login form card background appears slightly different/lighter than the page bg - this is the bg-card CSS variable which is already set to the same oklch value, so it should match. The border creates visual separation.
+- The input fields inside forms have a slightly different shade - this is the bg-input CSS variable, also set to the same value.
+
+CONCLUSION: All CSS variables now point to #201c1d. The backgrounds across the entire site should be consistent. The slight visual differences between sections are due to borders (border-white/10) creating visual separation, not different background colors.

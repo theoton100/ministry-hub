@@ -49,7 +49,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="outline" className="border-white/30 text-white hover: font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                <Button variant="outline" className="border-white/30 text-white hover: font-bold text-sm h-10 px-6 rounded-sm bg-transparent" style={{borderColor: '#ffffff'}}>
                   Learn More
                 </Button>
               </Link>

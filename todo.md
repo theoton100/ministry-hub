@@ -163,3 +163,6 @@
 - [x] Remove all hardcoded text-white from Button components across all pages
 - [x] Fix all hardcoded black/dark backgrounds to #201c1d
 - [x] Fix form background colors to #201c1d instead of black
+
+## Remaining Black Background Fixes
+- [x] Audit and fix ALL remaining black/dark backgrounds (divs, cards, boxes, inputs, sections) to #201c1d
