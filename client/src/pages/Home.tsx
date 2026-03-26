@@ -61,7 +61,7 @@ export default function Home() {
       {/* Quick Nav Grid — NASA "topics" style */}
       <section className="py-12 md:py-16 border-b border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px rounded overflow-hidden" style={{ backgroundColor: '#201c1d' }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px rounded overflow-hidden border border-white/10" style={{ backgroundColor: '#201c1d' }}>
             {[
               { title: "Watch", desc: "Sermons & Messages", href: "/watch" },
               { title: "Listen", desc: "Podcast Episodes", href: "/listen" },
@@ -72,7 +72,7 @@ export default function Home() {
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
                 <Link href={item.href}>
-                  <div className="hover: transition-colors p-6 md:p-8 cursor-pointer group h-full" style={{ backgroundColor: '#201c1d' }}>
+                  <div className="border-r border-b border-white/10 hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full" style={{ backgroundColor: '#201c1d' }}>
                     <h3 className="text-lg md:text-xl font-extrabold text-white mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
                     <p className="text-white/40 text-sm">{item.desc}</p>
                   </div>
