@@ -56,9 +56,9 @@
   --card-foreground: oklch(0.97 0 0);
   --popover: oklch(0.12 0.005 250);
   --popover-foreground: oklch(0.97 0 0);
-  /* Primary = Gold */
-  --primary: oklch(0.70 0.18 80);
-  --primary-foreground: oklch(0.99 0 0);
+  /* Primary = Gold #e3a84a */
+  --primary: oklch(0.72 0.20 75);
+  --primary-foreground: #161415;
   /* Secondary = dark gray */
   --secondary: oklch(0.12 0.005 250);
   --secondary-foreground: oklch(0.90 0 0);
@@ -93,8 +93,8 @@
   --card-foreground: oklch(0.97 0 0);
   --popover: oklch(0.12 0.005 250);
   --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.55 0.22 25);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.72 0.20 75);
+  --primary-foreground: #161415;
   --secondary: oklch(0.12 0.005 250);
   --secondary-foreground: oklch(0.90 0 0);
   --muted: oklch(0.12 0.005 250);
