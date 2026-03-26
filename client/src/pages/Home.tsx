@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* Quick Nav Grid — NASA "topics" style */}
-      <section className="py-12 md:py-16 border-b border-white/10">
+      <section className="py-12 md:py-16 border-b border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded overflow-hidden">
             {[
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* Featured Content — editorial style */}
-      <section className="py-12 md:py-16 border-b border-white/10">
+      <section className="py-12 md:py-16 border-b border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="flex items-baseline justify-between mb-8">
@@ -129,9 +129,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* Scripture Banner */}
-      <section className="py-14 md:py-20 border-b border-white/10">
+       {/* Newsletter */}
+      <section className="py-12 md:py-16" style={{ backgroundColor: '#201c1d' }}>
         <div className="container max-w-3xl mx-auto text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <blockquote className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-snug text-white mb-6">
