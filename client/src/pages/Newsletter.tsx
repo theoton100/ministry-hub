@@ -87,16 +87,16 @@ export default function Newsletter() {
                     <div className="grid grid-cols-2 gap-3">
                       <div className="space-y-1.5">
                         <Label htmlFor="firstName" className="text-white/60 text-xs">First Name</Label>
-                        <Input id="firstName" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
+                        <Input id="firstName" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className=" border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                       </div>
                       <div className="space-y-1.5">
                         <Label htmlFor="lastName" className="text-white/60 text-xs">Last Name</Label>
-                        <Input id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
+                        <Input id="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} className=" border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                       </div>
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="email" className="text-white/60 text-xs">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="bg-white/5 border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
+                      <Input id="email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required className=" border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                     </div>
                     <Button type="submit" className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm" disabled={subscribe.isPending}>
                       {subscribe.isPending ? "Subscribing..." : "Subscribe Now"}

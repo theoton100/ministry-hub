@@ -59,7 +59,7 @@ export default function Store() {
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white/5 rounded aspect-[3/4] animate-pulse" />
+                <div key={i} className=" rounded aspect-[3/4] animate-pulse" />
               ))}
             </div>
           ) : books.length > 0 ? (
@@ -74,7 +74,7 @@ export default function Store() {
                 >
                   <div className="bg-card border border-white/10 rounded overflow-hidden group">
                     {book.coverImageUrl ? (
-                      <div className="aspect-[3/4] bg-white/5 overflow-hidden relative">
+                      <div className="aspect-[3/4]  overflow-hidden relative">
                         <img
                           src={book.coverImageUrl}
                           alt={book.title}
@@ -88,7 +88,7 @@ export default function Store() {
                         )}
                       </div>
                     ) : (
-                      <div className="aspect-[3/4] bg-white/5 flex items-center justify-center relative">
+                      <div className="aspect-[3/4]  flex items-center justify-center relative">
                         <span className="text-white/20 text-6xl font-extrabold">{book.title[0]}</span>
                         {book.pdfFileKey && (
                           <div className="absolute top-3 right-3 bg-#201c1d/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
@@ -139,7 +139,7 @@ export default function Store() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-3 mt-1">
+          <div className=" border border-white/10 rounded p-3 flex items-start gap-3 mt-1">
             <Download className="h-5 w-5 text-brand shrink-0 mt-0.5" />
             <div>
               <p className="text-white/80 text-sm font-medium">Digital Download</p>
@@ -156,7 +156,7 @@ export default function Store() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Full name"
-                className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
+                className=" border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
               />
             </div>
             <div>
@@ -166,7 +166,7 @@ export default function Store() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
+                className=" border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
                 required
               />
             </div>

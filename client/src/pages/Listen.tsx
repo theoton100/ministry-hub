@@ -24,7 +24,7 @@ export default function Listen() {
           {isLoading ? (
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-40 bg-white/5 rounded animate-pulse" />
+                <div key={i} className="h-40  rounded animate-pulse" />
               ))}
             </div>
           ) : episodes.length > 0 ? (

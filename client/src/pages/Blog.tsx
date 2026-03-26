@@ -36,11 +36,11 @@ export default function Blog() {
                     <Link href={`/blog/${post.slug}`}>
                       <article className="group cursor-pointer">
                         {post.featuredImageUrl ? (
-                          <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5">
+                          <div className="aspect-video rounded overflow-hidden mb-4 ">
                             <img src={post.featuredImageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                           </div>
                         ) : (
-                          <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5" />
+                          <div className="aspect-video rounded overflow-hidden mb-4 " />
                         )}
                         <p className="text-white/30 text-xs font-semibold uppercase tracking-wider mb-2">
                           {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}
@@ -62,7 +62,7 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
                     disabled={page === 0}
-                    className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-white/20 text-white hover: bg-transparent rounded-sm"
                   >
                     Previous
                   </Button>
@@ -74,7 +74,7 @@ export default function Blog() {
                     size="sm"
                     onClick={() => setPage((p) => p + 1)}
                     disabled={page >= totalPages - 1}
-                    className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm"
+                    className="text-xs font-bold border-white/20 text-white hover: bg-transparent rounded-sm"
                   >
                     Next
                   </Button>

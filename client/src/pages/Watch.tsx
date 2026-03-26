@@ -11,7 +11,7 @@ export default function Watch() {
 
   return (
     <PublicLayout>
-      <section className="pt-10 pb-6 border-b border-white/10">
+      <section className="pt-10 pb-6 border-b border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Sermons</h1>
@@ -61,7 +61,7 @@ export default function Watch() {
                     className={`group cursor-pointer ${activeSermon?.id === sermon.id ? "opacity-60" : ""}`}
                     onClick={() => { setActiveVideoId(sermon.youtubeVideoId); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   >
-                    <div className="aspect-video rounded overflow-hidden bg-white/5 mb-3">
+                    <div className="aspect-video rounded overflow-hidden  mb-3">
                       <img
                         src={sermon.thumbnailUrl || `https://img.youtube.com/vi/${sermon.youtubeVideoId}/mqdefault.jpg`}
                         alt={sermon.title}

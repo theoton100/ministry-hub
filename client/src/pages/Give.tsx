@@ -103,7 +103,7 @@ export default function Give() {
                     className={`h-12 rounded-sm text-sm font-bold transition-all ${
                       selectedAmount === amount
                         ? "bg-brand text-white"
-                        : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10"
+                        : " text-white/60 hover: hover:text-white border border-white/10"
                     }`}
                   >
                     {formatPrice(amount)}
@@ -124,7 +124,7 @@ export default function Give() {
                   value={customAmount}
                   onChange={(e) => handleCustomChange(e.target.value)}
                   placeholder="0.00"
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm pl-7"
+                  className=" border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm pl-7"
                 />
               </div>
             </motion.div>
@@ -137,7 +137,7 @@ export default function Give() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Full name"
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
+                  className=" border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
                 />
               </div>
               <div>
@@ -147,7 +147,7 @@ export default function Give() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
+                  className=" border-white/15 text-white placeholder:text-white/30 h-10 text-sm rounded-sm"
                   required
                 />
               </div>

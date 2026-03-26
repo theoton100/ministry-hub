@@ -39,7 +39,7 @@ export default function Navbar() {
               href={link.href}
               className={`px-3 py-1.5 text-[13px] font-semibold transition-colors rounded-sm ${
                 location === link.href
-                  ? "text-white bg-white/10"
+                  ? "text-white "
                   : "text-white/70 hover:text-white"
               }`}
             >
@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" className="h-9 w-9 text-white hover:bg-white/10">
+            <Button variant="ghost" size="icon" className="h-9 w-9 text-white hover:">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -75,8 +75,8 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`block px-5 py-3 text-sm font-semibold transition-colors ${
                       location === link.href
-                        ? "text-white bg-white/5 border-l-2 border-brand"
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "text-white  border-l-2 border-brand"
+                        : "text-white/60 hover:text-white hover:"
                     }`}
                   >
                     {link.label}

@@ -50,7 +50,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">What We Believe</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded overflow-hidden max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px  rounded overflow-hidden max-w-4xl">
             {[
               { title: "Love God, Love People", desc: "We believe the greatest commandment is to love God with all our heart and to love our neighbors as ourselves. Everything we do flows from this foundation." },
               { title: "The Authority of Scripture", desc: "The Bible is the inspired, infallible Word of God. It is our guide for faith, practice, and daily living. We teach it boldly and apply it practically." },
@@ -58,7 +58,7 @@ export default function About() {
               { title: "Reaching the World", desc: "Through technology, media, and missions, we are committed to taking the Gospel beyond walls and borders — reaching every heart with the message of hope." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}
-                className="bg-card p-7 hover:bg-white/5 transition-colors"
+                className="bg-card p-7 hover: transition-colors"
               >
                 <h3 className="text-lg font-extrabold text-white mb-2">{item.title}</h3>
                 <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>

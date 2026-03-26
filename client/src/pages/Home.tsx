@@ -49,7 +49,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                <Button variant="outline" className="border-white/30 text-white hover: font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
                   Learn More
                 </Button>
               </Link>
@@ -61,7 +61,7 @@ export default function Home() {
       {/* Quick Nav Grid — NASA "topics" style */}
       <section className="py-12 md:py-16 border-b border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px rounded overflow-hidden" style={{ backgroundColor: '#201c1d' }}>
             {[
               { title: "Watch", desc: "Sermons & Messages", href: "/watch" },
               { title: "Listen", desc: "Podcast Episodes", href: "/listen" },
@@ -72,7 +72,7 @@ export default function Home() {
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.05)}>
                 <Link href={item.href}>
-                  <div className="bg-card hover:bg-white/5 transition-colors p-6 md:p-8 cursor-pointer group h-full">
+                  <div className="hover: transition-colors p-6 md:p-8 cursor-pointer group h-full" style={{ backgroundColor: '#201c1d' }}>
                     <h3 className="text-lg md:text-xl font-extrabold text-white mb-1 group-hover:text-brand transition-colors">{item.title}</h3>
                     <p className="text-white/40 text-sm">{item.desc}</p>
                   </div>
@@ -102,7 +102,7 @@ export default function Home() {
                   <Link href={`/blog/${post.slug}`}>
                     <article className="group cursor-pointer">
                       {post.featuredImage && (
-                        <div className="aspect-video rounded overflow-hidden mb-4 bg-white/5">
+                        <div className="aspect-video rounded overflow-hidden mb-4 ">
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
@@ -160,7 +160,7 @@ export default function Home() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/5 border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm"
+                  className=" border-white/15 text-white placeholder:text-white/30 h-11 text-sm rounded-sm"
                   required
                 />
                 <Button

@@ -16,7 +16,7 @@ export default function BlogPost() {
       <section className="pt-6 pb-4 border-b border-white/10">
         <div className="container max-w-3xl mx-auto">
           <Link href="/blog">
-            <Button variant="ghost" size="sm" className="text-white/40 hover:text-white hover:bg-white/10 text-xs font-bold rounded-sm px-3">
+            <Button variant="ghost" size="sm" className="text-white/40 hover:text-white hover: text-xs font-bold rounded-sm px-3">
               Back to Blog
             </Button>
           </Link>
@@ -46,7 +46,7 @@ export default function BlogPost() {
 
               <div className="mt-16 pt-8 border-t border-white/10">
                 <Link href="/blog">
-                  <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm">
+                  <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover: bg-transparent rounded-sm">
                     More Articles
                   </Button>
                 </Link>
@@ -57,7 +57,7 @@ export default function BlogPost() {
               <h2 className="text-2xl font-extrabold text-white mb-2">Post Not Found</h2>
               <p className="text-white/40 text-sm mb-6">The blog post you are looking for does not exist or has been removed.</p>
               <Link href="/blog">
-                <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover:bg-white/10 bg-transparent rounded-sm">
+                <Button variant="outline" className="text-xs font-bold border-white/20 text-white hover: bg-transparent rounded-sm">
                   Back to Blog
                 </Button>
               </Link>

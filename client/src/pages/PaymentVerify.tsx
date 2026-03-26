@@ -67,7 +67,7 @@ export default function PaymentVerify() {
                   </Button>
                 </Link>
                 <Link href="/store">
-                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                  <Button variant="outline" className="border-white/20 text-white hover: font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
                     Browse More Books
                   </Button>
                 </Link>
@@ -91,7 +91,7 @@ export default function PaymentVerify() {
                   </Button>
                 </Link>
                 <Link href="/give">
-                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
+                  <Button variant="outline" className="border-white/20 text-white hover: font-bold text-sm h-10 px-6 rounded-sm bg-transparent">
                     Try Again
                   </Button>
                 </Link>
@@ -130,7 +130,7 @@ function DownloadSection({ bookId, reference }: { bookId: number; reference: str
 
   if (loadingUrl) {
     return (
-      <div className="bg-white/5 border border-white/10 rounded p-5 mb-2">
+      <div className=" border border-white/10 rounded p-5 mb-2">
         <Loader2 className="h-5 w-5 animate-spin text-brand mx-auto mb-2" />
         <p className="text-white/40 text-sm">Preparing your download...</p>
       </div>
@@ -142,7 +142,7 @@ function DownloadSection({ bookId, reference }: { bookId: number; reference: str
   }
 
   return (
-    <div className="bg-white/5 border border-brand/30 rounded p-5 mb-2">
+    <div className=" border border-brand/30 rounded p-5 mb-2">
       <Download className="h-8 w-8 text-brand mx-auto mb-3" />
       <h3 className="text-white font-bold text-lg mb-1">Your Book is Ready</h3>
       <p className="text-white/40 text-sm mb-4">
