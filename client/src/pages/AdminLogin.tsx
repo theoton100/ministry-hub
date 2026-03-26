@@ -29,8 +29,8 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0b0b0b' }}>
-      <Card className="w-full max-w-sm border-white/10" style={{ backgroundColor: '#111' }}>
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#201c1d' }}>
+      <Card className="w-full max-w-sm border-white/10" style={{ backgroundColor: '#201c1d' }}>
         <CardHeader className="text-center space-y-4 pb-2">
           <div className="flex justify-center">
             <img src={LOGO_DARK} alt={MINISTRY_NAME} className="w-10 h-16 object-contain" />

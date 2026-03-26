@@ -18,7 +18,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0b0b0b] flex items-center justify-center">
+      <div className="min-h-screen bg-[#201c1d] flex items-center justify-center">
         <div className="text-white/40 text-sm">Loading...</div>
       </div>
     );
