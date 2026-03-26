@@ -158,3 +158,8 @@
 - [ ] Update Paystack initialization to use GHS currency code
 - [ ] Update price displays to show GHS symbol (₵) instead of $ or USD
 - [ ] Test Store and Give pages with GHS prices
+
+## Button Text & Background Color Fixes
+- [x] Remove all hardcoded text-white from Button components across all pages
+- [x] Fix all hardcoded black/dark backgrounds to #201c1d
+- [x] Fix form background colors to #201c1d instead of black

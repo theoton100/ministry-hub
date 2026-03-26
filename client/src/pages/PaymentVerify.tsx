@@ -29,7 +29,7 @@ export default function PaymentVerify() {
                 It looks like you arrived here without a valid payment reference.
               </p>
               <Link href="/">
-                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 px-6 rounded-sm">
                   Return Home
                 </Button>
               </Link>
@@ -62,7 +62,7 @@ export default function PaymentVerify() {
 
               <div className="flex gap-3 justify-center mt-6">
                 <Link href="/">
-                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 px-6 rounded-sm">
                     Return Home
                   </Button>
                 </Link>
@@ -86,7 +86,7 @@ export default function PaymentVerify() {
               </p>
               <div className="flex gap-3 justify-center">
                 <Link href="/">
-                  <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                  <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 px-6 rounded-sm">
                     Return Home
                   </Button>
                 </Link>
@@ -151,7 +151,7 @@ function DownloadSection({ bookId, reference }: { bookId: number; reference: str
       <Button
         onClick={handleDownload}
         disabled={downloading}
-        className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-11 px-8 rounded-sm gap-2"
+        className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-11 px-8 rounded-sm gap-2"
       >
         {downloading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
         {downloading ? "Downloading..." : `Download ${downloadData.fileName || "PDF"}`}

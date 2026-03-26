@@ -44,7 +44,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/watch">
-                <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm">
+                <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 px-6 rounded-sm">
                   Watch Now
                 </Button>
               </Link>
@@ -165,7 +165,7 @@ export default function Home() {
                 />
                 <Button
                   type="submit"
-                  className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm"
+                  className="w-full bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 rounded-sm"
                   disabled={subscribe.isPending}
                 >
                   {subscribe.isPending ? "Subscribing..." : "Sign Up"}

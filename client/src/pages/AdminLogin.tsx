@@ -71,7 +71,7 @@ export default function AdminLogin() {
             <Button
               type="submit"
               disabled={loginMutation.isPending}
-              className="w-full bg-brand hover:bg-brand-hover text-white font-bold h-10"
+              className="w-full bg-brand hover:bg-brand-hover text-[#231f20] font-bold h-10"
             >
               {loginMutation.isPending ? "Signing in..." : "Sign In"}
             </Button>

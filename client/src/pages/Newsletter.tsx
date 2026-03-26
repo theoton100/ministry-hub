@@ -98,7 +98,7 @@ export default function Newsletter() {
                       <Label htmlFor="email" className="text-white/60 text-xs">Email Address *</Label>
                       <Input id="email" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required className=" border-white/15 text-white placeholder:text-white/25 h-10 text-sm rounded-sm" />
                     </div>
-                    <Button type="submit" className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm" disabled={subscribe.isPending}>
+                    <Button type="submit" className="w-full bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 rounded-sm" disabled={subscribe.isPending}>
                       {subscribe.isPending ? "Subscribing..." : "Subscribe Now"}
                     </Button>
                     <p className="text-white/25 text-[11px] text-center">

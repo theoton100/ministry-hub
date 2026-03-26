@@ -35,7 +35,7 @@ export default function About() {
               </p>
             </div>
             <Link href="/watch">
-              <Button className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 px-6 rounded-sm mt-2">
+              <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 px-6 rounded-sm mt-2">
                 Watch a Sermon
               </Button>
             </Link>

@@ -1,0 +1,6 @@
+Preview screenshot analysis:
+- "Watch Now" button: gold background with DARK text (looks like #231f20) - CORRECT
+- "Learn More" button: outline style, text appears very dark/invisible against dark background - this is a problem
+- The outline button text is now #231f20 which is invisible on the dark #201c1d background
+- Need to keep outline buttons with white/light text since they're on dark backgrounds
+- Only solid bg-brand buttons should have #231f20 text

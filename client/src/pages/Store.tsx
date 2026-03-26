@@ -81,7 +81,7 @@ export default function Store() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         {book.pdfFileKey && (
-                          <div className="absolute top-3 right-3 bg-#201c1d/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                          <div className="absolute top-3 right-3 bg-[#201c1d]/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
                             <Download className="h-3 w-3" />
                             Digital Download
                           </div>
@@ -91,7 +91,7 @@ export default function Store() {
                       <div className="aspect-[3/4]  flex items-center justify-center relative">
                         <span className="text-white/20 text-6xl font-extrabold">{book.title[0]}</span>
                         {book.pdfFileKey && (
-                          <div className="absolute top-3 right-3 bg-#201c1d/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                          <div className="absolute top-3 right-3 bg-[#201c1d]/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
                             <Download className="h-3 w-3" />
                             Digital Download
                           </div>
@@ -107,7 +107,7 @@ export default function Store() {
                         <span className="text-brand font-extrabold text-xl">{formatPrice(book.priceInCents)}</span>
                         <Button
                           onClick={() => setSelectedBook(book)}
-                          className="bg-brand hover:bg-brand-hover text-white font-bold text-sm h-9 px-5 rounded-sm gap-1.5"
+                          className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-9 px-5 rounded-sm gap-1.5"
                         >
                           <Download className="h-3.5 w-3.5" />
                           Buy & Download
@@ -173,7 +173,7 @@ export default function Store() {
             <Button
               type="submit"
               disabled={buying || !email}
-              className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-sm h-10 rounded-sm"
+              className="w-full bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-10 rounded-sm"
             >
               {buying ? "Redirecting to payment..." : `Pay ${selectedBook ? formatPrice(selectedBook.priceInCents) : ""} & Download`}
             </Button>
