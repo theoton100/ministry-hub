@@ -166,3 +166,9 @@
 
 ## Remaining Black Background Fixes
 - [x] Audit and fix ALL remaining black/dark backgrounds (divs, cards, boxes, inputs, sections) to #201c1d
+
+## Nav Icon & UX Improvements
+- [x] Fix red hamburger/mobile menu icon color to white/gold
+- [x] Improve UX: add scroll animations, hover effects, transitions across pages
+- [x] Add micro-interactions on cards and buttons
+- [x] Improve homepage sections with animated entry effects
