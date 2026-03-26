@@ -29,8 +29,8 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0b0b] flex items-center justify-center px-4">
-      <Card className="w-full max-w-sm bg-[#111] border-white/10">
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: '#0b0b0b' }}>
+      <Card className="w-full max-w-sm border-white/10" style={{ backgroundColor: '#111' }}>
         <CardHeader className="text-center space-y-4 pb-2">
           <div className="flex justify-center">
             <img src={LOGO_DARK} alt={MINISTRY_NAME} className="w-10 h-16 object-contain" />
@@ -53,7 +53,7 @@ export default function AdminLogin() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="bg-black/50 border-white/10 text-white placeholder:text-white/20 h-10"
+                className="border-white/10 text-white placeholder:text-white/20 h-10" style={{ backgroundColor: 'rgba(32, 28, 29, 0.5)' }}
               />
             </div>
             <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 required
-                className="bg-black/50 border-white/10 text-white placeholder:text-white/20 h-10"
+                className="border-white/10 text-white placeholder:text-white/20 h-10" style={{ backgroundColor: 'rgba(32, 28, 29, 0.5)' }}
               />
             </div>
             <Button

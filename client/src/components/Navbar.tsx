@@ -21,7 +21,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-white/10" style={{ backgroundColor: 'rgba(32, 28, 29, 0.95)' }}>
       <nav className="container flex items-center justify-between h-14">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -58,7 +58,7 @@ export default function Navbar() {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 p-0 bg-black border-white/10">
+          <SheetContent side="right" className="w-72 p-0 border-white/10" style={{ backgroundColor: '#201c1d' }}>
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="flex flex-col h-full">
               <div className="p-5 border-b border-white/10">

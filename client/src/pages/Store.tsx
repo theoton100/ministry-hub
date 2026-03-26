@@ -80,7 +80,7 @@ export default function Store() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         {book.pdfFileKey && (
-                          <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                          <div className="absolute top-3 right-3 bg-#201c1d/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
                             <Download className="h-3 w-3" />
                             Digital Download
                           </div>
@@ -90,7 +90,7 @@ export default function Store() {
                       <div className="aspect-[3/4] bg-white/5 flex items-center justify-center relative">
                         <span className="text-white/20 text-6xl font-extrabold">{book.title[0]}</span>
                         {book.pdfFileKey && (
-                          <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
+                          <div className="absolute top-3 right-3 bg-#201c1d/70 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded flex items-center gap-1.5">
                             <Download className="h-3 w-3" />
                             Digital Download
                           </div>

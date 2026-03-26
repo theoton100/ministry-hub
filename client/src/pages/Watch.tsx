@@ -24,7 +24,7 @@ export default function Watch() {
         <div className="container">
           {activeSermon ? (
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-4xl">
-              <div className="aspect-video rounded overflow-hidden bg-black mb-6">
+              <div className="aspect-video rounded overflow-hidden mb-6" style={{ backgroundColor: '#201c1d' }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${activeSermon.youtubeVideoId}`}
                   title={activeSermon.title}
