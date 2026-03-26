@@ -18,7 +18,8 @@ export default function PaymentVerify() {
   );
 
   return (
-    <PublicLayout>
+    <div style={{ backgroundColor: '#201c1d', minHeight: '100vh' }}>
+      <PublicLayout>
       <section className="py-20">
         <div className="container max-w-lg text-center">
           {!reference ? (
@@ -100,6 +101,7 @@ export default function PaymentVerify() {
         </div>
       </section>
     </PublicLayout>
+    </div>
   );
 }
 

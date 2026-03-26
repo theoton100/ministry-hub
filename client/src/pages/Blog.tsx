@@ -15,7 +15,8 @@ export default function Blog() {
   const totalPages = data ? Math.ceil(data.total / PAGE_SIZE) : 0;
 
   return (
-    <PublicLayout>
+    <div style={{ backgroundColor: '#201c1d', minHeight: '100vh' }}>
+      <PublicLayout>
       <section className="pt-10 pb-6 border-b border-white/10">
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
@@ -89,5 +90,6 @@ export default function Blog() {
         </div>
       </section>
     </PublicLayout>
+    </div>
   );
 }

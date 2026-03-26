@@ -11,7 +11,8 @@ export default function BlogPost() {
   const { data: post } = trpc.blog.getBySlug.useQuery({ slug: params.slug ?? "" });
 
   return (
-    <PublicLayout>
+    <div style={{ backgroundColor: '#201c1d', minHeight: '100vh' }}>
+      <PublicLayout>
       <section className="pt-6 pb-4 border-b border-white/10">
         <div className="container max-w-3xl mx-auto">
           <Link href="/blog">
@@ -65,5 +66,6 @@ export default function BlogPost() {
         </div>
       </section>
     </PublicLayout>
+    </div>
   );
 }
