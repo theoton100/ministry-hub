@@ -38,10 +38,10 @@ export default function Home() {
   return (
     <PublicLayout>
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0">
           <img src={HERO_IMAGE} alt="Pastor T.I. Solomon preaching" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e27] via-[#0a0e27]/80 to-[#0a0e27]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
         </div>
         
         <div className="container relative z-10 py-20 md:py-32">
@@ -57,8 +57,8 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <Link href="/watch">
-                <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-semibold text-base h-12 px-8 rounded-sm gap-2 group">
-                  <Play className="h-5 w-5 fill-[#0a0e27]" />
+                <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-semibold text-base h-12 px-8 rounded-sm gap-2 group">
+                  <Play className="h-5 w-5 fill-[#000000]" />
                   Watch Now
                 </Button>
               </Link>
@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED SPEAKER SECTION */}
-      <section className="py-20 md:py-28 bg-white text-[#0a0e27]">
+      <section className="py-20 md:py-28 bg-white text-[#000000]">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -82,7 +82,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
                 From Confusion to Clarity
               </h2>
-              <p className="text-[#0a0e27]/70 text-lg leading-relaxed mb-6 font-light">
+              <p className="text-[#000000]/70 text-lg leading-relaxed mb-6 font-light">
                 Pastor Theo Solomon teaches how to develop deep intimacy with God—the foundation for clarity, purpose, and spiritual transformation. Through organized prayer, hearing God's voice, and understanding vision manifestation, you'll move from confusion to confidence in your faith journey.
               </p>
               <ul className="space-y-4 mb-8">
@@ -90,29 +90,29 @@ export default function Home() {
                   <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-semibold">✓</span>
                   </div>
-                  <span className="text-[#0a0e27]/80 font-light">Deep intimacy with God</span>
+                  <span className="text-[#000000]/80 font-light">Deep intimacy with God</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-semibold">✓</span>
                   </div>
-                  <span className="text-[#0a0e27]/80 font-light">Organized prayer life</span>
+                  <span className="text-[#000000]/80 font-light">Organized prayer life</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-semibold">✓</span>
                   </div>
-                  <span className="text-[#0a0e27]/80 font-light">Hearing God's voice clearly</span>
+                  <span className="text-[#000000]/80 font-light">Hearing God's voice clearly</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-semibold">✓</span>
                   </div>
-                  <span className="text-[#0a0e27]/80 font-light">Vision to manifestation</span>
+                  <span className="text-[#000000]/80 font-light">Vision to manifestation</span>
                 </li>
               </ul>
               <Link href="/about">
-                <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-semibold text-base h-12 px-8 rounded-sm">
+                <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-semibold text-base h-12 px-8 rounded-sm">
                   Learn More About Pastor Theo
                 </Button>
               </Link>
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* IMPACT STATISTICS */}
-      <section className="py-16 md:py-24 bg-[#0a0e27]">
+      <section className="py-16 md:py-24 bg-black">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
             <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Impact</p>
@@ -148,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED CONTENT SECTION */}
-      <section className="py-20 md:py-28 bg-[#0a0e27]">
+      <section className="py-20 md:py-28 bg-black">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
             <div className="flex items-baseline justify-between">
@@ -168,7 +168,7 @@ export default function Home() {
               {latestPosts.data.posts.map((post: any, i: number) => (
                 <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
                   <Link href={`/blog/${post.slug}`}>
-                    <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#0a0e27]/50 hover:bg-[#0a0e27] hover:shadow-xl">
+                    <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#000000]/50 hover:bg-[#000000] hover:shadow-xl">
                       {post.featuredImage && (
                         <div className="aspect-video overflow-hidden">
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -210,13 +210,13 @@ export default function Home() {
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
             <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Explore</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">Navigate the Ministry</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">Navigate the Ministry</h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0)}>
               <Link href="/watch">
-                <div className="bg-[#0a0e27] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
                   <Play className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Watch</h3>
                   <p className="text-white/70 mb-4 font-light">Watch sermons and messages from Pastor Theo</p>
@@ -227,7 +227,7 @@ export default function Home() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
               <Link href="/listen">
-                <div className="bg-[#0a0e27] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
                   <Headphones className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Listen</h3>
                   <p className="text-white/70 mb-4 font-light">Podcast episodes and audio teachings</p>
@@ -238,7 +238,7 @@ export default function Home() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.2)}>
               <Link href="/store">
-                <div className="bg-[#0a0e27] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
                   <ShoppingBag className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Store</h3>
                   <p className="text-white/70 mb-4 font-light">Digital books and resources</p>
@@ -270,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER SECTION */}
-      <section className="py-20 md:py-28 bg-[#0a0e27]">
+      <section className="py-20 md:py-28 bg-black">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -295,7 +295,7 @@ export default function Home() {
                 />
                 <Button
                   type="submit"
-                  className="w-full bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-semibold text-base h-12 rounded-sm"
+                  className="w-full bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-semibold text-base h-12 rounded-sm"
                   disabled={subscribe.isPending}
                 >
                   {subscribe.isPending ? "Subscribing..." : "Subscribe Now"}

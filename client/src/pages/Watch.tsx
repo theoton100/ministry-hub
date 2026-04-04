@@ -14,7 +14,7 @@ export default function Watch() {
     <PublicLayout>
       {/* HERO SECTION — Featured Sermon */}
       {isLoading ? (
-        <section className="pt-20 pb-20 bg-[#0a0e27] min-h-screen flex items-center">
+        <section className="pt-20 pb-20 bg-[#000000] min-h-screen flex items-center">
           <div className="container">
             <div className="max-w-4xl">
               <div className="aspect-video rounded-lg bg-white/5 animate-pulse mb-8" />
@@ -24,7 +24,7 @@ export default function Watch() {
           </div>
         </section>
       ) : activeSermon ? (
-        <section className="py-16 md:py-24 bg-[#0a0e27]">
+        <section className="py-16 md:py-24 bg-[#000000]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
               <motion.div variants={fadeUp} className="max-w-5xl">
@@ -68,7 +68,7 @@ export default function Watch() {
           </div>
         </section>
       ) : (
-        <section className="py-32 bg-[#0a0e27] flex items-center justify-center min-h-screen">
+        <section className="py-32 bg-[#000000] flex items-center justify-center min-h-screen">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="text-center max-w-2xl">
             <Video className="h-16 w-16 text-white/20 mx-auto mb-6" />
             <h2 className="text-4xl font-bold text-white mb-4">Sermons Coming Soon</h2>
@@ -83,7 +83,7 @@ export default function Watch() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
               <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Message Archive</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">More Sermons</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">More Sermons</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,13 +113,13 @@ export default function Watch() {
                         alt={sermon.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-[#0a0e27]/0 group-hover:bg-[#0a0e27]/40 transition-colors flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#000000]/0 group-hover:bg-[#000000]/40 transition-colors flex items-center justify-center">
                         <div className="w-16 h-16 rounded-full bg-[#ff8c42]/0 group-hover:bg-[#ff8c42] flex items-center justify-center transition-all scale-75 group-hover:scale-100">
                           <Play className="h-6 w-6 text-white fill-white ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                       </div>
                       {activeSermon?.id === sermon.id && (
-                        <div className="absolute top-3 left-3 bg-[#ff8c42] text-[#0a0e27] text-xs font-bold px-3 py-1 rounded">
+                        <div className="absolute top-3 left-3 bg-[#ff8c42] text-[#000000] text-xs font-bold px-3 py-1 rounded">
                           Now Playing
                         </div>
                       )}
@@ -132,7 +132,7 @@ export default function Watch() {
                         year: "numeric",
                       })}
                     </p>
-                    <h3 className="text-lg font-semibold text-[#0a0e27] group-hover:text-[#ff8c42] transition-colors line-clamp-2 mb-3">
+                    <h3 className="text-lg font-semibold text-[#000000] group-hover:text-[#ff8c42] transition-colors line-clamp-2 mb-3">
                       {sermon.title}
                     </h3>
                     <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-semibold group-hover:gap-3 transition-all">

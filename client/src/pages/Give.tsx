@@ -93,10 +93,10 @@ export default function Give() {
   const displayAmount = getAmountInCents();
 
   return (
-    <div style={{ backgroundColor: '#0a0e27', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#000000', minHeight: '100vh' }}>
       <PublicLayout>
         {/* PAGE HERO */}
-        <section className="py-20 md:py-28 bg-gradient-to-r from-[#0a0e27] to-[#6b2d9e]">
+        <section className="py-20 md:py-28 bg-gradient-to-r from-[#000000] to-[#6b2d9e]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-3xl">
               <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">
@@ -117,14 +117,14 @@ export default function Give() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
               <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Why Give?</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27]">Your Gift Matters</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000]">Your Gift Matters</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {reasons.map((reason, i) => {
                 const Icon = reason.icon;
                 return (
-                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#0a0e27] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group">
+                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#000000] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group">
                     <div className="w-14 h-14 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
                       <Icon className="h-7 w-7 text-[#ff8c42]" />
                     </div>
@@ -142,7 +142,7 @@ export default function Give() {
         </section>
 
         {/* DONATION SECTION */}
-        <section className="py-20 md:py-28 bg-[#0a0e27]">
+        <section className="py-20 md:py-28 bg-[#000000]">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl">
               {/* Left: Scripture + Impact */}
@@ -189,7 +189,7 @@ export default function Give() {
                           onClick={() => handlePresetClick(amount)}
                           className={`h-12 rounded-sm text-sm font-bold transition-all duration-300 ${
                             selectedAmount === amount
-                              ? "bg-[#ff8c42] text-[#0a0e27] shadow-lg scale-105"
+                              ? "bg-[#ff8c42] text-[#000000] shadow-lg scale-105"
                               : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10 hover:border-[#ff8c42]/50"
                           }`}
                         >
@@ -244,9 +244,9 @@ export default function Give() {
                     <Button
                       type="submit"
                       disabled={donating || displayAmount < 100 || !email}
-                      className="w-full bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-bold text-base h-12 rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-bold text-base h-12 rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <Heart className="h-5 w-5 fill-[#0a0e27]" />
+                      <Heart className="h-5 w-5 fill-[#000000]" />
                       {donating
                         ? "Redirecting to payment..."
                         : displayAmount >= 100

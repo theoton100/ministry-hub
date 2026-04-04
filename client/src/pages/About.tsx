@@ -49,13 +49,13 @@ const pillars = [
 
 export default function About() {
   return (
-    <div style={{ backgroundColor: '#0a0e27', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#000000', minHeight: '100vh' }}>
       <PublicLayout>
         {/* PAGE HERO */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <img src={HERO_IMAGE} alt="Pastor T.I. Solomon" className="w-full h-full object-cover object-center" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e27] via-[#0a0e27]/70 to-[#0a0e27]/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-[#000000]/30" />
           </div>
           
           <div className="container relative z-10 py-20">
@@ -79,13 +79,13 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                 <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Who is Pastor Theo?</p>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27] leading-tight mb-6">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000] leading-tight mb-6">
                   Theophilus Solomon
                 </h2>
-                <p className="text-[#0a0e27]/70 text-xs font-bold uppercase tracking-widest mb-6">
+                <p className="text-[#000000]/70 text-xs font-bold uppercase tracking-widest mb-6">
                   Pastor · Technologist · Educator
                 </p>
-                <div className="space-y-5 text-[#0a0e27]/80 leading-relaxed text-lg mb-8">
+                <div className="space-y-5 text-[#000000]/80 leading-relaxed text-lg mb-8">
                   <p>
                     Pastor Theophilus Solomon is a devoted Christian leader originally from Kogi State, Nigeria, now serving faithfully in Ghana. With a heart ablaze for God and a deep love for His people, Pastor Theo leads a growing church community dedicated to worship, the Word, and service.
                   </p>
@@ -97,15 +97,15 @@ export default function About() {
                   </p>
                 </div>
                 <Link href="/watch">
-                  <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-bold text-base h-12 px-8 rounded-sm gap-2 group">
-                    <Play className="h-5 w-5 fill-[#0a0e27]" />
+                  <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-bold text-base h-12 px-8 rounded-sm gap-2 group">
+                    <Play className="h-5 w-5 fill-[#000000]" />
                     Watch a Sermon
                   </Button>
                 </Link>
               </motion.div>
 
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)} className="space-y-6">
-                <div className="bg-[#0a0e27] rounded-lg p-8 text-white">
+                <div className="bg-[#000000] rounded-lg p-8 text-white">
                   <h3 className="text-[#ff8c42] text-xs font-bold uppercase tracking-widest mb-6">Quick Facts</h3>
                   <div className="space-y-4">
                     {[
@@ -139,7 +139,7 @@ export default function About() {
         </section>
 
         {/* MINISTRY PILLARS SECTION */}
-        <section className="py-20 md:py-28 bg-[#0a0e27]">
+        <section className="py-20 md:py-28 bg-[#000000]">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
               <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Core Message</p>
@@ -153,7 +153,7 @@ export default function About() {
               {pillars.map((pillar, i) => {
                 const Icon = pillar.icon;
                 return (
-                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#0a0e27]/50 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42] hover:bg-[#0a0e27] transition-all duration-300 group">
+                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#000000]/50 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42] hover:bg-[#000000] transition-all duration-300 group">
                     <div className="w-14 h-14 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
                       <Icon className="h-7 w-7 text-[#ff8c42]" />
                     </div>
@@ -175,7 +175,7 @@ export default function About() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
               <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Our Foundation</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27]">What We Believe</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000]">What We Believe</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -188,7 +188,7 @@ export default function About() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUpDelay(i * 0.08)}
-                    className="bg-[#0a0e27] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group"
+                    className="bg-[#000000] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group"
                   >
                     <div className="w-12 h-12 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
                       <Icon className="h-6 w-6 text-[#ff8c42]" />

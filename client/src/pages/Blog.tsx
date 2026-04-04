@@ -17,10 +17,10 @@ export default function Blog() {
   const featuredPost = data?.posts?.[0];
 
   return (
-    <div style={{ backgroundColor: '#0a0e27', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#000000', minHeight: '100vh' }}>
       <PublicLayout>
         {/* PAGE HEADER */}
-        <section className="py-16 md:py-24 bg-[#0a0e27]">
+        <section className="py-16 md:py-24 bg-[#000000]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
               <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">
@@ -66,11 +66,11 @@ export default function Blog() {
                             })
                           : ""}
                       </p>
-                      <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27] leading-tight mb-6 group-hover:text-[#ff8c42] transition-colors">
+                      <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000] leading-tight mb-6 group-hover:text-[#ff8c42] transition-colors">
                         {featuredPost.title}
                       </h2>
                       {featuredPost.excerpt && (
-                        <p className="text-[#0a0e27]/70 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
+                        <p className="text-[#000000]/70 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
                       )}
                       <div className="flex items-center gap-2 text-[#ff8c42] font-bold group-hover:gap-3 transition-all">
                         <span>Read Article</span>
@@ -85,7 +85,7 @@ export default function Blog() {
         )}
 
         {/* BLOG GRID SECTION */}
-        <section className="py-20 md:py-28 bg-[#0a0e27]">
+        <section className="py-20 md:py-28 bg-[#000000]">
           <div className="container">
             {isLoading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -110,7 +110,7 @@ export default function Blog() {
                       variants={fadeUpDelay(i * 0.08)}
                     >
                       <Link href={`/blog/${post.slug}`}>
-                        <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#0a0e27]/50 hover:bg-[#0a0e27] hover:shadow-xl">
+                        <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#000000]/50 hover:bg-[#000000] hover:shadow-xl">
                           {post.featuredImageUrl ? (
                             <div className="aspect-video overflow-hidden">
                               <img
