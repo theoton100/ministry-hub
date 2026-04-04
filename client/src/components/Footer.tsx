@@ -5,7 +5,7 @@ import { ArrowRight, Heart, Mail, MapPin } from "lucide-react";
 type FooterLink = { href: string; label: string; external?: boolean };
 
 function FooterLink({ link }: { link: FooterLink }) {
-  const cls = "text-white/60 text-sm hover:text-[#ff8c42] transition-colors w-fit flex items-center gap-1 group";
+  const cls = "text-white/60 text-sm hover:text-white/80 transition-colors w-fit flex items-center gap-1 group";
   if (link.external) {
     return (
       <a href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>
@@ -37,8 +37,8 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">
               Helping people move from confusion to clarity through deep intimacy with God.
             </p>
-            <Link href="/give" className="inline-flex items-center gap-2 text-[#ff8c42] text-sm font-bold hover:text-[#ff7a2a] transition-colors group">
-              <Heart className="h-4 w-4 fill-[#ff8c42]" />
+            <Link href="/give" className="inline-flex items-center gap-2 text-white/80 text-sm font-bold hover:text-white transition-colors group">
+              <Heart className="h-4 w-4 fill-white/80" />
               Support the Ministry
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -78,15 +78,15 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-sm tracking-wider uppercase text-white">Connect</h4>
             <div className="flex flex-col gap-3">
-              <a href="mailto:theoton100@gmail.com" className="text-white/60 text-sm hover:text-[#ff8c42] transition-colors flex items-center gap-2 group">
+              <a href="mailto:theoton100@gmail.com" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
                 <Mail className="h-4 w-4" />
                 <span>Email</span>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-[#ff8c42] transition-colors flex items-center gap-2 group">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
                 <span>Instagram</span>
                 <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-[#ff8c42] transition-colors flex items-center gap-2 group">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
                 <span>Facebook</span>
                 <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
@@ -99,7 +99,7 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed">
               Weekly inspiration, devotionals, and ministry updates delivered to your inbox.
             </p>
-            <Link href="/newsletter" className="inline-flex items-center gap-2 text-[#ff8c42] text-sm font-bold hover:text-[#ff7a2a] transition-colors group">
+            <Link href="/newsletter" className="inline-flex items-center gap-2 text-white/80 text-sm font-bold hover:text-white transition-colors group">
               Subscribe
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>

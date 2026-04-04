@@ -39,14 +39,14 @@ export default function Watch() {
                 </div>
 
                 <div className="mb-8">
-                  <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Message</p>
+                  <p className="text-white/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Message</p>
                   <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
                     {activeSermon.title}
                   </h1>
                   
                   <div className="flex items-center gap-6 mb-8 pb-8 border-b border-white/10">
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-5 w-5 text-[#ff8c42]" />
+                      <Calendar className="h-5 w-5 text-white/60" />
                       <p className="text-white/70 font-semibold">
                         {new Date(activeSermon.publishedAt).toLocaleDateString("en-US", {
                           month: "long",
@@ -82,7 +82,7 @@ export default function Watch() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-              <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Message Archive</p>
+              <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Message Archive</p>
               <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">More Sermons</h2>
             </motion.div>
 
@@ -114,28 +114,28 @@ export default function Watch() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-[#000000]/0 group-hover:bg-[#000000]/40 transition-colors flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-[#ff8c42]/0 group-hover:bg-[#ff8c42] flex items-center justify-center transition-all scale-75 group-hover:scale-100">
+                        <div className="w-16 h-16 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transition-all scale-75 group-hover:scale-100">
                           <Play className="h-6 w-6 text-white fill-white ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                       </div>
                       {activeSermon?.id === sermon.id && (
-                        <div className="absolute top-3 left-3 bg-[#ff8c42] text-[#000000] text-xs font-bold px-3 py-1 rounded">
+                        <div className="absolute top-3 left-3 bg-white text-[#000000] text-xs font-bold px-3 py-1 rounded">
                           Now Playing
                         </div>
                       )}
                     </div>
 
-                    <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-wider mb-3">
+                    <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-wider mb-3">
                       {new Date(sermon.publishedAt).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                       })}
                     </p>
-                    <h3 className="text-lg font-semibold text-[#000000] group-hover:text-[#ff8c42] transition-colors line-clamp-2 mb-3">
+                    <h3 className="text-lg font-semibold text-[#000000] group-hover:text-[#000000]/80 transition-colors line-clamp-2 mb-3">
                       {sermon.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-semibold group-hover:gap-3 transition-all">
+                    <div className="flex items-center gap-2 text-[#000000]/60 text-sm font-semibold group-hover:gap-3 transition-all">
                       <span>Watch</span>
                       <ArrowRight className="h-4 w-4" />
                     </div>

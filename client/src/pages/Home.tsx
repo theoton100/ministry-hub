@@ -46,7 +46,7 @@ export default function Home() {
         
         <div className="container relative z-10 py-20 md:py-32">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
-            <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-6">
+            <motion.p variants={fadeUp} className="text-white/60 text-xs font-semibold uppercase tracking-[0.3em] mb-6">
               T.I. Solomon Ministries
             </motion.p>
             <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white mb-6">
@@ -77,7 +77,7 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-white text-[#000000]">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl">
-            <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Core Message</p>
+            <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Core Message</p>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
               From Confusion to Clarity
             </h2>
@@ -147,14 +147,14 @@ export default function Home() {
                         </div>
                       )}
                       <div className="p-6">
-                        <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-wider mb-3">
+                        <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-wider mb-3">
                           {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                         </p>
-                        <h3 className="text-xl font-semibold text-[#000000] group-hover:text-[#ff8c42] transition-colors leading-snug mb-3 line-clamp-2">
+                        <h3 className="text-xl font-semibold text-[#000000] group-hover:text-[#000000]/80 transition-colors leading-snug mb-3 line-clamp-2">
                           {post.title}
                         </h3>
                         <p className="text-[#000000]/60 text-sm leading-relaxed line-clamp-2 mb-4 font-light">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-semibold group-hover:gap-3 transition-all">
+                        <div className="flex items-center gap-2 text-[#000000]/60 text-sm font-semibold group-hover:gap-3 transition-all">
                           <span>Read more</span>
                           <ArrowRight className="h-4 w-4" />
                         </div>
@@ -171,7 +171,7 @@ export default function Home() {
             </div>
           )}
 
-          <Link href="/blog" className="text-[#ff8c42] text-sm font-semibold hover:underline mt-8 flex items-center gap-2 sm:hidden">
+          <Link href="/blog" className="text-[#000000]/60 text-sm font-semibold hover:underline mt-8 flex items-center gap-2 sm:hidden">
             View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -181,7 +181,7 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-white">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Explore</p>
+            <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Explore</p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">Navigate the Ministry</h2>
           </motion.div>
           
@@ -189,10 +189,10 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0)}>
               <Link href="/watch">
                 <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
-                  <Play className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Watch</h3>
-                  <p className="text-[#000000]/70 mb-4 font-light">Watch sermons and messages from Pastor Theo</p>
-                  <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
+                  <Play className="h-10 w-10 text-[#000000]/40 mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#000000]/80 transition-colors">Watch</h3>
+                  <p className="text-[#000000]/70 text-sm font-light mb-4">Explore sermons and messages</p>
+                  <span className="text-[#000000]/60 font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
             </motion.div>
@@ -200,10 +200,10 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
               <Link href="/listen">
                 <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
-                  <Headphones className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Listen</h3>
-                  <p className="text-[#000000]/70 mb-4 font-light">Podcast episodes and audio teachings</p>
-                  <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
+                  <Headphones className="h-10 w-10 text-[#000000]/40 mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#000000]/80 transition-colors">Listen</h3>
+                  <p className="text-[#000000]/70 text-sm font-light mb-4">Podcast episodes and audio messages</p>
+                  <span className="text-[#000000]/60 font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
             </motion.div>
@@ -211,10 +211,10 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.2)}>
               <Link href="/store">
                 <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
-                  <ShoppingBag className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Store</h3>
-                  <p className="text-[#000000]/70 mb-4 font-light">Digital books and resources</p>
-                  <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
+                  <ShoppingBag className="h-10 w-10 text-[#000000]/40 mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#000000]/80 transition-colors">Store</h3>
+                  <p className="text-[#000000]/70 text-sm font-light mb-4">Books, resources, and digital products</p>
+                  <span className="text-[#000000]/60 font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
             </motion.div>
@@ -232,7 +232,7 @@ export default function Home() {
               Your generosity helps us reach more hearts with the Gospel and provide free resources to help people move from confusion to clarity. Every gift, big or small, makes an eternal difference.
             </p>
             <Link href="/give">
-              <Button className="bg-white hover:bg-white/90 text-[#ff8c42] font-semibold text-base h-12 px-10 rounded-sm gap-2">
+              <Button className="bg-white hover:bg-white/90 text-[#000000] font-semibold text-base h-12 px-10 rounded-sm gap-2">
                 <Heart className="h-5 w-5 fill-[#ff8c42]" />
                 Give Today
               </Button>
@@ -246,7 +246,7 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Stay Connected</p>
+              <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Stay Connected</p>
               <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
                 Get Inspired<br />Every Week
               </h2>

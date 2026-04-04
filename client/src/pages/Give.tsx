@@ -99,7 +99,7 @@ export default function Give() {
         <section className="py-20 md:py-28 bg-gradient-to-r from-[#000000] to-[#6b2d9e]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-3xl">
-              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">
+              <motion.p variants={fadeUp} className="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">
                 Support the Mission
               </motion.p>
               <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
@@ -116,7 +116,7 @@ export default function Give() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Why Give?</p>
+              <p className="text-[#000000]/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">Why Give?</p>
               <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000]">Your Gift Matters</h2>
             </motion.div>
 
@@ -125,10 +125,10 @@ export default function Give() {
                 const Icon = reason.icon;
                 return (
                   <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#000000] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group">
-                    <div className="w-14 h-14 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
-                      <Icon className="h-7 w-7 text-[#ff8c42]" />
+                    <div className="w-14 h-14 rounded-lg bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                      <Icon className="h-7 w-7 text-white/60" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff8c42] transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white/80 transition-colors">
                       {reason.title}
                     </h3>
                     <p className="text-white/70 leading-relaxed">
@@ -148,12 +148,12 @@ export default function Give() {
               {/* Left: Scripture + Impact */}
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="lg:col-span-2 space-y-6">
                 {/* Scripture */}
-                <div className="bg-white/5 border border-[#ff8c42]/30 rounded-lg p-8 hover:border-[#ff8c42] transition-colors">
-                  <Heart className="h-8 w-8 text-[#ff8c42] mb-4" />
+                <div className="bg-white/5 border border-white/10 rounded-lg p-8 hover:border-white/20 transition-colors">
+                  <Heart className="h-8 w-8 text-white/60 mb-4" />
                   <blockquote className="text-white/80 text-lg italic leading-relaxed mb-4">
                     "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
                   </blockquote>
-                  <p className="text-[#ff8c42] font-bold text-sm">— 2 Corinthians 9:7</p>
+                  <p className="text-white/60 font-bold text-sm">— 2 Corinthians 9:7</p>
                 </div>
 
 
@@ -161,7 +161,7 @@ export default function Give() {
 
               {/* Right: Donation Form */}
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)} className="lg:col-span-3">
-                <form onSubmit={handleDonate} className="space-y-8 bg-white/5 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42]/50 transition-colors">
+                <form onSubmit={handleDonate} className="space-y-8 bg-white/5 border border-white/10 rounded-lg p-8 hover:border-white/20 transition-colors">
                   {/* Preset Amounts */}
                   <div>
                     <label className="text-white/70 text-xs font-bold block mb-4 uppercase tracking-wider">

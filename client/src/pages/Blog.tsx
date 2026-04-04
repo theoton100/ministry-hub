@@ -23,7 +23,7 @@ export default function Blog() {
         <section className="py-16 md:py-24 bg-[#000000]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">
+              <motion.p variants={fadeUp} className="text-white/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">
                 Articles & Devotionals
               </motion.p>
               <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
@@ -41,7 +41,7 @@ export default function Blog() {
           <section className="py-20 md:py-28 bg-white">
             <div className="container">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Article</p>
+                <p className="text-[#000000]/60 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Article</p>
               </motion.div>
 
               <Link href={`/blog/${featuredPost.slug}`}>
@@ -57,7 +57,7 @@ export default function Blog() {
                       </div>
                     )}
                     <div className="flex flex-col justify-center">
-                      <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-wider mb-4">
+                      <p className="text-[#000000]/60 text-xs font-bold uppercase tracking-wider mb-4">
                         {featuredPost.publishedAt
                           ? new Date(featuredPost.publishedAt).toLocaleDateString("en-US", {
                               month: "long",
@@ -66,13 +66,13 @@ export default function Blog() {
                             })
                           : ""}
                       </p>
-                      <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000] leading-tight mb-6 group-hover:text-[#ff8c42] transition-colors">
+                      <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000] leading-tight mb-6 group-hover:text-[#000000]/80 transition-colors">
                         {featuredPost.title}
                       </h2>
                       {featuredPost.excerpt && (
                         <p className="text-[#000000]/70 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
                       )}
-                      <div className="flex items-center gap-2 text-[#ff8c42] font-bold group-hover:gap-3 transition-all">
+                      <div className="flex items-center gap-2 text-[#000000]/60 font-bold group-hover:gap-3 transition-all">
                         <span>Read Article</span>
                         <ArrowRight className="h-5 w-5" />
                       </div>
@@ -110,7 +110,7 @@ export default function Blog() {
                       variants={fadeUpDelay(i * 0.08)}
                     >
                       <Link href={`/blog/${post.slug}`}>
-                        <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#000000]/50 hover:bg-[#000000] hover:shadow-xl">
+                        <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-white/30 transition-all duration-300 bg-[#000000]/50 hover:bg-[#000000] hover:shadow-xl">
                           {post.featuredImageUrl ? (
                             <div className="aspect-video overflow-hidden">
                               <img
@@ -120,12 +120,12 @@ export default function Blog() {
                               />
                             </div>
                           ) : (
-                            <div className="aspect-video bg-[#ff8c42]/10 flex items-center justify-center">
-                              <BookOpen className="h-12 w-12 text-[#ff8c42]/30" />
+                            <div className="aspect-video bg-white/5 flex items-center justify-center">
+                              <BookOpen className="h-12 w-12 text-white/20" />
                             </div>
                           )}
                           <div className="p-6">
-                            <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-wider mb-3">
+                            <p className="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">
                               {post.publishedAt
                                 ? new Date(post.publishedAt).toLocaleDateString("en-US", {
                                     month: "short",
@@ -134,13 +134,13 @@ export default function Blog() {
                                   })
                                 : ""}
                             </p>
-                            <h3 className="text-xl font-bold text-white group-hover:text-[#ff8c42] transition-colors leading-snug mb-3 line-clamp-2">
+                            <h3 className="text-xl font-bold text-white group-hover:text-white/80 transition-colors leading-snug mb-3 line-clamp-2">
                               {post.title}
                             </h3>
                             {post.excerpt && (
                               <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-4">{post.excerpt}</p>
                             )}
-                            <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-bold group-hover:gap-3 transition-all">
+                            <div className="flex items-center gap-2 text-white/60 text-sm font-bold group-hover:gap-3 transition-all">
                               <span>Read more</span>
                               <ArrowRight className="h-4 w-4" />
                             </div>
@@ -158,7 +158,7 @@ export default function Blog() {
                       size="sm"
                       onClick={() => setPage((p) => Math.max(0, p - 1))}
                       disabled={page === 0}
-                      className="text-sm font-bold border-white/20 text-white hover:bg-white/10 hover:text-[#ff8c42] bg-transparent rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="text-sm font-bold border-white/20 text-white hover:bg-white/10 hover:text-white/80 bg-transparent rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronLeft className="h-4 w-4" />
                       Previous
@@ -171,7 +171,7 @@ export default function Blog() {
                       size="sm"
                       onClick={() => setPage((p) => p + 1)}
                       disabled={page >= totalPages - 1}
-                      className="text-sm font-bold border-white/20 text-white hover:bg-white/10 hover:text-[#ff8c42] bg-transparent rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="text-sm font-bold border-white/20 text-white hover:bg-white/10 hover:text-white/80 bg-transparent rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Next
                       <ChevronRight className="h-4 w-4" />

@@ -262,3 +262,13 @@
 - [ ] Update hero section styling to match Vusi's design
 - [ ] Ensure all text hierarchy uses white/gray, not orange
 - [ ] Test all pages with correct color scheme
+
+## Remove All Orange Text Colors (Match Vusi's Shop Page)
+- [x] Remove orange text from Home.tsx (section labels, icons, hover states)
+- [x] Remove orange text from Watch.tsx (section labels, icons, hover states)
+- [x] Remove orange text from Blog.tsx (section labels, icons, hover states)
+- [x] Remove orange text from About.tsx (section labels, icons, hover states)
+- [x] Remove orange text from Give.tsx (section labels, icons, hover states)
+- [x] Remove orange text from Footer.tsx (hover states on links)
+- [ ] Remove orange text from Admin pages (AdminOverview.tsx, AdminBooks.tsx)
+- [x] Verify all text is now black or gray (no orange text anywhere except buttons)

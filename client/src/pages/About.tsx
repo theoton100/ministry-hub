@@ -60,7 +60,7 @@ export default function About() {
           
           <div className="container relative z-10 py-20">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
-              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">
+              <motion.p variants={fadeUp} className="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">
                 Our Story
               </motion.p>
               <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
@@ -78,7 +78,7 @@ export default function About() {
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Who is Pastor Theo?</p>
+                <p className="text-[#000000]/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">Who is Pastor Theo?</p>
                 <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000] leading-tight mb-6">
                   Theophilus Solomon
                 </h2>
@@ -106,7 +106,7 @@ export default function About() {
 
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)} className="space-y-6">
                 <div className="bg-[#000000] rounded-lg p-8 text-white">
-                  <h3 className="text-[#ff8c42] text-xs font-bold uppercase tracking-widest mb-6">Quick Facts</h3>
+                  <h3 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-6">Quick Facts</h3>
                   <div className="space-y-4">
                     {[
                       { label: "Origin", value: "Kogi State, Nigeria" },
@@ -117,7 +117,7 @@ export default function About() {
                     ].map((item) => (
                       <div key={item.label} className="flex justify-between items-center pb-4 border-b border-white/10 last:border-0 last:pb-0">
                         <span className="text-white/60 text-sm">{item.label}</span>
-                        <span className="text-[#ff8c42] text-sm font-bold">{item.value}</span>
+                        <span className="text-white/80 text-sm font-bold">{item.value}</span>
                       </div>
                     ))}
                   </div>
@@ -142,7 +142,7 @@ export default function About() {
         <section className="py-20 md:py-28 bg-[#000000]">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Core Message</p>
+              <p className="text-white/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">Core Message</p>
               <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Ministry Pillars</h2>
               <p className="text-white/70 text-lg max-w-2xl mx-auto">
                 Everything we do is built on these three foundational pillars that guide our teaching and ministry.
@@ -153,11 +153,11 @@ export default function About() {
               {pillars.map((pillar, i) => {
                 const Icon = pillar.icon;
                 return (
-                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#000000]/50 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42] hover:bg-[#000000] transition-all duration-300 group">
-                    <div className="w-14 h-14 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
-                      <Icon className="h-7 w-7 text-[#ff8c42]" />
+                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#000000]/50 border border-white/10 rounded-lg p-8 hover:border-white/30 hover:bg-[#000000] transition-all duration-300 group">
+                    <div className="w-14 h-14 rounded-lg bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                      <Icon className="h-7 w-7 text-white/60" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#ff8c42] transition-colors">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/80 transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="text-white/70 leading-relaxed">
@@ -174,7 +174,7 @@ export default function About() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Our Foundation</p>
+              <p className="text-[#000000]/60 text-xs font-bold uppercase tracking-[0.3em] mb-4">Our Foundation</p>
               <h2 className="text-4xl md:text-5xl font-extrabold text-[#000000]">What We Believe</h2>
             </motion.div>
 
@@ -190,10 +190,10 @@ export default function About() {
                     variants={fadeUpDelay(i * 0.08)}
                     className="bg-[#000000] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
-                      <Icon className="h-6 w-6 text-[#ff8c42]" />
+                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                      <Icon className="h-6 w-6 text-white/60" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff8c42] transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white/80 transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-white/70 leading-relaxed">
