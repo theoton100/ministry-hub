@@ -97,8 +97,8 @@ export default function About() {
                   </p>
                 </div>
                 <Link href="/watch">
-                  <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-bold text-base h-12 px-8 rounded-sm gap-2 group">
-                    <Play className="h-5 w-5 fill-[#000000]" />
+                  <Button className="bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-bold text-base h-12 px-8 rounded-sm gap-2 group">
+                    <Play className="h-5 w-5 fill-white" />
                     Watch a Sermon
                   </Button>
                 </Link>

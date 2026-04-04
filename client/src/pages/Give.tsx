@@ -189,7 +189,7 @@ export default function Give() {
                           onClick={() => handlePresetClick(amount)}
                           className={`h-12 rounded-sm text-sm font-bold transition-all duration-300 ${
                             selectedAmount === amount
-                              ? "bg-[#ff8c42] text-[#000000] shadow-lg scale-105"
+                              ? "bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] text-white shadow-lg scale-105"
                               : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10 hover:border-[#ff8c42]/50"
                           }`}
                         >
@@ -244,9 +244,9 @@ export default function Give() {
                     <Button
                       type="submit"
                       disabled={donating || displayAmount < 100 || !email}
-                      className="w-full bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#000000] font-bold text-base h-12 rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-bold text-base h-12 rounded-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <Heart className="h-5 w-5 fill-[#000000]" />
+                      <Heart className="h-5 w-5 fill-white" />
                       {donating
                         ? "Redirecting to payment..."
                         : displayAmount >= 100
