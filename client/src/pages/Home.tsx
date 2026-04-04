@@ -119,25 +119,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IMPACT STATISTICS */}
-      <section className="py-16 md:py-24 bg-black">
-        <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Impact</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">Transforming Lives Globally</h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-[#ff8c42] mb-3">{stat.number}</div>
-                <p className="text-white/70 font-light">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FEATURED CONTENT SECTION */}
       <section className="py-20 md:py-28 bg-black">
         <div className="container">
