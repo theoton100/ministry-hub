@@ -39,8 +39,8 @@ export default function Watch() {
                 </div>
 
                 <div className="mb-8">
-                  <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Featured Message</p>
-                  <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                  <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Message</p>
+                  <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
                     {activeSermon.title}
                   </h1>
                   
@@ -71,7 +71,7 @@ export default function Watch() {
         <section className="py-32 bg-[#0a0e27] flex items-center justify-center min-h-screen">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="text-center max-w-2xl">
             <Video className="h-16 w-16 text-white/20 mx-auto mb-6" />
-            <h2 className="text-4xl font-extrabold text-white mb-4">Sermons Coming Soon</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Sermons Coming Soon</h2>
             <p className="text-white/60 text-lg">We are preparing powerful messages for you. Check back soon.</p>
           </motion.div>
         </section>
@@ -82,8 +82,8 @@ export default function Watch() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Message Archive</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27]">More Sermons</h2>
+              <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Message Archive</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">More Sermons</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -125,17 +125,17 @@ export default function Watch() {
                       )}
                     </div>
 
-                    <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-wider mb-3">
+                    <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-wider mb-3">
                       {new Date(sermon.publishedAt).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                       })}
                     </p>
-                    <h3 className="text-lg font-bold text-[#0a0e27] group-hover:text-[#ff8c42] transition-colors line-clamp-2 mb-3">
+                    <h3 className="text-lg font-semibold text-[#0a0e27] group-hover:text-[#ff8c42] transition-colors line-clamp-2 mb-3">
                       {sermon.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-bold group-hover:gap-3 transition-all">
+                    <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-semibold group-hover:gap-3 transition-all">
                       <span>Watch</span>
                       <ArrowRight className="h-4 w-4" />
                     </div>

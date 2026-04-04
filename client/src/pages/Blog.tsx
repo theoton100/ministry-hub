@@ -23,10 +23,10 @@ export default function Blog() {
         <section className="py-16 md:py-24 bg-[#0a0e27]">
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">
+              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">
                 Articles & Devotionals
               </motion.p>
-              <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+              <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
                 Blog
               </motion.h1>
               <motion.p variants={fadeUp} className="text-white/70 text-lg max-w-2xl">
@@ -41,7 +41,7 @@ export default function Blog() {
           <section className="py-20 md:py-28 bg-white">
             <div className="container">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Featured Article</p>
+                <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Featured Article</p>
               </motion.div>
 
               <Link href={`/blog/${featuredPost.slug}`}>
