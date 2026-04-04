@@ -120,15 +120,15 @@ export default function Home() {
       </section>
 
       {/* FEATURED CONTENT SECTION */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-[#f5f1e8]">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
             <div className="flex items-baseline justify-between">
               <div>
-                <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-3">Latest</p>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">From the Blog</h2>
+                <p className="text-gray-600 text-xs font-semibold uppercase tracking-[0.3em] mb-3">Latest</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#000000]">From the Blog</h2>
               </div>
-              <Link href="/blog" className="text-[#ff8c42] text-sm font-semibold hover:underline hidden sm:flex items-center gap-2 group">
+              <Link href="/blog" className="text-gray-700 text-sm font-semibold hover:underline hidden sm:flex items-center gap-2 group">
                 View All
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>

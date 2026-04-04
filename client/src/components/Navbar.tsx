@@ -40,13 +40,13 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium transition-all duration-200 relative pb-1 ${
                     isActive
-                      ? "text-[#ff8c42]"
+                      ? "text-white"
                       : "text-white/70 hover:text-white"
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#ff8c42]" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
                   )}
                 </Link>
               );
@@ -89,7 +89,7 @@ export default function Navbar() {
                         onClick={() => setOpen(false)}
                         className={`flex items-center px-6 py-3 text-sm font-medium transition-all duration-200 border-l-2 ${
                           isActive
-                            ? "text-[#ff8c42] bg-white/5 border-[#ff8c42]"
+                            ? "text-white bg-white/5 border-white"
                             : "text-white/70 border-transparent hover:text-white hover:bg-white/5"
                         }`}
                       >

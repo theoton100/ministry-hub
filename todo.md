@@ -254,3 +254,11 @@
 - [ ] Update Blog page with smaller text
 - [ ] Update Books/Store page with smaller text
 - [ ] Update all pages for consistent smaller typography
+
+## Color Palette Fix - Learn from Vusi's Exact Colors
+- [x] Fix navbar menu text from orange to white
+- [x] Change body section backgrounds from white to light gray (#f3f1ed or #f5f1e8)
+- [x] Remove orange text accents from body sections
+- [ ] Update hero section styling to match Vusi's design
+- [ ] Ensure all text hierarchy uses white/gray, not orange
+- [ ] Test all pages with correct color scheme
