@@ -1,10 +1,10 @@
 import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
-import { MINISTRY_NAME } from "@/lib/constants";
+import { MINISTRY_NAME, HERO_IMAGE } from "@/lib/constants";
 import { fadeUp, fadeUpDelay, staggerContainer } from "@/lib/animations";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Heart, BookOpen, Users, Globe, ArrowRight, Play } from "lucide-react";
+import { Heart, BookOpen, Users, Globe, ArrowRight, Play, Zap, Target } from "lucide-react";
 
 const beliefs = [
   {
@@ -29,45 +29,63 @@ const beliefs = [
   },
 ];
 
+const pillars = [
+  {
+    icon: Zap,
+    title: "Deep Intimacy with God",
+    desc: "The foundation of everything — knowing God personally and experiencing His presence daily.",
+  },
+  {
+    icon: Target,
+    title: "Clarity & Purpose",
+    desc: "Moving from confusion to confidence through organized prayer, hearing God's voice, and understanding your vision.",
+  },
+  {
+    icon: BookOpen,
+    title: "Scriptural Teaching",
+    desc: "Bold, practical, and transformative teaching grounded in the Word of God.",
+  },
+];
+
 export default function About() {
   return (
-    <div style={{ backgroundColor: '#201c1d', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#0a0e27', minHeight: '100vh' }}>
       <PublicLayout>
-        {/* Page Header */}
-        <section className="pt-10 pb-6 border-b border-white/10">
-          <div className="container">
-            <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <motion.p variants={fadeUp} className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-3">
+        {/* PAGE HERO */}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img src={HERO_IMAGE} alt="Pastor T.I. Solomon" className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e27] via-[#0a0e27]/70 to-[#0a0e27]/30" />
+          </div>
+          
+          <div className="container relative z-10 py-20">
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
+              <motion.p variants={fadeUp} className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">
                 Our Story
               </motion.p>
-              <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">
-                About
+              <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                About Pastor Theo
               </motion.h1>
-              <motion.p variants={fadeUp} className="text-white/40 text-sm">
-                The heart and vision behind {MINISTRY_NAME} Ministries.
+              <motion.p variants={fadeUp} className="text-[#f5f1e8]/80 text-lg leading-relaxed max-w-xl">
+                A devoted Christian leader, technologist, and educator committed to helping people move from confusion to clarity through deep intimacy with God.
               </motion.p>
             </motion.div>
           </div>
         </section>
 
-        {/* Bio */}
-        <section className="py-14 md:py-20 border-b border-white/10">
-          <div className="container max-w-4xl">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="md:col-span-3 space-y-5"
-              >
-                <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        {/* PASTOR BIO SECTION */}
+        <section className="py-20 md:py-28 bg-white">
+          <div className="container">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+                <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Who is Pastor Theo?</p>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27] leading-tight mb-6">
                   Theophilus Solomon
                 </h2>
-                <p className="text-brand text-xs font-bold uppercase tracking-[0.15em]">
+                <p className="text-[#0a0e27]/70 text-xs font-bold uppercase tracking-widest mb-6">
                   Pastor · Technologist · Educator
                 </p>
-                <div className="space-y-4 text-white/60 leading-relaxed text-base">
+                <div className="space-y-5 text-[#0a0e27]/80 leading-relaxed text-lg mb-8">
                   <p>
                     Pastor Theophilus Solomon is a devoted Christian leader originally from Kogi State, Nigeria, now serving faithfully in Ghana. With a heart ablaze for God and a deep love for His people, Pastor Theo leads a growing church community dedicated to worship, the Word, and service.
                   </p>
@@ -79,41 +97,39 @@ export default function About() {
                   </p>
                 </div>
                 <Link href="/watch">
-                  <Button className="bg-brand hover:bg-brand-hover text-[#231f20] font-bold text-sm h-11 px-7 rounded-sm gap-2 mt-2 group">
-                    <Play className="h-4 w-4 fill-[#231f20] group-hover:scale-110 transition-transform" />
+                  <Button className="bg-[#ff8c42] hover:bg-[#ff7a2a] text-[#0a0e27] font-bold text-base h-12 px-8 rounded-sm gap-2 group">
+                    <Play className="h-5 w-5 fill-[#0a0e27]" />
                     Watch a Sermon
                   </Button>
                 </Link>
               </motion.div>
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUpDelay(0.15)}
-                className="md:col-span-2 space-y-4"
-              >
-                <div className="border border-white/10 rounded p-6 space-y-4">
-                  <h3 className="text-white/60 text-xs font-bold uppercase tracking-widest">Quick Facts</h3>
-                  {[
-                    { label: "Origin", value: "Kogi State, Nigeria" },
-                    { label: "Based in", value: "Ghana" },
-                    { label: "Role", value: "Pastor & Technologist" },
-                    { label: "Ministry", value: "T.I. Solomon Ministries" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                      <span className="text-white/40 text-sm">{item.label}</span>
-                      <span className="text-white text-sm font-semibold">{item.value}</span>
-                    </div>
-                  ))}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)} className="space-y-6">
+                <div className="bg-[#0a0e27] rounded-lg p-8 text-white">
+                  <h3 className="text-[#ff8c42] text-xs font-bold uppercase tracking-widest mb-6">Quick Facts</h3>
+                  <div className="space-y-4">
+                    {[
+                      { label: "Origin", value: "Kogi State, Nigeria" },
+                      { label: "Based in", value: "Ghana" },
+                      { label: "Role", value: "Pastor & Technologist" },
+                      { label: "Ministry", value: "T.I. Solomon Ministries" },
+                      { label: "Focus", value: "Intimacy with God" },
+                    ].map((item) => (
+                      <div key={item.label} className="flex justify-between items-center pb-4 border-b border-white/10 last:border-0 last:pb-0">
+                        <span className="text-white/60 text-sm">{item.label}</span>
+                        <span className="text-[#ff8c42] text-sm font-bold">{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
                 <Link href="/give">
-                  <div className="border border-brand/30 rounded p-5 hover:border-brand/60 transition-colors cursor-pointer group">
-                    <Heart className="h-6 w-6 text-brand mb-3 group-hover:scale-110 transition-transform" />
-                    <h4 className="text-white font-bold text-sm mb-1">Support the Ministry</h4>
-                    <p className="text-white/40 text-xs leading-relaxed">Your generosity helps us reach more hearts with the Gospel.</p>
-                    <div className="mt-3 flex items-center gap-1 text-brand text-xs font-bold">
-                      Give Today <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                  <div className="bg-gradient-to-br from-[#ff8c42] to-[#ff7a2a] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                    <Heart className="h-8 w-8 text-white mb-4 group-hover:scale-110 transition-transform" />
+                    <h4 className="text-xl font-bold mb-2">Support the Ministry</h4>
+                    <p className="text-white/90 text-sm leading-relaxed mb-4">Your generosity helps us reach more hearts with the Gospel and provide free resources.</p>
+                    <div className="flex items-center gap-2 text-white font-bold">
+                      Give Today <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </Link>
@@ -122,15 +138,47 @@ export default function About() {
           </div>
         </section>
 
-        {/* What We Believe */}
-        <section className="py-14 md:py-20">
+        {/* MINISTRY PILLARS SECTION */}
+        <section className="py-20 md:py-28 bg-[#0a0e27]">
           <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10">
-              <p className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-3">Our Foundation</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">What We Believe</h2>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
+              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Core Message</p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Ministry Pillars</h2>
+              <p className="text-white/70 text-lg max-w-2xl mx-auto">
+                Everything we do is built on these three foundational pillars that guide our teaching and ministry.
+              </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px rounded overflow-hidden border border-white/10 max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {pillars.map((pillar, i) => {
+                const Icon = pillar.icon;
+                return (
+                  <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.1)} className="bg-[#0a0e27]/50 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42] hover:bg-[#0a0e27] transition-all duration-300 group">
+                    <div className="w-14 h-14 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
+                      <Icon className="h-7 w-7 text-[#ff8c42]" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#ff8c42] transition-colors">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* BELIEFS SECTION */}
+        <section className="py-20 md:py-28 bg-white">
+          <div className="container">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
+              <p className="text-[#ff8c42] text-xs font-bold uppercase tracking-[0.3em] mb-4">Our Foundation</p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a0e27]">What We Believe</h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {beliefs.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -140,18 +188,49 @@ export default function About() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUpDelay(i * 0.08)}
-                    className="bg-card p-7 hover:bg-white/5 transition-colors group border-r border-b border-white/10"
-                    style={{ backgroundColor: '#201c1d' }}
+                    className="bg-[#0a0e27] rounded-lg p-8 hover:shadow-xl transition-all duration-300 group"
                   >
-                    <div className="w-10 h-10 rounded-sm bg-brand/10 flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
-                      <Icon className="h-5 w-5 text-brand" />
+                    <div className="w-12 h-12 rounded-lg bg-[#ff8c42]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff8c42]/20 transition-colors">
+                      <Icon className="h-6 w-6 text-[#ff8c42]" />
                     </div>
-                    <h3 className="text-lg font-extrabold text-white mb-2 group-hover:text-brand transition-colors">{item.title}</h3>
-                    <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ff8c42] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </motion.div>
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="py-20 md:py-28 bg-gradient-to-r from-[#6b2d9e] to-[#ff8c42]">
+          <div className="container">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                Ready to Deepen Your Walk with God?
+              </h2>
+              <p className="text-white/90 text-lg leading-relaxed mb-10">
+                Explore our sermons, blog articles, and resources to help you move from confusion to clarity and develop deep intimacy with God.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/watch">
+                  <Button className="bg-white hover:bg-white/90 text-[#ff8c42] font-bold text-base h-12 px-8 rounded-sm gap-2">
+                    <Play className="h-5 w-5 fill-[#ff8c42]" />
+                    Watch Sermons
+                  </Button>
+                </Link>
+                <Link href="/blog">
+                  <Button className="border-2 border-white text-white hover:bg-white/10 font-bold text-base h-12 px-8 rounded-sm bg-transparent gap-2">
+                    <BookOpen className="h-5 w-5" />
+                    Read Articles
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
       </PublicLayout>
