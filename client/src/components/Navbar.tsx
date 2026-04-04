@@ -27,7 +27,7 @@ export default function Navbar() {
         <nav className="container flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0 group">
-            <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-9 object-contain group-hover:opacity-80 transition-opacity" />
+            <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-14 object-contain group-hover:opacity-80 transition-opacity" />
           </Link>
 
           {/* Desktop Nav */}
@@ -77,7 +77,7 @@ export default function Navbar() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full">
                 <div className="p-6 border-b border-white/10">
-                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-9 object-contain" />
+                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-12 object-contain" />
                 </div>
                 <div className="flex-1 py-4 overflow-y-auto">
                   {navLinks.map((link) => {

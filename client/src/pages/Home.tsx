@@ -76,55 +76,46 @@ export default function Home() {
       {/* FEATURED SPEAKER SECTION */}
       <section className="py-20 md:py-28 bg-white text-[#000000]">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Core Message</p>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                From Confusion to Clarity
-              </h2>
-              <p className="text-[#000000]/70 text-lg leading-relaxed mb-6 font-light">
-                Pastor Theo Solomon teaches how to develop deep intimacy with God—the foundation for clarity, purpose, and spiritual transformation. Through organized prayer, hearing God's voice, and understanding vision manifestation, you'll move from confusion to confidence in your faith journey.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm font-semibold">✓</span>
-                  </div>
-                  <span className="text-[#000000]/80 font-light">Deep intimacy with God</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm font-semibold">✓</span>
-                  </div>
-                  <span className="text-[#000000]/80 font-light">Organized prayer life</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm font-semibold">✓</span>
-                  </div>
-                  <span className="text-[#000000]/80 font-light">Hearing God's voice clearly</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm font-semibold">✓</span>
-                  </div>
-                  <span className="text-[#000000]/80 font-light">Vision to manifestation</span>
-                </li>
-              </ul>
-              <Link href="/about">
-                <Button className="bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-semibold text-base h-12 px-8 rounded-sm">
-                  Learn More About Pastor Theo
-                </Button>
-              </Link>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)} className="relative">
-              <div className="aspect-square rounded-lg overflow-hidden shadow-2xl">
-                <img src={HERO_IMAGE} alt="Pastor T.I. Solomon" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#ff8c42] rounded-lg -z-10" />
-            </motion.div>
-          </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl">
+            <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-4">Core Message</p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+              From Confusion to Clarity
+            </h2>
+            <p className="text-[#000000]/70 text-lg leading-relaxed mb-6 font-light">
+              Pastor Theo Solomon teaches how to develop deep intimacy with God—the foundation for clarity, purpose, and spiritual transformation. Through organized prayer, hearing God's voice, and understanding vision manifestation, you'll move from confusion to confidence in your faith journey.
+            </p>
+            <ul className="space-y-4 mb-8">
+              <li className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-semibold">✓</span>
+                </div>
+                <span className="text-[#000000]/80 font-light">Deep intimacy with God</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-semibold">✓</span>
+                </div>
+                <span className="text-[#000000]/80 font-light">Organized prayer life</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-semibold">✓</span>
+                </div>
+                <span className="text-[#000000]/80 font-light">Hearing God's voice clearly</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-[#ff8c42] flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm font-semibold">✓</span>
+                </div>
+                <span className="text-[#000000]/80 font-light">Vision to manifestation</span>
+              </li>
+            </ul>
+            <Link href="/about">
+              <Button className="bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-semibold text-base h-12 px-8 rounded-sm">
+                Learn More About Pastor Theo
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

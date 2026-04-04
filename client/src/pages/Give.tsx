@@ -156,21 +156,7 @@ export default function Give() {
                   <p className="text-[#ff8c42] font-bold text-sm">— 2 Corinthians 9:7</p>
                 </div>
 
-                {/* Impact */}
-                <div className="bg-white/5 border border-white/10 rounded-lg p-8 hover:border-[#ff8c42] transition-colors">
-                  <h3 className="text-white font-bold text-lg mb-6">Your Gift Makes an Impact</h3>
-                  <div className="space-y-4">
-                    {impactItems.map((item) => (
-                      <div key={item.amount} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-[#ff8c42] shrink-0 mt-0.5" />
-                        <div>
-                          <span className="text-[#ff8c42] font-bold text-sm">{item.amount}</span>
-                          <span className="text-white/60 text-sm"> — {item.desc}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+
               </motion.div>
 
               {/* Right: Donation Form */}
