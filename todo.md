@@ -272,3 +272,9 @@
 - [x] Remove orange text from Footer.tsx (hover states on links)
 - [ ] Remove orange text from Admin pages (AdminOverview.tsx, AdminBooks.tsx)
 - [x] Verify all text is now black or gray (no orange text anywhere except buttons)
+
+## Design Improvements - Vusi Shop Page & Homepage Fixes
+- [x] Apply Vusi's shop design to Books/Store page (beige card backgrounds, dark image containers)
+- [x] Fix homepage blog boxes to match section background color (#f5f1e8)
+- [x] Remove unwanted hover effects/borders on homepage blog boxes
+- [x] Redesign Podcast page to match Vusi's aesthetic (black header, white content sections)

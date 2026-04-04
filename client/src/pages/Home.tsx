@@ -140,7 +140,7 @@ export default function Home() {
               {latestPosts.data.posts.map((post: any, i: number) => (
                 <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
                   <Link href={`/blog/${post.slug}`}>
-                    <article className="group cursor-pointer h-full border border-gray-200 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-white hover:bg-gray-50 hover:shadow-xl">
+                    <article className="group cursor-pointer h-full border border-[#f5f1e8] rounded-lg overflow-hidden hover:border-[#f5f1e8] transition-all duration-300 bg-[#f5f1e8] hover:bg-[#f5f1e8] hover:shadow-lg">
                       {post.featuredImage && (
                         <div className="aspect-video overflow-hidden">
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
