@@ -40,10 +40,7 @@ export default function Navbar() {
       <nav className="container flex items-center justify-between h-14">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain group-hover:opacity-80 transition-opacity" />
-          <span className="font-extrabold text-sm tracking-tight text-white uppercase group-hover:text-brand transition-colors">
-            {MINISTRY_NAME}
-          </span>
+          <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-12 object-contain group-hover:opacity-80 transition-opacity" />
         </Link>
 
         {/* Desktop Nav */}
@@ -88,8 +85,7 @@ export default function Navbar() {
             <div className="flex flex-col h-full">
               <div className="p-5 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="w-6 h-9 object-contain" />
-                  <span className="font-extrabold text-sm text-white uppercase">{MINISTRY_NAME}</span>
+                  <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-12 object-contain" />
                 </div>
               </div>
               <div className="flex-1 py-2 overflow-y-auto">

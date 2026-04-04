@@ -172,3 +172,12 @@
 - [x] Improve UX: add scroll animations, hover effects, transitions across pages
 - [x] Add micro-interactions on cards and buttons
 - [x] Improve homepage sections with animated entry effects
+
+## Color Redesign (Vusi Thembekwayo Premium Palette)
+- [x] Crop logo to remove excess sides
+- [x] Extract exact colors from Vusi's site (navy, purple, orange, cream)
+- [x] Update all CSS variables to new palette
+- [x] Fix footer logo display
+- [x] Audit all components for contrast and readability
+- [x] Verify no white-on-white or poor contrast anywhere
+- [x] Test all pages for design consistency
