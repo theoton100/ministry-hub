@@ -120,13 +120,13 @@ export default function Home() {
       </section>
 
       {/* FEATURED CONTENT SECTION */}
-      <section className="py-20 md:py-28 bg-black">
+      <section className="py-20 md:py-28 bg-white">
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
             <div className="flex items-baseline justify-between">
               <div>
                 <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-[0.3em] mb-3">Latest</p>
-                <h2 className="text-4xl md:text-5xl font-bold text-white">From the Blog</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#000000]">From the Blog</h2>
               </div>
               <Link href="/blog" className="text-[#ff8c42] text-sm font-semibold hover:underline hidden sm:flex items-center gap-2 group">
                 View All
@@ -140,7 +140,7 @@ export default function Home() {
               {latestPosts.data.posts.map((post: any, i: number) => (
                 <motion.div key={post.id} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(i * 0.08)}>
                   <Link href={`/blog/${post.slug}`}>
-                    <article className="group cursor-pointer h-full border border-white/10 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-[#000000]/50 hover:bg-[#000000] hover:shadow-xl">
+                    <article className="group cursor-pointer h-full border border-gray-200 rounded-lg overflow-hidden hover:border-[#ff8c42] transition-all duration-300 bg-white hover:bg-gray-50 hover:shadow-xl">
                       {post.featuredImage && (
                         <div className="aspect-video overflow-hidden">
                           <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -150,10 +150,10 @@ export default function Home() {
                         <p className="text-[#ff8c42] text-xs font-semibold uppercase tracking-wider mb-3">
                           {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                         </p>
-                        <h3 className="text-xl font-semibold text-white group-hover:text-[#ff8c42] transition-colors leading-snug mb-3 line-clamp-2">
+                        <h3 className="text-xl font-semibold text-[#000000] group-hover:text-[#ff8c42] transition-colors leading-snug mb-3 line-clamp-2">
                           {post.title}
                         </h3>
-                        <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-4 font-light">{post.excerpt}</p>
+                        <p className="text-[#000000]/60 text-sm leading-relaxed line-clamp-2 mb-4 font-light">{post.excerpt}</p>
                         <div className="flex items-center gap-2 text-[#ff8c42] text-sm font-semibold group-hover:gap-3 transition-all">
                           <span>Read more</span>
                           <ArrowRight className="h-4 w-4" />
@@ -165,9 +165,9 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="border border-white/10 rounded-lg p-12 text-center">
-              <BookOpen className="h-12 w-12 text-white/20 mx-auto mb-4" />
-              <p className="text-white/40 text-lg font-light">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
+            <div className="border border-gray-200 rounded-lg p-12 text-center">
+              <BookOpen className="h-12 w-12 text-[#000000]/20 mx-auto mb-4" />
+              <p className="text-[#000000]/40 text-lg font-light">Blog posts coming soon. Stay tuned for articles and devotionals.</p>
             </div>
           )}
 
@@ -188,10 +188,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0)}>
               <Link href="/watch">
-                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
                   <Play className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Watch</h3>
-                  <p className="text-white/70 mb-4 font-light">Watch sermons and messages from Pastor Theo</p>
+                  <p className="text-[#000000]/70 mb-4 font-light">Watch sermons and messages from Pastor Theo</p>
                   <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
@@ -199,10 +199,10 @@ export default function Home() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.1)}>
               <Link href="/listen">
-                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
                   <Headphones className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Listen</h3>
-                  <p className="text-white/70 mb-4 font-light">Podcast episodes and audio teachings</p>
+                  <p className="text-[#000000]/70 mb-4 font-light">Podcast episodes and audio teachings</p>
                   <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
@@ -210,10 +210,10 @@ export default function Home() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpDelay(0.2)}>
               <Link href="/store">
-                <div className="bg-[#000000] rounded-lg p-8 text-white hover:shadow-xl transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-white rounded-lg p-8 text-[#000000] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full border border-gray-200">
                   <ShoppingBag className="h-10 w-10 text-[#ff8c42] mb-4 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-semibold mb-3 group-hover:text-[#ff8c42] transition-colors">Store</h3>
-                  <p className="text-white/70 mb-4 font-light">Digital books and resources</p>
+                  <p className="text-[#000000]/70 mb-4 font-light">Digital books and resources</p>
                   <span className="text-[#ff8c42] font-semibold flex items-center gap-2">Explore <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>

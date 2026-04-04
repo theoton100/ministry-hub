@@ -235,3 +235,22 @@
 - [x] Simplify Give page: remove detailed expense breakdown
 - [x] Refine spacing and typography across all pages
 - [x] Test all pages for design consistency
+
+
+## Color Scheme Redesign - Match Vusi's Layout
+- [ ] Remove black backgrounds from all content sections (keep only header, footer, hero)
+- [ ] Update Featured Speaker section to white/cream background
+- [ ] Update Blog page with featured article and card grid layout
+- [ ] Update Books/Store page with beige card backgrounds
+- [ ] Redesign Footer to match Vusi's layout (organized columns)
+- [ ] Update all pages with proper color sections
+- [ ] Test all pages for design consistency
+
+
+## Text Size Reduction - Smaller, Refined Typography
+- [ ] Reduce all heading sizes (no text-5xl, text-6xl)
+- [ ] Reduce body text sizes for compact layout
+- [ ] Update Home page with smaller text
+- [ ] Update Blog page with smaller text
+- [ ] Update Books/Store page with smaller text
+- [ ] Update all pages for consistent smaller typography
