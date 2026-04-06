@@ -332,3 +332,28 @@ export async function getOrders(limit = 50) {
   if (!db) return [];
   return db.select().from(orders).orderBy(desc(orders.createdAt)).limit(limit);
 }
+
+// ─── Contact Messages ────────────────────────────────────────
+
+export async function createContactMessage(data: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot create contact message: database not available");
+    return;
+  }
+  try {
+    // For now, we'll just log the contact message since we don't have a dedicated table
+    // In production, you'd want to store this in a database table
+    console.log("[Contact Message]", {
+      timestamp: new Date().toISOString(),
+      ...data,
+    });
+  } catch (error) {
+    console.error("[Database] Failed to create contact message:", error);
+  }
+}

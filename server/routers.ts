@@ -10,6 +10,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { ENV } from "./_core/env";
 import { TRPCError } from "@trpc/server";
 import { parse as parseCookieHeader } from "cookie";
+import { notifyOwner } from "./_core/notification";
 
 const ADMIN_COOKIE = "admin_session";
 
@@ -656,6 +657,31 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         await db.setSetting(input.key, input.value);
         return { success: true };
+      }),
+  }),
+
+  contact: router({
+    sendMessage: publicProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        subject: z.string().min(1),
+        message: z.string().min(1),
+      }))
+      .mutation(async ({ input }) => {
+        await db.createContactMessage({
+          name: input.name,
+          email: input.email,
+          subject: input.subject,
+          message: input.message,
+        });
+
+        await notifyOwner({
+          title: `New Contact Message from ${input.name}`,
+          content: `Subject: ${input.subject}\n\nMessage:\n${input.message}\n\nReply to: ${input.email}`,
+        });
+
+        return { success: true, message: "Your message has been sent successfully" };
       }),
   }),
 });

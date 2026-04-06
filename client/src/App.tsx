@@ -27,6 +27,7 @@ import AdminBooks from "./pages/admin/AdminBooks";
 import AdminOrders from "./pages/admin/AdminOrders";
 import Checkout from "./pages/Checkout";
 import ResetDownload from "./pages/ResetDownload";
+import Contact from "./pages/Contact";
 
 // Wrapper components to handle AdminGuard + DashboardLayout
 const AdminDashboard: React.FC = () => (
@@ -109,6 +110,7 @@ function Router() {
       <Route path="/payment/verify" component={PaymentVerify} />
       <Route path="/checkout/:product" component={Checkout} />
       <Route path="/reset-download" component={ResetDownload} />
+      <Route path="/contact" component={Contact} />
       <Route path="/admin/login" component={AdminLogin} />
 
       {/* Admin routes - specific routes BEFORE generic routes */}
