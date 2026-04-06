@@ -316,3 +316,9 @@
 - [x] Add Contact route to App.tsx
 - [x] Add Contact link to navigation menu
 - [x] Test contact form submission
+
+
+## Post-Payment Automation
+- [x] Send email to pastor with customer details after Structured Walk System payment
+- [x] Include name, email, and WhatsApp number in the notification
+- [x] Test payment flow and email delivery

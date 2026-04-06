@@ -633,6 +633,19 @@ export const appRouter = router({
             stripePaymentIntentId: txn.id?.toString(),
           });
           const bookId = txn.metadata?.book_id ? Number(txn.metadata.book_id) : null;
+          
+          // Send email notification for Structured Walk System purchases
+          if (txn.metadata?.type === "structured-walk-system") {
+            const customerName = txn.metadata?.customer_name || "Customer";
+            const whatsappNumber = txn.metadata?.whatsapp_number || "Not provided";
+            const customerEmail = txn.customer?.email || txn.email || "Not provided";
+            
+            await notifyOwner({
+              title: `New Structured Walk System Purchase - ${customerName}`,
+              content: `A new customer has purchased the Structured Walk System!\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${whatsappNumber}\n\nAmount: GHS ${(txn.amount / 100).toFixed(2)}\nReference: ${input.reference}`,
+            });
+          }
+          
           return { verified: true, status: "success", amount: txn.amount, currency: txn.currency, bookId };
         }
 
