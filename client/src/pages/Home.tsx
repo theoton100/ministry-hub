@@ -2,7 +2,7 @@ import PublicLayout from "@/components/PublicLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { fadeUp, fadeUpDelay, staggerContainer } from "@/lib/animations";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc";
 import { useState } from "react";
@@ -14,11 +14,15 @@ export default function Home() {
   const [systemEmail, setSystemEmail] = useState("");
   const [subscribing, setSubscribing] = useState(false);
 
+  const [, setLocation] = useLocation();
+
   // Mailchimp subscription for 7-Day Reset
   const resetSubscribe = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => {
       setResetEmail("");
-      toast.success("Check your email for the 7-Day Reset PDF!");
+      toast.success("Redirecting to your 7-Day Reset...");
+      // Redirect to download page after successful signup
+      setTimeout(() => setLocation("/reset-download"), 500);
     },
     onError: (err) => toast.error(err.message || "Something went wrong."),
   });
@@ -28,12 +32,12 @@ export default function Home() {
     if (!resetEmail) return;
     setSubscribing(true);
     resetSubscribe.mutate({ email: resetEmail });
-    setSubscribing(false);
+    // Note: setSubscribing(false) will be called after redirect
   };
 
   const handleSystemSignup = () => {
     // This will redirect to Paystack checkout
-    window.location.href = "/checkout/structured-walk";
+    setLocation("/checkout/structured-walk");
   };
 
   const problems = [

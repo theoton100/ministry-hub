@@ -297,3 +297,11 @@
 - [ ] Verify WhatsApp group link delivery after payment
 - [ ] Design 7-Day Reset PDF (Canva)
 - [ ] Create audio teachings for Structured Walk System
+
+
+## 7-Day Reset Download Page (No Mailchimp Automation)
+- [x] Create ResetDownload.tsx page with PDF download link
+- [x] Add route to App.tsx for /reset-download
+- [x] Update Home.tsx to redirect after successful signup
+- [x] Test complete signup → download flow
+- [x] Verify PDF downloads correctly
