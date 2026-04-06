@@ -15,8 +15,8 @@ export default function Checkout() {
   const [whatsappNumber, setWhatsappNumber] = useState("");
   const [processing, setProcessing] = useState(false);
 
-  const systemPrice = 9999; // ₵99.99 in cents
-  const systemPriceDisplay = "₵99.99";
+  const systemPrice = 3000; // ₵30.00 in cents
+  const systemPriceDisplay = "₵30.00";
 
   const initializePayment = trpc.payment.initializeStructuredWalkPurchase.useMutation({
     onSuccess: (data) => {
