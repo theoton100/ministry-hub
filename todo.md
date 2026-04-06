@@ -278,3 +278,22 @@
 - [x] Fix homepage blog boxes to match section background color (#f5f1e8)
 - [x] Remove unwanted hover effects/borders on homepage blog boxes
 - [x] Redesign Podcast page to match Vusi's aesthetic (black header, white content sections)
+
+
+## Discipleship Platform Redesign - Conversion & Income Focus
+- [x] Redesign homepage hero: "Faith Was Never Meant to Feel Confusing" headline
+- [x] Add Problem section: "If this feels familiar..." with 4 pain points
+- [x] Add Solution section: "You don't need more pressure. You need structure."
+- [x] Create Pathway section: 3-step visual journey (Reset → Structure → Stability)
+- [x] Create 7-Day Reset section with Mailchimp signup CTA
+- [x] Create Structured Walk System offer section with Paystack payment
+- [x] Add "How It Works" section (4-step WhatsApp delivery process)
+- [x] Update About section to focus on mission, not biography
+- [x] Add final CTA section: "Stop Restarting Your Spiritual Life"
+- [x] Create Checkout page for Structured Walk System
+- [x] Wire up tRPC payment initialization procedure
+- [ ] Test Mailchimp integration for free reset
+- [ ] Test Paystack integration for Structured Walk System
+- [ ] Verify WhatsApp group link delivery after payment
+- [ ] Design 7-Day Reset PDF (Canva)
+- [ ] Create audio teachings for Structured Walk System

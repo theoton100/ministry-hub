@@ -561,6 +561,55 @@ export const appRouter = router({
         return { authorizationUrl: body.data.authorization_url, reference: body.data.reference };
       }),
 
+    initializeStructuredWalkPurchase: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        name: z.string(),
+        whatsappNumber: z.string(),
+        callbackUrl: z.string(),
+      }))
+      .mutation(async ({ input }) => {
+        const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+        if (!paystackSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Payment not configured" });
+
+        const systemPrice = 9999; // ₵99.99 in cents
+
+        const res = await fetch("https://api.paystack.co/transaction/initialize", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${paystackSecret}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: input.email,
+            amount: systemPrice,
+            currency: "GHS",
+            callback_url: input.callbackUrl,
+            metadata: {
+              type: "structured-walk-system",
+              customer_name: input.name,
+              whatsapp_number: input.whatsappNumber,
+            },
+          }),
+        });
+
+        const body = await res.json();
+        if (!body.status) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: body.message || "Payment initialization failed" });
+        }
+
+        await db.createOrder({
+          email: input.email,
+          customerName: input.name,
+          type: "donation",
+          amountInCents: systemPrice,
+          stripeSessionId: body.data.reference,
+          status: "pending",
+        });
+
+        return { authorizationUrl: body.data.authorization_url, reference: body.data.reference };
+      }),
+
     verifyPayment: publicProcedure
       .input(z.object({ reference: z.string() }))
       .query(async ({ input }) => {

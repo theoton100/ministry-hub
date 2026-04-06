@@ -25,6 +25,7 @@ import AdminSermons from "./pages/admin/AdminSermons";
 import AdminPodcasts from "./pages/admin/AdminPodcasts";
 import AdminBooks from "./pages/admin/AdminBooks";
 import AdminOrders from "./pages/admin/AdminOrders";
+import Checkout from "./pages/Checkout";
 
 // Wrapper components to handle AdminGuard + DashboardLayout
 const AdminDashboard: React.FC = () => (
@@ -105,6 +106,7 @@ function Router() {
       <Route path="/store" component={Store} />
       <Route path="/give" component={Give} />
       <Route path="/payment/verify" component={PaymentVerify} />
+      <Route path="/checkout/:product" component={Checkout} />
       <Route path="/admin/login" component={AdminLogin} />
 
       {/* Admin routes - specific routes BEFORE generic routes */}
