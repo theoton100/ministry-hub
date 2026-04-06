@@ -76,8 +76,8 @@ export default function Contact() {
               <Mail className="h-8 w-8 text-[#ff8c42] mb-4" />
               <h3 className="text-lg font-semibold text-[#000000] mb-2">Email</h3>
               <p className="text-[#000000]/70 text-sm font-light">
-                <a href="mailto:info@tisolomon.com" className="hover:text-[#ff8c42] transition">
-                  info@tisolomon.com
+                <a href="mailto:tisolomonministry@gmail.com" className="hover:text-[#ff8c42] transition">
+                  tisolomonministry@gmail.com
                 </a>
               </p>
             </motion.div>
@@ -92,8 +92,8 @@ export default function Contact() {
               <Phone className="h-8 w-8 text-[#ff8c42] mb-4" />
               <h3 className="text-lg font-semibold text-[#000000] mb-2">Phone</h3>
               <p className="text-[#000000]/70 text-sm font-light">
-                <a href="tel:+233123456789" className="hover:text-[#ff8c42] transition">
-                  +233 (0) 123 456 789
+                <a href="tel:+233559665951" className="hover:text-[#ff8c42] transition">
+                  +233 559 665 951
                 </a>
               </p>
             </motion.div>
