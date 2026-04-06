@@ -5,7 +5,7 @@ import { fadeUp, fadeUpDelay, staggerContainer } from "@/lib/animations";
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle2, Zap, Heart } from "lucide-react";
 
@@ -13,6 +13,7 @@ export default function Home() {
   const [resetEmail, setResetEmail] = useState("");
   const [systemEmail, setSystemEmail] = useState("");
   const [subscribing, setSubscribing] = useState(false);
+  const resetFormRef = useRef<HTMLDivElement>(null);
 
   const [, setLocation] = useLocation();
 
@@ -33,6 +34,11 @@ export default function Home() {
     setSubscribing(true);
     resetSubscribe.mutate({ email: resetEmail });
     // Note: setSubscribing(false) will be called after redirect
+  };
+
+  const handleHeroResetClick = () => {
+    // Scroll to the 7-Day Reset form
+    resetFormRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSystemSignup = () => {
@@ -89,7 +95,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fadeUpDelay(0.2)} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={handleResetSignup}
+                onClick={handleHeroResetClick}
                 className="bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-semibold text-base h-12 px-8 rounded-sm gap-2"
               >
                 Start 7-Day Reset
@@ -179,7 +185,7 @@ export default function Home() {
       </section>
 
       {/* 7-DAY RESET SECTION */}
-      <section className="py-20 md:py-28 bg-[#f5f1e8]">
+      <section ref={resetFormRef} className="py-20 md:py-28 bg-[#f5f1e8]">
         <div className="container max-w-2xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-[#000000] mb-4">Start Here: 7-Day Spiritual Reset</h2>

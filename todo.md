@@ -305,3 +305,6 @@
 - [x] Update Home.tsx to redirect after successful signup
 - [x] Test complete signup → download flow
 - [x] Verify PDF downloads correctly
+
+## Bug Fixes
+- [x] Fix "Start 7-Day Reset" button in hero section - now scrolls to form
