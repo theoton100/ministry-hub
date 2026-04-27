@@ -322,3 +322,17 @@
 - [x] Send email to pastor with customer details after Structured Walk System payment
 - [x] Include name, email, and WhatsApp number in the notification
 - [x] Test payment flow and email delivery
+
+
+## Light Mode Redesign - Rick Warren Daily Hope Aesthetic
+- [ ] Update CSS variables: light backgrounds, yellow (#FFD700), orange (#FF8C00), cyan (#00BCD4), blue (#2196F3)
+- [ ] Update ThemeProvider to light mode
+- [ ] Redesign homepage: white background, colorful cards, yellow CTAs
+- [ ] Update Blog page to light mode with colorful cards
+- [ ] Update Books/Store page to light mode
+- [ ] Update Podcast page to light mode
+- [ ] Update About page to light mode
+- [ ] Update Contact page to light mode
+- [ ] Update Navbar to light mode with yellow DONATE button
+- [ ] Update Footer to match Rick Warren aesthetic
+- [ ] Test all pages for contrast and readability

@@ -5,7 +5,7 @@ import { ArrowRight, Heart, Mail, MapPin } from "lucide-react";
 type FooterLink = { href: string; label: string; external?: boolean };
 
 function FooterLink({ link }: { link: FooterLink }) {
-  const cls = "text-white/60 text-sm hover:text-white/80 transition-colors w-fit flex items-center gap-1 group";
+  const cls = "text-gray-600 text-sm hover:text-gray-900 transition-colors w-fit flex items-center gap-1 group";
   if (link.external) {
     return (
       <a href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>
@@ -26,7 +26,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-black">
+    <footer className="border-t border-gray-200 bg-gray-50">
       <div className="container py-16 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
@@ -34,11 +34,11 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 w-fit group">
               <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-10 object-contain group-hover:opacity-80 transition-opacity" />
             </Link>
-            <p className="text-white/70 text-sm leading-relaxed max-w-xs">
+            <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
               Helping people move from confusion to clarity through deep intimacy with God.
             </p>
-            <Link href="/give" className="inline-flex items-center gap-2 text-white/80 text-sm font-bold hover:text-white transition-colors group">
-              <Heart className="h-4 w-4 fill-white/80" />
+            <Link href="/give" className="inline-flex items-center gap-2 text-gray-700 text-sm font-bold hover:text-gray-900 transition-colors group">
+              <Heart className="h-4 w-4 fill-gray-700" />
               Support the Ministry
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -46,7 +46,7 @@ export default function Footer() {
 
           {/* Watch & Listen */}
           <div className="space-y-4">
-            <h4 className="font-bold text-sm tracking-wider uppercase text-white">Watch & Listen</h4>
+            <h4 className="font-bold text-sm tracking-wider uppercase text-gray-900">Watch & Listen</h4>
             <div className="flex flex-col gap-3">
               {([
                 { href: "/watch", label: "Latest Sermons" },
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h4 className="font-bold text-sm tracking-wider uppercase text-white">Resources</h4>
+            <h4 className="font-bold text-sm tracking-wider uppercase text-gray-900">Resources</h4>
             <div className="flex flex-col gap-3">
               {([
                 { href: "/blog", label: "Blog" },
@@ -76,17 +76,17 @@ export default function Footer() {
 
           {/* Connect */}
           <div className="space-y-4">
-            <h4 className="font-bold text-sm tracking-wider uppercase text-white">Connect</h4>
+            <h4 className="font-bold text-sm tracking-wider uppercase text-gray-900">Connect</h4>
             <div className="flex flex-col gap-3">
-              <a href="mailto:theoton100@gmail.com" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
+              <a href="mailto:theoton100@gmail.com" className="text-gray-600 text-sm hover:text-gray-900 transition-colors flex items-center gap-2 group">
                 <Mail className="h-4 w-4" />
                 <span>Email</span>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 text-sm hover:text-gray-900 transition-colors flex items-center gap-2 group">
                 <span>Instagram</span>
                 <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/60 text-sm hover:text-white/80 transition-colors flex items-center gap-2 group">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 text-sm hover:text-gray-900 transition-colors flex items-center gap-2 group">
                 <span>Facebook</span>
                 <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
@@ -95,11 +95,11 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="space-y-4">
-            <h4 className="font-bold text-sm tracking-wider uppercase text-white">Stay Updated</h4>
-            <p className="text-white/70 text-sm leading-relaxed">
+            <h4 className="font-bold text-sm tracking-wider uppercase text-gray-900">Stay Updated</h4>
+            <p className="text-gray-600 text-sm leading-relaxed">
               Weekly inspiration, devotionals, and ministry updates delivered to your inbox.
             </p>
-            <Link href="/newsletter" className="inline-flex items-center gap-2 text-white/80 text-sm font-bold hover:text-white transition-colors group">
+            <Link href="/newsletter" className="inline-flex items-center gap-2 text-gray-700 text-sm font-bold hover:text-gray-900 transition-colors group">
               Subscribe
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -107,12 +107,12 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 pt-8">
+        <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/50 text-xs">
+            <p className="text-gray-500 text-xs">
               &copy; {currentYear} {MINISTRY_NAME} Ministries. All rights reserved.
             </p>
-            <p className="text-white/50 text-xs">
+            <p className="text-gray-500 text-xs">
               Built with faith for the Kingdom of God
             </p>
           </div>

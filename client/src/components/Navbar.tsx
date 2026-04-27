@@ -21,10 +21,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* GRADIENT BANNER - Orange to Purple */}
-      <div className="h-1 w-full" style={{ background: "linear-gradient(90deg, #ff8c42 0%, #8b5cf6 100%)" }} />
+      {/* GRADIENT BANNER - Yellow to Orange (Rick Warren style) */}
+      <div className="h-1 w-full" style={{ background: "linear-gradient(90deg, #FFD700 0%, #FF8C00 100%)" }} />
       
-      <header className="fixed top-1 left-0 right-0 z-50 bg-black border-b border-white/10">
+      <header className="fixed top-1 left-0 right-0 z-50 bg-white border-b border-gray-200">
         <nav className="container flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0 group">
@@ -41,13 +41,13 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium transition-all duration-200 relative pb-1 ${
                     isActive
-                      ? "text-white"
-                      : "text-white/70 hover:text-white"
+                      ? "text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400" />
                   )}
                 </Link>
               );
@@ -57,7 +57,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Link href="/give">
-              <Button className="bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-semibold text-sm h-10 px-6 rounded-sm">
+              <Button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold text-sm h-10 px-6 rounded-sm">
                 Give
               </Button>
             </Link>
@@ -69,15 +69,15 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 text-white hover:bg-white/10"
+                className="h-10 w-10 text-gray-900 hover:bg-gray-100"
               >
                 {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 p-0 border-white/10 bg-black">
+            <SheetContent side="right" className="w-72 p-0 border-gray-200 bg-white">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-white/10">
+                <div className="p-6 border-b border-gray-200">
                   <img src={LOGO_LIGHT} alt={MINISTRY_NAME} className="h-12 object-contain" />
                 </div>
                 <div className="flex-1 py-4 overflow-y-auto">
@@ -90,8 +90,8 @@ export default function Navbar() {
                         onClick={() => setOpen(false)}
                         className={`flex items-center px-6 py-3 text-sm font-medium transition-all duration-200 border-l-2 ${
                           isActive
-                            ? "text-white bg-white/5 border-white"
-                            : "text-white/70 border-transparent hover:text-white hover:bg-white/5"
+                            ? "text-gray-900 bg-gray-100 border-yellow-400"
+                            : "text-gray-600 border-transparent hover:text-gray-900 hover:bg-gray-50"
                         }`}
                       >
                         {link.label}
@@ -99,9 +99,9 @@ export default function Navbar() {
                     );
                   })}
                 </div>
-                <div className="p-6 border-t border-white/10">
+                <div className="p-6 border-t border-gray-200">
                   <Link href="/give" onClick={() => setOpen(false)}>
-                    <Button className="w-full bg-gradient-to-r from-[#ff8c42] to-[#8b5cf6] hover:from-[#ff7a2a] hover:to-[#7a4cc6] text-white font-semibold text-sm h-11 rounded-sm">
+                    <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold text-sm h-11 rounded-sm">
                       Give Now
                     </Button>
                   </Link>
