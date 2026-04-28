@@ -1,0 +1,18 @@
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.* )",
+      "destination": "/dist/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/dist/client/index.html"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
